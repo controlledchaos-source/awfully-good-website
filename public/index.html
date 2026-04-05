@@ -13,35 +13,52 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: #f5f0ff;
-      color: #1a1a1a;
+      background: #0d0221;
+      color: #f0e6ff;
       line-height: 1.6;
     }
 
     /* HEADER */
     header {
-      background: linear-gradient(135deg, #FF006E 0%, #8338EC 100%);
+      background: #0d0221;
       padding: 1.5rem;
       text-align: center;
-      border-bottom: 8px solid #000;
+      border-bottom: 4px solid #FF006E;
       position: sticky;
       top: 0;
       z-index: 100;
     }
 
+    /* Dashed stripe accent under header */
+    header::after {
+      content: '';
+      display: block;
+      margin-top: 0.75rem;
+      height: 6px;
+      background: repeating-linear-gradient(
+        90deg,
+        #FF006E 0px, #FF006E 20px,
+        transparent 20px, transparent 24px,
+        #FFBE0B 24px, #FFBE0B 44px,
+        transparent 44px, transparent 48px
+      );
+    }
+
     .logo {
       font-size: clamp(2rem, 8vw, 3.5rem);
       font-weight: 900;
-      color: #FFBE0B;
-      text-shadow: 3px 3px 0px #000, 6px 6px 0px rgba(0,0,0,0.2);
+      background: linear-gradient(90deg, #FF006E, #FFBE0B, #3BFA8E, #FF6B35, #8338EC, #FF006E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       margin-bottom: 0.5rem;
     }
 
     .tagline {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      color: white;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #c4a8ff;
       font-style: italic;
       margin-bottom: 1rem;
       font-weight: 600;
@@ -55,50 +72,55 @@
     }
 
     nav a {
-      padding: 0.6rem 1.2rem;
-      background: white;
-      border: 3px solid #000;
-      color: #FF006E;
+      padding: 0.5rem 1.1rem;
+      background: transparent;
+      border: 2px solid #8338EC;
+      color: #c4a8ff;
       text-decoration: none;
       font-weight: 900;
       text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       font-size: 0.85rem;
+      letter-spacing: 1px;
     }
 
     nav a:hover {
-      background: #FFBE0B;
+      background: #FF006E;
+      border-color: #FF006E;
+      color: white;
       transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0px #000;
+      box-shadow: 4px 4px 0px #FFBE0B;
     }
 
     /* HERO */
     .hero {
       max-width: 1000px;
-      margin: 2rem auto;
-      padding: 3rem 2rem;
-      background: white;
-      border: 6px solid #000;
+      margin: 2.5rem auto;
+      padding: 3.5rem 2rem;
+      background: linear-gradient(135deg, #1a0535 0%, #0d0221 100%);
+      border: 4px solid #FF006E;
       text-align: center;
-      box-shadow: 8px 8px 0px #FF006E;
+      box-shadow: 8px 8px 0px #FF006E, 16px 16px 0px rgba(255,0,110,0.15);
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 8vw, 3.2rem);
-      color: #FF006E;
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      background: linear-gradient(90deg, #FF006E, #FFBE0B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1rem;
       font-weight: 900;
       text-transform: uppercase;
-      text-shadow: 2px 2px 0px #FFBE0B;
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .hero .subheading {
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
-      color: #8338EC;
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      color: #c4a8ff;
       margin-bottom: 2rem;
-      font-weight: 700;
+      font-weight: 600;
       font-style: italic;
     }
 
@@ -106,21 +128,21 @@
       background: linear-gradient(135deg, #FF006E 0%, #FFBE0B 100%);
       color: white;
       padding: 1rem 2rem;
-      border: 4px solid #000;
+      border: 3px solid #FFBE0B;
       font-weight: 900;
       font-size: 1rem;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 6px 6px 0px #000;
+      box-shadow: 6px 6px 0px rgba(255,190,11,0.4);
       text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       letter-spacing: 1px;
     }
 
     .hero-cta:hover {
       transform: translate(-3px, -3px);
-      box-shadow: 9px 9px 0px #000;
+      box-shadow: 9px 9px 0px rgba(255,190,11,0.5);
     }
 
     /* SECTION WRAPPER */
@@ -132,18 +154,20 @@
 
     .section-title {
       font-size: clamp(1.8rem, 6vw, 2.8rem);
-      color: #FF006E;
+      background: linear-gradient(90deg, #FF006E, #FFBE0B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       text-align: center;
       margin-bottom: 2rem;
       font-weight: 900;
       text-transform: uppercase;
-      text-shadow: 2px 2px 0px #FFBE0B;
     }
 
     /* PRODUCT SHOWCASE */
     .product-showcase {
-      background: white;
-      border: 6px solid #000;
+      background: #1a0535;
+      border: 4px solid #8338EC;
       padding: 2rem;
       margin-bottom: 2rem;
       box-shadow: 8px 8px 0px #8338EC;
@@ -158,16 +182,16 @@
       width: 100%;
       max-height: 500px;
       height: auto;
-      border: 4px solid #FF006E;
+      border: 3px solid #FF006E;
       padding: 1rem;
-      background: white;
+      background: #0d0221;
       object-fit: contain;
       display: block;
     }
 
     .product-text h2 {
       font-size: 1.8rem;
-      color: #FF006E;
+      color: #FFBE0B;
       margin-bottom: 1rem;
       text-transform: uppercase;
       font-weight: 900;
@@ -175,7 +199,7 @@
 
     .product-text p {
       font-size: 1rem;
-      color: #1a1a1a;
+      color: #c4a8ff;
       margin-bottom: 1rem;
       line-height: 1.7;
     }
@@ -189,31 +213,31 @@
     }
 
     .flavor-card {
-      background: white;
-      border: 5px solid #000;
+      background: #1a0535;
+      border: 3px solid #8338EC;
       padding: 1.5rem;
       text-align: center;
       box-shadow: 5px 5px 0px #FFBE0B;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .flavor-card:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0px #FFBE0B;
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0px #FFBE0B;
     }
 
     .flavor-image {
       width: 100%;
       max-width: 150px;
       margin: 0 auto 1rem;
-      border: 3px solid #FF006E;
+      border: 2px solid #FF006E;
       padding: 0.5rem;
-      background: white;
+      background: #0d0221;
     }
 
     .flavor-card h3 {
       font-size: 1.3rem;
-      color: #FF006E;
+      color: #FFBE0B;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       font-weight: 900;
@@ -221,13 +245,13 @@
 
     .flavor-card p {
       font-size: 0.9rem;
-      color: #666;
+      color: #c4a8ff;
     }
 
     /* VIDEO CAROUSEL */
     .carousel-wrapper {
-      background: white;
-      border: 6px solid #000;
+      background: #1a0535;
+      border: 4px solid #8338EC;
       padding: 2rem;
       margin-bottom: 2rem;
       box-shadow: 8px 8px 0px #8338EC;
@@ -236,7 +260,7 @@
 
     .carousel-title {
       font-size: 1.5rem;
-      color: #FF006E;
+      color: #FFBE0B;
       margin-bottom: 1rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -249,7 +273,7 @@
       margin: 0 auto 1.5rem;
       aspect-ratio: 9/16;
       background: #000;
-      border: 4px solid #FF006E;
+      border: 3px solid #FF006E;
       overflow: hidden;
     }
 
@@ -265,7 +289,7 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      color: white;
+      color: #c4a8ff;
       text-align: center;
       padding: 2rem;
     }
@@ -278,24 +302,24 @@
     }
 
     .carousel-btn {
-      background: linear-gradient(135deg, #FF006E 0%, #FFBE0B 100%);
+      background: linear-gradient(135deg, #FF006E 0%, #8338EC 100%);
       color: white;
-      border: 3px solid #000;
+      border: 2px solid #FFBE0B;
       padding: 0.7rem 1.2rem;
       font-weight: 900;
       text-transform: uppercase;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .carousel-btn:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 4px 4px 0px #000;
+      box-shadow: 4px 4px 0px #FFBE0B;
     }
 
     .carousel-counter {
-      color: #FF006E;
+      color: #FFBE0B;
       font-weight: 900;
       font-size: 1.1rem;
       font-style: italic;
@@ -303,12 +327,12 @@
 
     /* CARD */
     .card {
-      background: white;
-      border: 5px solid #000;
+      background: #1a0535;
+      border: 3px solid #8338EC;
       padding: 2rem;
       margin-bottom: 1.5rem;
       box-shadow: 6px 6px 0px #FFBE0B;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .card:hover {
@@ -326,13 +350,13 @@
 
     .card h3 {
       font-size: 1.2rem;
-      color: #8338EC;
+      color: #FFBE0B;
       margin-bottom: 1rem;
       font-weight: 700;
     }
 
     .card p {
-      color: #1a1a1a;
+      color: #c4a8ff;
       line-height: 1.8;
       margin-bottom: 0.8rem;
       font-size: 0.95rem;
@@ -353,18 +377,18 @@
     }
 
     .price-card {
-      background: linear-gradient(135deg, #ffe0f0 0%, #f0e0ff 100%);
-      border: 5px solid #000;
+      background: #1a0535;
+      border: 3px solid #8338EC;
       padding: 1.8rem;
       text-align: center;
       position: relative;
       box-shadow: 5px 5px 0px #FF006E;
-      transition: all 0.3s;
+      transition: all 0.2s;
     }
 
     .price-card.featured {
-      border: 6px solid #FFBE0B;
-      background: linear-gradient(135deg, #fff0e0 0%, #ffe0f0 100%);
+      border: 4px solid #FFBE0B;
+      background: linear-gradient(135deg, #200a45 0%, #1a0535 100%);
       box-shadow: 6px 6px 0px #FFBE0B;
       transform: scale(1.05);
     }
@@ -375,10 +399,10 @@
 
     .best-badge {
       background: #FFBE0B;
-      color: #FF006E;
+      color: #0d0221;
       padding: 0.5rem 1rem;
       font-weight: 900;
-      border: 3px solid #000;
+      border: 2px solid #FF006E;
       display: inline-block;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
@@ -387,14 +411,14 @@
 
     .price-card h3 {
       font-size: 1.3rem;
-      color: #FF006E;
+      color: #FFBE0B;
       margin-bottom: 0.5rem;
       text-transform: uppercase;
       font-weight: 900;
     }
 
     .price-card p {
-      color: #666;
+      color: #c4a8ff;
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
     }
@@ -410,31 +434,31 @@
       background: linear-gradient(135deg, #FF006E 0%, #FFBE0B 100%);
       color: white;
       padding: 0.8rem 1.5rem;
-      border: 3px solid #000;
+      border: 2px solid #FFBE0B;
       font-weight: 900;
       text-transform: uppercase;
       font-size: 0.85rem;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      box-shadow: 4px 4px 0px #000;
-      transition: all 0.3s;
+      box-shadow: 4px 4px 0px rgba(255,190,11,0.4);
+      transition: all 0.2s;
       margin-top: 0.8rem;
     }
 
     .cta-button:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px #000;
+      box-shadow: 6px 6px 0px rgba(255,190,11,0.5);
     }
 
     /* GUARANTEE */
     .guarantee {
-      background: linear-gradient(135deg, #FFBE0B 0%, #FF006E 100%);
-      border: 5px solid #000;
+      background: linear-gradient(135deg, #200a45 0%, #1a0535 100%);
+      border: 3px solid #FFBE0B;
       padding: 2rem;
       text-align: center;
       margin-bottom: 2rem;
-      box-shadow: 6px 6px 0px #000;
+      box-shadow: 6px 6px 0px #FFBE0B;
       color: white;
     }
 
@@ -443,17 +467,19 @@
       margin-bottom: 1rem;
       text-transform: uppercase;
       font-weight: 900;
+      color: #FFBE0B;
     }
 
     .guarantee p {
       font-size: 0.95rem;
       line-height: 1.7;
+      color: #c4a8ff;
     }
 
     /* FAQ */
     .faq-wrapper {
-      background: white;
-      border: 5px solid #000;
+      background: #1a0535;
+      border: 3px solid #8338EC;
       padding: 2rem;
       margin-bottom: 2rem;
       box-shadow: 6px 6px 0px #8338EC;
@@ -462,7 +488,7 @@
     .faq-item {
       margin-bottom: 1.5rem;
       padding-bottom: 1.5rem;
-      border-bottom: 3px solid #FF006E;
+      border-bottom: 2px solid #3d1a6e;
     }
 
     .faq-item:last-child {
@@ -478,32 +504,36 @@
     }
 
     .faq-item p {
-      color: #1a1a1a;
+      color: #c4a8ff;
       line-height: 1.7;
       font-size: 0.95rem;
     }
 
     /* FOOTER */
     footer {
-      background: linear-gradient(135deg, #FF006E 0%, #8338EC 100%);
+      background: #0d0221;
       color: white;
       text-align: center;
       padding: 2.5rem;
-      border-top: 6px solid #000;
+      border-top: 4px solid #FF006E;
       margin-top: 2rem;
     }
 
     footer h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 0px #FFBE0B;
       font-weight: 900;
+      background: linear-gradient(90deg, #FF006E, #FFBE0B, #3BFA8E, #8338EC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     footer p {
       margin: 0.8rem 0;
       line-height: 1.6;
       font-size: 0.95rem;
+      color: #c4a8ff;
     }
 
     /* MOBILE */
@@ -562,7 +592,7 @@
       <h1>We only get one dance.</h1>
       <p class="subheading">The awful moments, the good ones — none of them are average. Neither are you.</p>
       <a href="#pricing" class="hero-cta">Start Showing Up Fully — 30-Day Guarantee</a>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">✓ No alcohol • ✓ Lab tested • ✓ Risk-free</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: #c4a8ff;">✓ No alcohol • ✓ Lab tested • ✓ Risk-free</p>
     </div>
   </div>
 
@@ -629,7 +659,7 @@
   <!-- WHY: FOUNDER STORY -->
   <div class="section">
     <h2 class="section-title">Our Why: Moments Matter</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #8338EC; margin-bottom: 2rem; font-weight: 600;">We believe brain fog steals your life. We're taking it back.</p>
+    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">We believe brain fog steals your life. We're taking it back.</p>
 
     <div class="card">
       <h2>I Almost Died at 13</h2>
@@ -643,7 +673,7 @@
       <h3>To Cancer. Twice.</h3>
       <p>I was in conversations I wasn't fully present for. Moments I can't get back.</p>
       <p><span class="quote">Clarity became non-negotiable.</span></p>
-      <p style="margin-top: 1rem;">Every moment matters. You deserve to be all-in.</p>
+      <p style="margin-top: 1rem; color: #c4a8ff;">Every moment matters. You deserve to be all-in.</p>
     </div>
 
     <div class="card">
@@ -657,7 +687,7 @@
   <!-- HOW: The Science -->
   <div class="section">
     <h2 class="section-title">How We're Fixing It</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #8338EC; margin-bottom: 2rem; font-weight: 600;">Lion's Mane isn't magic. It's just science that actually works.</p>
+    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">Lion's Mane isn't magic. It's just science that actually works.</p>
 
   <!-- PRICING -->
   <div class="section" id="pricing">
@@ -700,7 +730,7 @@
         <div class="price-amount">$24.99</div>
         <p style="color: #FF006E; font-weight: 900;">/month • Save 17%</p>
         <p style="font-size: 0.85rem;">Never run out. Cancel anytime.</p>
-        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Perfect for staying sharp long-term</p>
+        <p style="font-size: 0.8rem; color: #c4a8ff; margin-top: 0.5rem;">Perfect for staying sharp long-term</p>
         <a href="https://www.awfullygoodcompany.com/products/🍓-strawberry-lion-s-mane-tincture-focus-memory-support?selling_plan=6545506546" class="cta-button">Start Auto-Ship</a>
       </div>
     </div>
@@ -709,7 +739,7 @@
   <!-- WHAT: Results & Guarantee -->
   <div class="section">
     <h2 class="section-title">What You Actually Get</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #8338EC; margin-bottom: 2rem; font-weight: 600;">Clear mind. Full presence. Your life back.</p>
+    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">Clear mind. Full presence. Your life back.</p>
 
     <div class="guarantee">
       <h3>⭐ 100% Money-Back Guarantee</h3>
@@ -717,17 +747,17 @@
     </div>
 
     <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <div style="background: white; border: 4px solid #000; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FFBE0B;">
-        <h3 style="color: #FF006E; font-size: 1.3rem; margin-bottom: 0.5rem;">2-4 Weeks</h3>
-        <p>When you feel the shift. Brain chemistry changes. Fog lifts.</p>
+      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FFBE0B;">
+        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">2-4 Weeks</h3>
+        <p style="color: #c4a8ff;">When you feel the shift. Brain chemistry changes. Fog lifts.</p>
       </div>
-      <div style="background: white; border: 4px solid #000; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #8338EC;">
-        <h3 style="color: #FF006E; font-size: 1.3rem; margin-bottom: 0.5rem;">30 Days</h3>
-        <p>Full clarity kicks in. This is when the magic actually happens.</p>
+      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #8338EC;">
+        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">30 Days</h3>
+        <p style="color: #c4a8ff;">Full clarity kicks in. This is when the magic actually happens.</p>
       </div>
-      <div style="background: white; border: 4px solid #000; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FF006E;">
-        <h3 style="color: #FF006E; font-size: 1.3rem; margin-bottom: 0.5rem;">Ongoing</h3>
-        <p>You show up differently. You remember things. You're present again.</p>
+      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FF006E;">
+        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">Ongoing</h3>
+        <p style="color: #c4a8ff;">You show up differently. You remember things. You're present again.</p>
       </div>
     </div>
   </div>
