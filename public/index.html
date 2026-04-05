@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awfully Good - Lion's Mane Supplement for the Misunderstood</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NEON COLORS ===== */
+        :root {
+            --pink: #FF006E;
+            --cyan: #00D9FF;
+            --yellow: #FFBE0B;
+            --purple: #8338EC;
+            --blue: #3A86FF;
+        }
+
+        /* ===== GLITCH EFFECT ===== */
+        @keyframes glitch {
+            0% {
+                clip-path: inset(40% 0 61% 0);
+                transform: translate(-2px, -2px);
+            }
+            20% {
+                clip-path: inset(92% 0 1% 0);
+                transform: translate(2px, 2px);
+            }
+            40% {
+                clip-path: inset(43% 0 1% 0);
+                transform: translate(-2px, 2px);
+            }
+            60% {
+                clip-path: inset(25% 0 58% 0);
+                transform: translate(2px, -2px);
+            }
+            80% {
+                clip-path: inset(54% 0 7% 0);
+                transform: translate(-2px, -2px);
+            }
+            100% {
+                clip-path: inset(58% 0 43% 0);
+                transform: translate(2px, 2px);
+            }
+        }
+
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch::before {
+            animation: glitch 2.5s infinite;
+            color: var(--cyan);
+            z-index: -1;
+            text-shadow: -2px 0 var(--pink);
+        }
+
+        .glitch::after {
+            animation: glitch 2.5s infinite reverse;
+            color: var(--pink);
+            z-index: -2;
+            text-shadow: 2px 0 var(--cyan);
+        }
+
+        /* ===== VHS SCAN LINES ===== */
+        @keyframes scanlines {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(10px);
+            }
+        }
+
+        .vhs-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            animation: scanlines 8s linear infinite;
+            z-index: 9999;
+        }
+
+        /* ===== PULSE ANIMATION ===== */
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 0, 110, 0.8), 0 0 60px rgba(0, 217, 255, 0.5);
+            }
+        }
+
+        /* ===== FLOAT ANIMATION ===== */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px dashed var(--pink);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(90deg, var(--pink), var(--cyan), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 rgba(255, 0, 110, 0.3);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--pink), var(--cyan));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0033 0%, #000066 50%, #1a1a33 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px dashed var(--yellow);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 8vw, 72px);
+            font-family: 'Comic Sans MS', cursive;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(90deg, var(--pink), var(--cyan), var(--yellow), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 3px 3px 0 rgba(255, 0, 110, 0.3);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #00D9FF;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid var(--cyan);
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 0 rgba(0, 217, 255, 0.3), 0 12px 20px rgba(255, 0, 110, 0.3);
+            font-family: 'Impact', sans-serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 0 rgba(0, 217, 255, 0.5), 0 16px 30px rgba(255, 0, 110, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+            box-shadow: 0 0 0 rgba(0, 217, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===== VIDEO CAROUSEL ===== */
+        .testimonials {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #1a1a33 0%, #001a4d 50%, #0d0d2b 100%);
+            border-bottom: 5px dashed var(--cyan);
+        }
+
+        .testimonials h2 {
+            font-size: clamp(36px, 6vw, 56px);
+            font-family: 'Comic Sans MS', cursive;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--yellow), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .carousel-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            height: 0;
+            border: 4px dashed var(--purple);
+            background: #000;
+            box-shadow: 0 0 40px rgba(131, 56, 236, 0.4), inset 0 0 20px rgba(0, 217, 255, 0.1);
+        }
+
+        .carousel-inner video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .carousel-inner video.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .carousel-button {
+            background: linear-gradient(90deg, var(--blue), var(--cyan));
+            color: #fff;
+            border: 3px solid var(--pink);
+            padding: 15px 30px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 rgba(255, 0, 110, 0.3);
+        }
+
+        .carousel-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(255, 0, 110, 0.5);
+        }
+
+        .carousel-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .carousel-counter {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: var(--yellow);
+            font-family: 'Impact', sans-serif;
+            text-shadow: 0 0 10px rgba(255, 190, 11, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .testimonials {
+                padding: 40px 20px;
+            }
+            .carousel-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* ===== SECTION TITLE STYLE ===== */
+        .section-title {
+            font-size: clamp(36px, 6vw, 56px);
+            font-family: 'Comic Sans MS', cursive;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--cyan), var(--pink), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        /* ===== FOUNDER STORY ===== */
+        .story {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #2d0052 0%, #0a0052 50%, #1a0033 100%);
+            border-bottom: 5px dashed var(--pink);
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-size: 28px;
+            font-family: 'Comic Sans MS', cursive;
+            color: var(--yellow);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .story-text p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .story-text p strong {
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.4));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .story {
+                padding: 40px 20px;
+            }
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #001a4d 0%, #1a0066 50%, #0d1a4d 100%);
+            border-bottom: 5px dashed var(--yellow);
+        }
+
+        .how-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .how-card {
+            background: rgba(131, 56, 236, 0.1);
+            border: 3px dashed var(--cyan);
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink), var(--cyan), var(--yellow));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .how-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--pink);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .how-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .how-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--purple);
+            margin-bottom: 15px;
+            font-family: 'Impact', sans-serif;
+            text-shadow: 0 0 10px rgba(131, 56, 236, 0.5);
+        }
+
+        .how-card h3 {
+            font-size: 24px;
+            font-family: 'Comic Sans MS', cursive;
+            color: var(--yellow);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .how-card p {
+            font-size: 16px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .how-it-works {
+                padding: 40px 20px;
+            }
+            .how-grid {
+                gap: 20px;
+            }
+            .how-card {
+                padding: 25px;
+            }
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #1a1a33 0%, #2d0052 50%, #1a0033 100%);
+            border-bottom: 5px dashed var(--blue);
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.2), rgba(0, 217, 255, 0.1));
+            border: 3px solid var(--pink);
+            padding: 50px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 4px solid var(--yellow);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 190, 11, 0.4), inset 0 0 30px rgba(255, 190, 11, 0.1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--yellow), var(--pink));
+            color: #000;
+            padding: 8px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            font-family: 'Comic Sans MS', cursive;
+            color: var(--cyan);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--yellow);
+            margin-bottom: 10px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .price-desc {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            padding: 12px 0;
+            border-bottom: 1px dashed rgba(131, 56, 236, 0.3);
+            font-size: 15px;
+            color: #ccc;
+        }
+
+        .pricing-card li::before {
+            content: '→ ';
+            color: var(--cyan);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            color: #fff;
+            border: 2px solid var(--pink);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 rgba(255, 0, 110, 0.3);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(255, 0, 110, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .pricing {
+                padding: 40px 20px;
+            }
+            .pricing-grid {
+                gap: 20px;
+            }
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #1a0033 0%, #0a1a4d 50%, #1a0052 100%);
+            border-bottom: 5px dashed var(--cyan);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border: 2px dashed var(--purple);
+            border-radius: 0;
+        }
+
+        .faq-question {
+            background: rgba(131, 56, 236, 0.2);
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .faq-question:hover {
+            background: rgba(131, 56, 236, 0.4);
+            color: var(--yellow);
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 25px;
+            background: rgba(0, 217, 255, 0.05);
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .faq {
+                padding: 40px 20px;
+            }
+            .faq-question {
+                font-size: 14px;
+                padding: 20px;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 60px 40px;
+            background: #000;
+            border-top: 5px dashed var(--pink);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .footer-title {
+            font-size: 36px;
+            font-family: 'Comic Sans MS', cursive;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--pink), var(--cyan), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--cyan);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 rgba(0, 217, 255, 0.3);
+            margin: 0 10px;
+        }
+
+        .footer-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(0, 217, 255, 0.5);
+        }
+
+        .footer-bottom {
+            border-top: 2px dashed var(--purple);
+            padding-top: 30px;
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 40px 20px;
+            }
+            .footer-title {
+                font-size: 24px;
+            }
+            .footer-cta {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        /* ===== PRODUCT SHOWCASE ===== */
+        .product-showcase {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #2d0052 0%, #0a0052 50%, #1a0033 100%);
+            border-bottom: 5px dashed var(--yellow);
+            text-align: center;
+        }
+
+        .product-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .product-item {
+            background: rgba(131, 56, 236, 0.1);
+            border: 3px dashed var(--cyan);
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+            border-color: var(--pink);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: 300px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
+        }
+
+        .product-item h3 {
+            font-size: 22px;
+            font-family: 'Comic Sans MS', cursive;
+            color: var(--yellow);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .product-item p {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .product-showcase {
+                padding: 40px 20px;
+            }
+            .product-grid {
+                gap: 20px;
+            }
+            .product-item {
+                padding: 20px;
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- VHS SCAN LINES -->
+    <div class="vhs-lines"></div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Awfully Good</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                Life is messy.<br>
+                <span>You're misunderstood.</span><br>
+                We are too.<br>
+                <span style="color: #00D9FF;">Welcome home.</span>
+            </h1>
+            <p>Lion's Mane that gets you. (And your weird brain.)</p>
+            <button class="cta-button">Shop Now</button>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS / VIDEO CAROUSEL -->
+    <section class="testimonials" id="testimonials">
+        <h2>Real Weirdos. Real Results.</h2>
+        <div class="carousel-container">
+            <div class="carousel-inner" id="carousel">
+                <video class="active">
+                    <source src="/videos/awfully-good-videos/eva.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/bearded%20man.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/better%20alternative.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/kaywellness.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/mom.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/school.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/temu%20jennifer%20coolidge.mp4" type="video/mp4">
+                </video>
+                <video>
+                    <source src="/videos/awfully-good-videos/yard%20work.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-button" id="prev-btn">← Previous</button>
+                <span class="carousel-counter"><span id="current-video">1</span> / 8</span>
+                <button class="carousel-button" id="next-btn">Next →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE -->
+    <section class="product-showcase">
+        <h2 class="section-title">Three Flavors of Clarity</h2>
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="https://cdn.shopify.com/s/files/1/0733/0640/5206/products/strawberry_tincture_2.png" alt="Strawberry Lion's Mane">
+                <h3>Strawberry</h3>
+                <p>Sweet chaos in a bottle. Your taste buds won't judge you.</p>
+            </div>
+            <div class="product-item">
+                <img src="https://cdn.shopify.com/s/files/1/0733/0640/5206/products/blueberry_tincture.png" alt="Blueberry Lion's Mane">
+                <h3>Blueberry</h3>
+                <p>The sophisticated weirdo's choice. Seriously though, it slaps.</p>
+            </div>
+            <div class="product-item">
+                <img src="https://cdn.shopify.com/s/files/1/0733/0640/5206/products/grape_tincture.png" alt="Grape Lion's Mane">
+                <h3>Grape</h3>
+                <p>Purple power. No nostalgia trip required (but welcome if it happens).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER STORY -->
+    <section class="story">
+        <div class="story-content">
+            <div class="story-text">
+                <h2 class="section-title">Our (Awkward) Origin Story</h2>
+                <h3>We're Not Doctors. We're Just Misunderstood.</h3>
+                <p>
+                    Awfully Good started because we were tired of pretending to be okay. <strong>We're not.</strong> None of us are. And that's kind of the point.
+                </p>
+                <p>
+                    Our founder was that weird kid who didn't fit in, took too long to decide things, and overthought conversations from 2007. So they decided: instead of fixing themselves, what if they could just... think better?
+                </p>
+                <p>
+                    Lion's Mane isn't a miracle cure. <strong>It's a tool for weirdos.</strong> For people whose brains work different. For people who deserve to feel sharp without feeling fake.
+                </p>
+                <p>
+                    We built Awfully Good for the misfits, the overthinkers, and everyone who's ever felt like they were one bad day away from losing it. (You're welcome.)
+                </p>
+            </div>
+            <div>
+                <img src="https://cdn.shopify.com/s/files/1/0733/0640/5206/products/strawberry_tincture_2.png" alt="Awfully Good Product" class="product-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how">
+        <h2 class="section-title">How This Weird Science Works</h2>
+        <div class="how-grid">
+            <div class="how-card">
+                <div class="how-number">1</div>
+                <h3>Take It</h3>
+                <p>Drop it under your tongue. Don't overthink it. (We know you will anyway.)</p>
+            </div>
+            <div class="how-card">
+                <div class="how-number">2</div>
+                <h3>Lion's Mane Does Its Thing</h3>
+                <p>Supports neuroplasticity. Better focus. Clearer thoughts. Real talk: it works.</p>
+            </div>
+            <div class="how-card">
+                <div class="how-number">3</div>
+                <h3>Feel Better, Be Weirder</h3>
+                <p>Sharper brain. Longer attention span. More capacity to be your authentic self.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Pick Your Tribe</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>The Sampler</h3>
+                <div class="price">$19.99</div>
+                <p class="price-desc">One bottle</p>
+                <ul>
+                    <li>1 Bottle (30ml)</li>
+                    <li>Any flavor</li>
+                    <li>30-day supply</li>
+                    <li>See what we're about</li>
+                </ul>
+                <button class="pricing-button">Try It</button>
+            </div>
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Misunderstood</div>
+                <h3>The Trio</h3>
+                <div class="price">$49.99</div>
+                <p class="price-desc">Three bottles (Save 20%)</p>
+                <ul>
+                    <li>3 Bottles (30ml each)</li>
+                    <li>All three flavors</li>
+                    <li>90-day supply</li>
+                    <li>Become one of us</li>
+                    <li>Community access</li>
+                </ul>
+                <button class="pricing-button">Join Us</button>
+            </div>
+            <div class="pricing-card">
+                <h3>The Ritual</h3>
+                <div class="price">$89.99</div>
+                <p class="price-desc">Six bottles (Save 25%)</p>
+                <ul>
+                    <li>6 Bottles (30ml each)</li>
+                    <li>Mix & match</li>
+                    <li>180-day supply</li>
+                    <li>VIP community access</li>
+                    <li>Priority support</li>
+                </ul>
+                <button class="pricing-button">Go Deep</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <h2 class="section-title">Questions We Get Asked (A Lot)</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Will this make me normal?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    No. It'll make you sharper, more focused, and better able to advocate for your weirdness. Normal is overrated anyway.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How long until I feel something?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Most people notice improvements in focus and clarity within 2-3 weeks. Some feel it sooner. Give it time. Your brain didn't break overnight.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is this a scam?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Nope. We're selling a real product with real benefits. We're not claiming to cure your existential dread, but we can help you think through it more clearly.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I take this with other stuff?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Probably, but talk to your doctor first. We're a supplement company, not your therapist. (Though honestly, we should charge like one.)
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if I hate it?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    30-day money-back guarantee. No questions. We get it. Not everything works for everyone.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2 class="footer-title">You Found Your Tribe</h2>
+            <p class="footer-text">
+                Awfully Good is for everyone who's ever felt too much, thought too much, or existed too weirdly for the mainstream. <br><br>
+                We're building a community for the misunderstood. Because the best people are weird.
+            </p>
+            <a href="#" class="footer-cta">Shop Now</a>
+            <a href="#" class="footer-cta">Join Community</a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Awfully Good. All rights reserved. Made by weirdos, for weirdos.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Video Carousel
+        let currentVideo = 0;
+        const videos = document.querySelectorAll('.carousel-inner video');
+        const totalVideos = videos.length;
+
+        function showVideo(index) {
+            videos.forEach(video => video.classList.remove('active'));
+            videos[index].classList.add('active');
+            document.getElementById('current-video').textContent = index + 1;
+        }
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            currentVideo = (currentVideo - 1 + totalVideos) % totalVideos;
+            showVideo(currentVideo);
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            currentVideo = (currentVideo + 1) % totalVideos;
+            showVideo(currentVideo);
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // CTA Button (scroll to pricing for now)
+        document.querySelector('.cta-button').addEventListener('click', () => {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
