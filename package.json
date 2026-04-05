@@ -1,0 +1,11 @@
+{
+  "name": "awfully-good-website",
+  "version": "1.0.0",
+  "description": "Awfully Good - Lion's Mane supplement website",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["lion's mane", "supplement"],
+  "author": "Awfully Good",
+  "license": "MIT"
+}
