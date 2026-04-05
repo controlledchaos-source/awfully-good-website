@@ -3,239 +3,403 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awfully Good — Life Is Meant to Be Lived</title>
+  <title>Awfully Good — Lion's Mane Tincture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #0d0a18;
+      --bg-card: #13102000;
+      --text: #f0eeff;
+      --muted: #7a7090;
+      --subtle: #3a3050;
+      --accent: #FF006E;
+      --border: #251e3a;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Georgia', serif;
-      background: #0f0a1a;
-      color: #e8e8e8;
-      line-height: 1.7;
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* ── HEADER ─────────────────────────────── */
     header {
-      background: #0f0a1a;
-      padding: 2rem 3rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #2a1f3d;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      padding: 1.5rem 3rem;
+      background: rgba(13, 10, 24, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      font-weight: 900;
-      color: #FF006E;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-family: 'Arial', sans-serif;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    .tagline {
-      display: none;
-    }
+    .logo span { color: var(--accent); }
 
-    nav {
-      display: flex;
-      gap: 2rem;
-    }
+    nav { display: flex; gap: 2.5rem; align-items: center; }
 
     nav a {
-      color: #888;
-      text-decoration: none;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      color: var(--muted);
+      text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover {
-      color: #FF006E;
+    nav a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 0.55rem 1.3rem;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.1em;
+      transition: opacity 0.2s !important;
     }
 
-    /* HERO */
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ────────────────────────────────── */
     .hero {
-      max-width: 900px;
-      margin: 8rem auto;
-      padding: 0 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      line-height: 1.1;
-    }
-
-    .hero .subheading {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: #888;
-      margin-bottom: 3rem;
-      font-style: italic;
-    }
-
-    .hero-cta {
-      background: #FF006E;
-      color: white;
-      padding: 1.1rem 3rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-family: 'Arial', sans-serif;
-      transition: opacity 0.2s;
-    }
-
-    .hero-cta:hover {
-      opacity: 0.85;
-    }
-
-    /* SECTION WRAPPER */
-    .section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      color: #ffffff;
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* PRODUCT SHOWCASE */
-    .product-showcase {
+      min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
       align-items: center;
-      margin-bottom: 5rem;
-    }
-
-    .product-image {
-      max-width: 100%;
-      width: 100%;
-      max-height: 500px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .product-text h2 {
-      font-size: 1.6rem;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
-      letter-spacing: 1px;
-    }
-
-    .product-text p {
-      font-size: 0.95rem;
-      color: #888;
-      margin-bottom: 0.8rem;
-      line-height: 1.8;
-    }
-
-    /* FLAVORS GRID */
-    .flavors-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .flavor-card {
-      text-align: center;
-      padding: 2rem 1rem;
-      border-top: 1px solid #2a1f3d;
-      transition: border-color 0.2s;
-    }
-
-    .flavor-card:hover {
-      border-color: #FF006E;
-    }
-
-    .flavor-image {
-      width: 100%;
-      max-width: 130px;
-      margin: 0 auto 1.5rem;
-      display: block;
-    }
-
-    .flavor-card h3 {
-      font-size: 1rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-family: 'Arial', sans-serif;
-      letter-spacing: 2px;
-    }
-
-    .flavor-card p {
-      font-size: 0.85rem;
-      color: #666;
-    }
-
-    /* VIDEO CAROUSEL */
-    .carousel-wrapper {
-      text-align: center;
-    }
-
-    .carousel-title {
-      display: none;
-    }
-
-    .carousel {
+      padding: 8rem 6rem 4rem;
+      gap: 4rem;
       position: relative;
-      width: 100%;
-      max-width: 340px;
-      margin: 0 auto 2rem;
-      aspect-ratio: 9/16;
-      background: #150d25;
       overflow: hidden;
     }
 
-    .carousel video {
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255,0,110,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-text { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 1rem 2.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid var(--subtle);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+    .hero-trust {
+      margin-top: 3rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--subtle);
+    }
+
+    .trust-item span { color: var(--muted); }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-image img {
       width: 100%;
-      height: 100%;
+      max-width: 420px;
+      object-fit: contain;
+      filter: drop-shadow(0 40px 80px rgba(255,0,110,0.2));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
+    /* ── MARQUEE ─────────────────────────────── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 3rem;
+    }
+
+    .marquee-track span.dot { color: var(--accent); padding: 0; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION BASE ────────────────────────── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 7rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 3rem;
+    }
+
+    /* ── PRODUCT SHOWCASE ───────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .product-img img {
+      width: 100%;
+      max-width: 380px;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 60px rgba(255,0,110,0.15));
+    }
+
+    .product-facts { }
+
+    .product-facts h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .product-facts p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .fact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .fact-list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .fact-list li::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FLAVORS ─────────────────────────────── */
+    .flavors-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .flavor {
+      padding: 3.5rem 2rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .flavor:last-child { border-right: none; }
+    .flavor:hover { background: rgba(255,0,110,0.03); }
+
+    .flavor img {
+      width: 100%;
+      max-width: 110px;
+      margin: 0 auto 1.5rem;
+      display: block;
+      object-fit: contain;
+    }
+
+    .flavor h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .flavor p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── VIDEO CAROUSEL ──────────────────────── */
+    .video-section {
+      text-align: center;
+    }
+
+    .video-section .section-heading { margin-bottom: 3rem; }
+
+    .carousel-wrap { position: relative; max-width: 340px; margin: 0 auto 2rem; }
+
+    .carousel-frame {
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: #0a0814;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .carousel-frame video {
+      width: 100%; height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .carousel-placeholder {
+    .carousel-frame .placeholder {
+      width: 100%; height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      color: #6b5a8a;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
+      color: var(--subtle);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .carousel-controls {
@@ -243,510 +407,631 @@
       justify-content: center;
       align-items: center;
       gap: 2rem;
+      margin-top: 1.5rem;
     }
 
-    .carousel-btn {
-      background: transparent;
-      color: #888;
-      border: 1px solid #333;
-      padding: 0.6rem 1.2rem;
-      font-family: 'Arial', sans-serif;
-      font-size: 0.8rem;
+    .c-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.55rem 1.1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 1px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
-    .carousel-btn:hover {
-      border-color: #FF006E;
-      color: #FF006E;
+    .c-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .c-count { font-size: 0.8rem; color: var(--subtle); }
+
+    /* ── WHY STORY ───────────────────────────── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
     }
 
-    .carousel-counter {
-      color: #6b5a8a;
-      font-size: 0.85rem;
-      font-family: 'Arial', sans-serif;
-    }
+    .story-left {}
 
-    /* CARD */
-    .card {
-      padding: 2.5rem 0;
-      margin-bottom: 0;
-      border-top: 1px solid #2a1f3d;
-    }
-
-    .card:last-of-type {
-      border-bottom: 1px solid #2a1f3d;
-    }
-
-    .card h2 {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .card h3 {
-      font-size: 0.85rem;
-      color: #FF006E;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      font-family: 'Arial', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .card p {
-      color: #888;
-      line-height: 1.8;
-      margin-bottom: 0.8rem;
-      font-size: 0.95rem;
-    }
-
-    .card .quote {
+    .story-left h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 700;
-      color: #e8e8e8;
-      font-style: italic;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
     }
 
-    /* PRICING GRID */
+    .story-left p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .story-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .story-item {
+      border-left: 2px solid var(--border);
+      padding-left: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .story-item:hover { border-color: var(--accent); }
+
+    .story-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .story-item p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── PRICING ─────────────────────────────── */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      background: #2a1f3d;
-      margin-bottom: 2rem;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 4rem;
     }
 
     .price-card {
-      background: #0f0a1a;
-      padding: 2.5rem 2rem;
+      background: var(--bg);
+      padding: 3rem 2rem;
       text-align: center;
-      position: relative;
       transition: background 0.2s;
+      position: relative;
     }
 
-    .price-card.featured {
-      background: #150d25;
-    }
+    .price-card.featured { background: #130d22; }
+    .price-card:hover { background: #130d22; }
 
-    .price-card:hover {
-      background: #150d25;
-    }
-
-    .best-badge {
-      background: #FF006E;
-      color: white;
-      padding: 0.3rem 0.8rem;
-      font-weight: 700;
+    .price-badge {
       display: inline-block;
-      margin-bottom: 1rem;
-      font-size: 0.7rem;
-      font-family: 'Arial', sans-serif;
+      background: var(--accent);
+      color: white;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      padding: 0.3rem 0.7rem;
+      margin-bottom: 1.5rem;
     }
 
     .price-card h3 {
-      font-size: 1rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
+      font-size: 0.75rem;
       font-weight: 700;
-      font-family: 'Arial', sans-serif;
-      letter-spacing: 2px;
-    }
-
-    .price-card p {
-      color: #666;
-      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 0.5rem;
     }
 
     .price-amount {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #ffffff;
-      margin: 1.5rem 0;
-      font-family: 'Arial', sans-serif;
-    }
-
-    .cta-button {
-      background: #FF006E;
-      color: white;
-      padding: 0.8rem 1.5rem;
+      font-size: 3rem;
       font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1;
+      margin: 1.2rem 0;
+    }
+
+    .price-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-img {
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto 1.5rem;
+      display: block;
+      object-fit: contain;
+    }
+
+    .price-save {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      font-family: 'Arial', sans-serif;
-      transition: opacity 0.2s;
-      margin-top: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .cta-button:hover {
-      opacity: 0.85;
+    .price-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
     }
 
-    /* GUARANTEE */
-    .guarantee {
-      border-top: 1px solid #2a1f3d;
-      border-bottom: 1px solid #2a1f3d;
-      padding: 3rem 2rem;
+    .price-features li {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── GUARANTEE ───────────────────────────── */
+    .guarantee-wrap {
       text-align: center;
-      margin-bottom: 2rem;
+      padding: 6rem 3rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .guarantee h3 {
-      font-size: 1.2rem;
+    .guarantee-wrap h2 {
+      font-size: 2rem;
+      font-weight: 700;
       margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .guarantee-wrap p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ── TIMELINE ────────────────────────────── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    .tl-item { border-top: 2px solid var(--border); padding-top: 1.5rem; }
+    .tl-item:first-child { border-color: var(--accent); }
+
+    .tl-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
-      letter-spacing: 2px;
-      color: #ffffff;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
     }
 
-    .guarantee p {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      color: #888;
+    .tl-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    /* FAQ */
-    .faq-wrapper {
-      margin-bottom: 2rem;
+    .tl-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
     }
+
+    /* ── FAQ ─────────────────────────────────── */
+    .faq { max-width: 680px; margin: 3rem auto 0; }
 
     .faq-item {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid #2a1f3d;
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 0;
     }
 
-    .faq-item:first-child {
-      border-top: 1px solid #2a1f3d;
-    }
-
-    .faq-item h4 {
-      color: #ffffff;
+    .faq-q {
       font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-family: 'Arial', sans-serif;
-      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: -0.01em;
+      user-select: none;
     }
 
-    .faq-item p {
-      color: #666;
-      line-height: 1.8;
-      font-size: 0.9rem;
+    .faq-q::after {
+      content: '+';
+      color: var(--accent);
+      font-size: 1.2rem;
+      font-weight: 300;
+      transition: transform 0.2s;
+      flex-shrink: 0;
     }
 
-    /* FOOTER */
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-top: 0.8rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────── */
     footer {
-      background: #0f0a1a;
-      color: #6b5a8a;
-      text-align: center;
-      padding: 4rem 2rem;
-      border-top: 1px solid #2a1f3d;
-      margin-top: 0;
+      border-top: 1px solid var(--border);
+      padding: 4rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    footer h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 900;
-      font-family: 'Arial', sans-serif;
+    .footer-left {}
+
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      color: #FF006E;
+      color: var(--text);
+      margin-bottom: 0.7rem;
     }
 
-    footer p {
-      margin: 0.5rem 0;
+    .footer-logo span { color: var(--accent); }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--muted);
       line-height: 1.6;
-      font-size: 0.85rem;
+      max-width: 320px;
     }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.5rem;
-        text-align: center;
-      }
+    .footer-right {
+      text-align: right;
+    }
 
-      nav {
-        gap: 1.2rem;
-      }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--subtle);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── MOBILE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      header { padding: 1.2rem 1.5rem; }
+      nav a:not(.nav-cta) { display: none; }
 
       .hero {
-        margin: 5rem auto;
-      }
-
-      .product-showcase {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        padding: 7rem 1.5rem 3rem;
+        text-align: center;
+        gap: 2.5rem;
       }
 
-      .flavors-grid {
+      .hero-sub { margin: 0 auto 2.5rem; }
+      .hero-actions { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-image { order: -1; }
+      .hero-image img { max-width: 260px; }
+
+      .product-grid,
+      .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .flavors-row { grid-template-columns: 1fr; }
+      .flavor { border-right: none; border-bottom: 1px solid var(--border); }
+      .flavor:last-child { border-bottom: none; }
+
+      .pricing-grid,
+      .timeline { grid-template-columns: 1fr; }
+
+      .section { padding: 4rem 1.5rem; }
+
+      footer {
         grid-template-columns: 1fr;
-      }
-
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
+        text-align: center;
         padding: 3rem 1.5rem;
       }
+
+      .footer-right { text-align: center; }
+      .footer-tagline { margin: 0 auto; }
     }
   </style>
 </head>
 <body>
+
   <!-- HEADER -->
   <header>
-    <div class="logo">AWFULLY GOOD</div>
-    <p class="tagline">Weird, messy, real. Just like you.</p>
+    <a class="logo" href="#"><span>Awfully</span> Good</a>
     <nav>
-      <a href="#flavors">FLAVORS</a>
-      <a href="#proof">REAL PEOPLE</a>
-      <a href="#pricing">GET IT</a>
+      <a href="#flavors">Flavors</a>
+      <a href="#proof">Stories</a>
+      <a href="#pricing">Shop</a>
+      <a href="#pricing" class="nav-cta">Get It</a>
     </nav>
   </header>
 
   <!-- HERO -->
-  <div class="section">
-    <div class="hero">
-      <h1>We only get one dance.</h1>
-      <p class="subheading">The awful moments, the good ones — none of them are average. Neither are you.</p>
-      <a href="#pricing" class="hero-cta">Start Showing Up Fully — 30-Day Guarantee</a>
-      <p style="margin-top: 1rem; font-size: 0.9rem; color: #c4a8ff;">✓ No alcohol • ✓ Lab tested • ✓ Risk-free</p>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Lion's Mane Tincture · Alcohol-Free</p>
+      <h1>We only get<br>one <em>dance.</em></h1>
+      <p class="hero-sub">The awful moments, the good ones — none of them are average. Neither are you. Be present for all of it.</p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">Start Showing Up</a>
+        <a href="#why" class="btn-ghost">Our story</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item"><span>✓</span> No alcohol</span>
+        <span class="trust-item"><span>✓</span> Lab tested</span>
+        <span class="trust-item"><span>✓</span> 30-day guarantee</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Awfully Good Lion's Mane Tincture">
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>1000mg Full-Spectrum</span><span class="dot"> · </span>
+      <span>Alcohol-Free Formula</span><span class="dot"> · </span>
+      <span>Third-Party Lab Tested</span><span class="dot"> · </span>
+      <span>Triggers NGF Production</span><span class="dot"> · </span>
+      <span>Clarity Without Compromise</span><span class="dot"> · </span>
+      <span>30-Day Money Back</span><span class="dot"> · </span>
+      <span>Three Flavors</span><span class="dot"> · </span>
+      <span>1000mg Full-Spectrum</span><span class="dot"> · </span>
+      <span>Alcohol-Free Formula</span><span class="dot"> · </span>
+      <span>Third-Party Lab Tested</span><span class="dot"> · </span>
+      <span>Triggers NGF Production</span><span class="dot"> · </span>
+      <span>Clarity Without Compromise</span><span class="dot"> · </span>
+      <span>30-Day Money Back</span><span class="dot"> · </span>
+      <span>Three Flavors</span><span class="dot"> · </span>
     </div>
   </div>
 
-  <!-- PRODUCT SHOWCASE -->
-  <div class="section">
-    <div class="product-showcase">
-      <div>
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Awfully Good Lion's Mane" class="product-image">
+  <!-- PRODUCT -->
+  <section class="section">
+    <div class="product-grid">
+      <div class="product-img">
+        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Awfully Good Lion's Mane">
       </div>
-      <div class="product-text">
-        <h2>1000mg Lion's Mane</h2>
-        <p><strong>Alcohol-Free • Works in 2-4 Weeks</strong></p>
-        <p>Triggers NGF. Rebuilds brain cells. Sharpens your mind.</p>
-        <p>50+ peer-reviewed studies. Zero side effects. Zero alcohol.</p>
-        <p style="margin-top: 1.5rem; font-weight: 700;">✓ Lab Tested • ✓ Third-Party Verified • ✓ Actually Works</p>
+      <div class="product-facts">
+        <span class="section-label">What's in it</span>
+        <h2>1000mg. Alcohol-free.<br>Actually works.</h2>
+        <p>Most Lion's Mane tinctures use alcohol as a carrier — which strips the functional compounds you actually want. We don't. Water-extracted, full-spectrum, 2–3x stronger than the shelf stuff.</p>
+        <p>Your brain supports neuroplasticity. Lion's Mane fuels it. Fog lifts. Presence returns. You get your life back.</p>
+        <ul class="fact-list">
+          <li>1000mg full-spectrum Lion's Mane per serving</li>
+          <li>Water extraction preserves full compound profile</li>
+          <li>50+ peer-reviewed studies on efficacy</li>
+          <li>Zero alcohol · Zero side effects</li>
+          <li>Certified lab tested, every batch</li>
+        </ul>
       </div>
     </div>
-  </div>
+  </section>
+
+  <hr class="divider">
 
   <!-- FLAVORS -->
-  <div class="section" id="flavors">
-    <h2 class="section-title">Three Flavors</h2>
-    <div class="flavors-grid">
-      <div class="flavor-card">
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Strawberry" class="flavor-image">
+  <section class="section" id="flavors">
+    <span class="section-label">Choose your flavor</span>
+    <h2 class="section-heading">Three flavors.<br>Same mission.</h2>
+    <div class="flavors-row">
+      <div class="flavor">
+        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Strawberry">
         <h3>🍓 Strawberry</h3>
-        <p>The crowd pleaser.</p>
+        <p>The crowd pleaser. Sweet chaos in a bottle.</p>
       </div>
-      <div class="flavor-card">
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Blueberry" class="flavor-image">
+      <div class="flavor">
+        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Blueberry">
         <h3>🫐 Blueberry</h3>
-        <p>Bold and actual.</p>
+        <p>The bold one. Doesn't apologize.</p>
       </div>
-      <div class="flavor-card">
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="Grape" class="flavor-image">
+      <div class="flavor">
+        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="Grape">
         <h3>🍇 Grape</h3>
-        <p>Clean finish.</p>
+        <p>Clean finish. Quietly your favorite.</p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- VIDEO CAROUSEL / PROOF -->
-  <div class="section" id="proof">
-    <h2 class="section-title">🎥 Perfectly Imperfect People. Real Results.</h2>
-    <div class="carousel-wrapper">
-      <div class="carousel" id="videoCarousel">
-        <div class="carousel-placeholder">
-          <div>
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">▶ VIDEOS LOADING</p>
-            <p style="font-size: 0.9rem;">Click play to watch customer stories</p>
-          </div>
+  <hr class="divider">
+
+  <!-- VIDEO CAROUSEL -->
+  <section class="section video-section" id="proof">
+    <span class="section-label">Real people</span>
+    <h2 class="section-heading">Perfectly imperfect.<br>Real results.</h2>
+    <div class="carousel-wrap">
+      <div class="carousel-frame">
+        <div class="placeholder" id="carouselPlaceholder">Loading...</div>
+        <video id="currentVideo" controls style="display:none;width:100%;height:100%;object-fit:cover;"></video>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="c-btn" onclick="previousVideo()">← Prev</button>
+      <span class="c-count"><span id="currentIndex">1</span> / 8</span>
+      <button class="c-btn" onclick="nextVideo()">Next →</button>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WHY STORY -->
+  <section class="section" id="why">
+    <span class="section-label">Why we exist</span>
+    <div class="story-grid">
+      <div class="story-left">
+        <h2>Brain fog isn't<br>just inconvenient.<br>It steals your life.</h2>
+        <p>We believe every moment matters — the awful ones and the good ones. But you can't be present for any of them when your mind is somewhere else.</p>
+        <p>Awfully Good exists for people who refuse to go through the motions. Who want to feel everything, remember everything, and show up fully for the one dance they get.</p>
+      </div>
+      <div class="story-right">
+        <div class="story-item">
+          <h3>I Almost Died at 13</h3>
+          <p>Anorexia. Hospital. Mortality. I survived and got mad about one thing: wasting time. Never foggy again. Never.</p>
         </div>
-        <video id="currentVideo" controls style="display:none;"></video>
+        <div class="story-item">
+          <h3>Then I Lost Both Parents</h3>
+          <p>To cancer. Twice. I was in conversations I wasn't fully present for. Moments I can't get back. Clarity became non-negotiable.</p>
+        </div>
+        <div class="story-item">
+          <h3>This Is For You</h3>
+          <p>Not for people who settle. For people who choose presence over fog. Every moment matters. You deserve to be all-in.</p>
+        </div>
       </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" onclick="previousVideo()">← PREV</button>
-        <span class="carousel-counter"><span id="currentIndex">1</span> of 8</span>
-        <button class="carousel-btn" onclick="nextVideo()">NEXT →</button>
-      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- WHY: FOUNDER STORY -->
-  <div class="section">
-    <h2 class="section-title">Our Why: Moments Matter</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">We believe brain fog steals your life. We're taking it back.</p>
-
-    <div class="card">
-      <h2>I Almost Died at 13</h2>
-      <h3>Anorexia. Hospital. Mortality.</h3>
-      <p>I survived. And I got mad about one thing: wasting time.</p>
-      <p><span class="quote">Never foggy again. Never.</span></p>
-    </div>
-
-    <div class="card">
-      <h2>Then I Lost Both Parents</h2>
-      <h3>To Cancer. Twice.</h3>
-      <p>I was in conversations I wasn't fully present for. Moments I can't get back.</p>
-      <p><span class="quote">Clarity became non-negotiable.</span></p>
-      <p style="margin-top: 1rem; color: #c4a8ff;">Every moment matters. You deserve to be all-in.</p>
-    </div>
-
-    <div class="card">
-      <h2>This Is For You</h2>
-      <h3>People Who Show Up. People Who Are Awfully Good.</h3>
-      <p>Not for people who settle. For people who choose clarity over fog.</p>
-      <p><span class="quote">Brain fog steals moments. We're here to help you win them back.</span></p>
-    </div>
-  </div>
-
-  <!-- HOW: The Science -->
-  <div class="section">
-    <h2 class="section-title">How We're Fixing It</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">Lion's Mane isn't magic. It's just science that actually works.</p>
+  <hr class="divider">
 
   <!-- PRICING -->
-  <div class="section" id="pricing">
-    <h2 class="section-title">Pick Your Path to Clarity</h2>
-    <p style="text-align: center; font-size: 1rem; color: #FF006E; margin-bottom: 1.5rem; font-weight: 700;">⏰ Limited Stock Alert: 6-Pack (6-week supply) selling fast</p>
+  <section class="section" id="pricing">
+    <span class="section-label">Get it</span>
+    <h2 class="section-heading">Pick your path.</h2>
 
     <div class="pricing-grid">
+      <!-- Try It -->
       <div class="price-card">
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Awfully Good 1 Bottle" style="width:100%;max-width:140px;margin:0 auto 1rem;display:block;object-fit:contain;">
+        <img class="price-img" src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="1 Bottle">
         <h3>Try It</h3>
-        <p>1 Bottle • 30 days</p>
-        <div class="price-amount">$29.99</div>
-        <p style="font-size: 0.85rem;">See if it works. Full refund if not.</p>
-        <a href="https://www.awfullygoodcompany.com/products/🍓-strawberry-lion-s-mane-tincture-focus-memory-support" class="cta-button">Start My Trial</a>
+        <div class="price-amount">$29<span style="font-size:1.2rem;font-weight:500;color:var(--muted)">.99</span></div>
+        <p class="price-desc">1 bottle · 30-day supply · Any flavor</p>
+        <ul class="price-features">
+          <li>30-day money back guarantee</li>
+          <li>Free shipping</li>
+        </ul>
+        <a href="https://www.awfullygoodcompany.com/products/🍓-strawberry-lion-s-mane-tincture-focus-memory-support" class="btn-primary">Start My Trial</a>
       </div>
 
+      <!-- 6-Pack -->
       <div class="price-card featured">
-        <div class="best-badge">⭐ BEST • SELLING FAST</div>
-        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.2rem;margin:0.5rem auto 1rem;max-width:220px;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Strawberry" style="width:60px;object-fit:contain;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Blueberry" style="width:60px;object-fit:contain;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="Grape" style="width:60px;object-fit:contain;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Strawberry" style="width:60px;object-fit:contain;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Blueberry" style="width:60px;object-fit:contain;">
-          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="Grape" style="width:60px;object-fit:contain;">
+        <div class="price-badge">Best Value · Selling Fast</div>
+        <div style="display:flex;justify-content:center;gap:0.3rem;margin-bottom:1.2rem;flex-wrap:wrap;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="" style="width:48px;object-fit:contain;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="" style="width:48px;object-fit:contain;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="" style="width:48px;object-fit:contain;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="" style="width:48px;object-fit:contain;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="" style="width:48px;object-fit:contain;">
+          <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="" style="width:48px;object-fit:contain;">
         </div>
-        <h3>The 6-Pack (6-Month Supply)</h3>
-        <p>6 Bottles • Most Popular</p>
-        <div class="price-amount">$119.99</div>
-        <p style="color: #FF006E; font-weight: 900;">SAVE $60 (44% OFF)</p>
-        <p style="font-size: 0.85rem;">6 months of daily clarity. Results guaranteed.</p>
-        <p style="font-size: 0.8rem; color: #FF006E; font-weight: 700; margin-top: 0.5rem;">🔥 Only 12 left in stock this week</p>
-        <a href="https://www.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement" class="cta-button">Claim Your 6-Pack Now</a>
+        <h3>The 6-Pack</h3>
+        <p class="price-save">Save $60 · 44% Off</p>
+        <div class="price-amount">$119<span style="font-size:1.2rem;font-weight:500;color:var(--muted)">.99</span></div>
+        <p class="price-desc">6 bottles · 6-month supply · Mix & match</p>
+        <ul class="price-features">
+          <li>Full 6 months of clarity</li>
+          <li>30-day money back guarantee</li>
+          <li>Free shipping</li>
+        </ul>
+        <a href="https://www.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement" class="btn-primary">Claim My 6-Pack</a>
       </div>
 
+      <!-- Auto-Ship -->
       <div class="price-card">
-        <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Awfully Good Auto-Ship" style="width:100%;max-width:140px;margin:0 auto 1rem;display:block;object-fit:contain;">
-        <h3>Auto-Ship (Best Long-Term)</h3>
-        <p>Monthly Delivery</p>
-        <div class="price-amount">$24.99</div>
-        <p style="color: #FF006E; font-weight: 900;">/month • Save 17%</p>
-        <p style="font-size: 0.85rem;">Never run out. Cancel anytime.</p>
-        <p style="font-size: 0.8rem; color: #c4a8ff; margin-top: 0.5rem;">Perfect for staying sharp long-term</p>
-        <a href="https://www.awfullygoodcompany.com/products/🍓-strawberry-lion-s-mane-tincture-focus-memory-support?selling_plan=6545506546" class="cta-button">Start Auto-Ship</a>
+        <img class="price-img" src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Auto-Ship">
+        <h3>Auto-Ship</h3>
+        <div class="price-amount">$24<span style="font-size:1.2rem;font-weight:500;color:var(--muted)">.99</span></div>
+        <p class="price-desc">Monthly delivery · Never run out</p>
+        <ul class="price-features">
+          <li>Save 17% every month</li>
+          <li>Cancel anytime, no tricks</li>
+          <li>Free shipping</li>
+        </ul>
+        <a href="https://www.awfullygoodcompany.com/products/🍓-strawberry-lion-s-mane-tincture-focus-memory-support?selling_plan=6545506546" class="btn-primary">Subscribe & Save</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- WHAT: Results & Guarantee -->
-  <div class="section">
-    <h2 class="section-title">What You Actually Get</h2>
-    <p style="text-align: center; font-size: 1.1rem; color: #c4a8ff; margin-bottom: 2rem; font-weight: 600;">Clear mind. Full presence. Your life back.</p>
+  <hr class="divider">
 
-    <div class="guarantee">
-      <h3>⭐ 100% Money-Back Guarantee</h3>
-      <p>30 days. Full refund. No questions asked. We're confident it works. We just want you to be sure.</p>
+  <!-- GUARANTEE + TIMELINE -->
+  <section class="section">
+    <div class="guarantee-wrap">
+      <span class="section-label">Zero risk</span>
+      <h2>30 days. Full refund.<br>No questions asked.</h2>
+      <p style="margin-top:1rem;">We're confident it works. We just want you to be sure. Try it for a month — if it doesn't do what we say, you get every penny back.</p>
     </div>
-
-    <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FFBE0B;">
-        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">2-4 Weeks</h3>
-        <p style="color: #c4a8ff;">When you feel the shift. Brain chemistry changes. Fog lifts.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <p class="tl-label">Week 1–2</p>
+        <h4>Something shifts</h4>
+        <p>Better sleep, sharper mornings. Brain fog starts to lift. You notice you're more present in conversations.</p>
       </div>
-      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #8338EC;">
-        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">30 Days</h3>
-        <p style="color: #c4a8ff;">Full clarity kicks in. This is when the magic actually happens.</p>
+      <div class="tl-item">
+        <p class="tl-label">Week 3–4</p>
+        <h4>Full clarity kicks in</h4>
+        <p>Neuroplasticity in full effect. Focus sharpens. Memory improves. This is when it really starts.</p>
       </div>
-      <div style="background: #1a0535; border: 3px solid #8338EC; padding: 1.5rem; text-align: center; box-shadow: 4px 4px 0px #FF006E;">
-        <h3 style="color: #FFBE0B; font-size: 1.3rem; margin-bottom: 0.5rem;">Ongoing</h3>
-        <p style="color: #c4a8ff;">You show up differently. You remember things. You're present again.</p>
+      <div class="tl-item">
+        <p class="tl-label">Ongoing</p>
+        <h4>You show up differently</h4>
+        <p>You remember things. You're present for the moments that matter. You're awfully good at living.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <hr class="divider">
 
   <!-- FAQ -->
-  <div class="section">
-    <h2 class="section-title">Real Questions</h2>
-    <div class="faq-wrapper">
+  <section class="section">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-heading" style="text-align:center;">Real questions.</h2>
+    <div class="faq">
       <div class="faq-item">
-        <h4>How much Lion's Mane?</h4>
-        <p>1000mg full-spectrum extract per serving. 2-3x stronger than alcohol tinctures.</p>
+        <div class="faq-q">How much Lion's Mane per serving?</div>
+        <div class="faq-a">1000mg full-spectrum extract. That's 2–3x stronger than most alcohol-based tinctures on the market, which lose potency in the extraction process.</div>
       </div>
-
       <div class="faq-item">
-        <h4>When do I feel it?</h4>
-        <p>2-4 weeks for most people. 30 days is when your brain chemistry shifts.</p>
+        <div class="faq-q">When will I feel it?</div>
+        <div class="faq-a">Most people notice something in weeks 1–2. Full clarity typically hits around 30 days, when your brain chemistry has had time to adapt. Consistency is the key.</div>
       </div>
-
       <div class="faq-item">
-        <h4>Side effects?</h4>
-        <p>None. Clinically proven safe. Only side effect: your brain working again.</p>
+        <div class="faq-q">Why alcohol-free?</div>
+        <div class="faq-a">Alcohol extraction is cheaper but damages the beta-glucans and hericenones you actually want. Water extraction preserves the full compound profile. Better ingredients, better results.</div>
       </div>
-
       <div class="faq-item">
-        <h4>Is this tested?</h4>
-        <p>Every batch. Certified labs. Purity. Potency. Contaminants. All verified.</p>
+        <div class="faq-q">Any side effects?</div>
+        <div class="faq-a">None. Lion's Mane has a strong safety profile across 50+ peer-reviewed studies. The only side effect is your brain working the way it should.</div>
       </div>
-
       <div class="faq-item">
-        <h4>Can I cancel?</h4>
-        <p>Yes. Anytime. No penalties. No tricks. That's the deal.</p>
+        <div class="faq-q">What if it doesn't work for me?</div>
+        <div class="faq-a">30-day money-back guarantee. Full refund, no questions. Email us and it's done. We're not in the business of keeping money from people who aren't happy.</div>
       </div>
-
       <div class="faq-item">
-        <h4>What if it doesn't work for me?</h4>
-        <p>30-day money-back guarantee. Full refund, no questions. We're confident. We just want you to be too.</p>
+        <div class="faq-q">Can I cancel auto-ship?</div>
+        <div class="faq-a">Yes. Anytime. No penalties, no tricky cancellation flows, no guilt trips. That's the deal.</div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <h2>AWFULLY GOOD</h2>
-    <p>Life is meant to be lived.</p>
-    <p style="margin-top: 1.5rem; font-size: 0.9rem;">Not for people who settle. For people who show up. Who choose clarity over fog.</p>
-    <p style="margin-top: 1.5rem; font-weight: 700;">✓ Alcohol-Free • ✓ Lab Tested • ✓ 30-Day Guarantee • ✓ Free Shipping</p>
-    <p style="margin-top: 1.5rem; color: #FFBE0B;">You've already lost enough moments to fog. Let's not lose another.</p>
-    <p style="margin-top: 1.5rem; font-size: 0.85rem;">© 2026 Awfully Good. Stay sharp. Stay weird. Stay alive.</p>
+    <div class="footer-left">
+      <div class="footer-logo"><span>Awfully</span> Good</div>
+      <p class="footer-tagline">For people who refuse to go through the motions. Stay sharp. Stay present. The dance doesn't last forever.</p>
+    </div>
+    <div class="footer-right">
+      <p class="footer-copy">© 2026 Awfully Good · Alcohol-Free · Lab Tested · 30-Day Guarantee</p>
+    </div>
   </footer>
 
   <script>
+    // VIDEO CAROUSEL
     const videos = [
       '/videos/bearded%20man.mp4',
       '/videos/better%20alternative.mp4',
@@ -762,7 +1047,7 @@
 
     function loadVideo(index) {
       const video = document.getElementById('currentVideo');
-      const placeholder = document.querySelector('.carousel-placeholder');
+      const placeholder = document.getElementById('carouselPlaceholder');
       video.src = videos[index];
       video.style.display = 'block';
       if (placeholder) placeholder.style.display = 'none';
@@ -780,6 +1065,16 @@
     }
 
     loadVideo(0);
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
   </script>
 </body>
 </html>
