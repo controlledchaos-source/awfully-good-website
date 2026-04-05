@@ -1,6 +1,6 @@
 {
-  "buildCommand": "echo 'Building static site'",
-  "outputDirectory": "public",
+  "buildCommand": "mkdir -p .vercel/output/static && cp -r public/* .vercel/output/static/",
+  "outputDirectory": ".vercel/output/static",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
