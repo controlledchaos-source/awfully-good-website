@@ -331,6 +331,40 @@
       flex-shrink: 0;
     }
 
+    /* ── LIFESTYLE ───────────────────────────── */
+    .lifestyle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .lifestyle-img img {
+      width: 100%;
+      max-width: 500px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lifestyle-text h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .lifestyle-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .lifestyle-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
     /* ── FLAVORS ─────────────────────────────── */
     .flavors-row {
       display: grid;
@@ -869,6 +903,24 @@
           <li>Zero alcohol · Zero side effects</li>
           <li>Certified lab tested, every batch</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- LIFESTYLE -->
+  <section class="section">
+    <div class="lifestyle-grid">
+      <div class="lifestyle-img">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/girl_using.png?v=1775439215" alt="Using Awfully Good Lion's Mane">
+      </div>
+      <div class="lifestyle-text">
+        <span class="section-label">How it works</span>
+        <h2>One dropper.<br>Every morning.<br>That's it.</h2>
+        <p>No pills. No mixing. No ritual. Just 1mL under the tongue and you're done. Your brain does the rest.</p>
+        <p>Results build over 2–4 weeks as Lion's Mane triggers NGF — the protein your brain uses to grow and repair neurons. By day 30, most people can't imagine going back.</p>
+        <a href="#pricing" class="btn-primary" style="margin-top:1rem;display:inline-block;">Start Today — 30-Day Guarantee</a>
       </div>
     </div>
   </section>
