@@ -209,7 +209,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 1rem;
+      gap: 0;
       margin: 1.5rem auto 0;
       z-index: 1;
       width: 100%;
@@ -234,15 +234,15 @@
     }
 
     .hero-bottle {
-      width: 140px;
+      width: 190px;
       display: block;
       filter: drop-shadow(0 10px 30px rgba(255,0,110,0.3));
       animation: floatCenter 6s ease-in-out infinite;
     }
 
-    .hero-bottle--left  { width: 120px; animation-duration: 6.5s; }
-    .hero-bottle--center { width: 155px; filter: drop-shadow(0 20px 50px rgba(255,0,110,0.5)); }
-    .hero-bottle--right { width: 120px; animation-duration: 7s; animation-delay: 0.4s; }
+    .hero-bottle--left  { width: 165px; animation-duration: 6.5s; margin-right: -55px; transform: translateY(12px) rotate(-4deg); z-index: 1; }
+    .hero-bottle--center { width: 210px; filter: drop-shadow(0 20px 60px rgba(255,0,110,0.55)); z-index: 2; }
+    .hero-bottle--right { width: 165px; animation-duration: 7s; animation-delay: 0.4s; margin-left: -55px; transform: translateY(12px) rotate(4deg); z-index: 4; }
 
     @keyframes floatCenter {
       0%, 100% { transform: translateY(0); }
