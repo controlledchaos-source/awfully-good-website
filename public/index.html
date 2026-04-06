@@ -133,7 +133,7 @@
       line-height: 0.9;
       letter-spacing: -0.04em;
       color: var(--text);
-      margin-bottom: 1.2rem;
+      margin-bottom: 0;
     }
 
     .hero h1 em {
@@ -947,6 +947,36 @@
       .footer-right { text-align: center; }
       .footer-tagline { margin: 0 auto; }
     }
+    .footer-social { display: flex; gap: 1rem; align-items: center; justify-content: flex-end; margin-bottom: 0.8rem; }
+    .social-link { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .social-link:hover { color: var(--accent); }
+    @media (max-width: 768px) { .footer-social { justify-content: center; } }
+
+    .sticky-cta {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        background: var(--accent);
+        padding: 1rem 1.5rem;
+        text-align: center;
+      }
+      .sticky-cta a {
+        color: white;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1057,7 +1087,7 @@
     <div class="testimonials-grid">
       <div class="testimonial">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I've tried every nootropic on the market. Brain fog was running my life. Week 3 of Awfully Good and I felt like someone turned the lights back on. I'm present again — for my kids, my work, everything."</p>
+        <p class="testi-quote">"I've had brain fog for years — doctors blamed stress. Three weeks in and I'm writing again. My partner noticed before I did. This stuff is real."</p>
         <div class="testi-author">
           <div class="testi-avatar">SM</div>
           <div>
@@ -1068,7 +1098,7 @@
       </div>
       <div class="testimonial">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Skeptic turned believer. I'm an ER nurse — I've seen every wellness fad come and go. This one's different. Sharper recall, better focus during long shifts. I'm buying the 6-pack."</p>
+        <p class="testi-quote">"I'm an ER nurse. I need to be sharp on 12-hour shifts. Tried it skeptically, kept buying it because it works. On my third bottle."</p>
         <div class="testi-author">
           <div class="testi-avatar">PK</div>
           <div>
@@ -1079,7 +1109,7 @@
       </div>
       <div class="testimonial">
         <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I lost my dad last year. I kept zoning out in conversations, forgetting things. A friend sent me this. By week 4 I was actually present again. That means everything to me."</p>
+        <p class="testi-quote">"My therapist asked what changed. I told her I started taking Lion's Mane. She looked it up. Now she recommends it to her other clients."</p>
         <div class="testi-author">
           <div class="testi-avatar">JT</div>
           <div>
@@ -1144,7 +1174,7 @@
     <span class="section-label">Why we exist</span>
     <div class="story-grid">
       <div class="story-left">
-        <h2>Brain fog isn't<br>just inconvenient.<br>It steals your life.</h2>
+        <h2>You deserve to be<br>fully present for<br>your own life.</h2>
         <p>We believe every moment matters — the awful ones and the good ones. But you can't be present for any of them when your mind is somewhere else.</p>
         <p>Awfully Good exists for people who refuse to go through the motions. Who want to feel everything, remember everything, and show up fully for the one dance they get.</p>
       </div>
@@ -1179,7 +1209,7 @@
         <img class="price-img" src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="1 Bottle">
         <h3>Try It</h3>
         <div class="price-amount">$29<span style="font-size:1.2rem;font-weight:500;color:var(--muted)">.99</span></div>
-        <p class="price-desc">1 bottle · 30-day supply · Any flavor</p>
+        <p class="price-desc">1 bottle · 30-day supply<br>Pick any flavor</p>
         <ul class="price-features">
           <li>30-day money back guarantee</li>
           <li>Free shipping</li>
@@ -1233,7 +1263,7 @@
   <section class="section">
     <div class="guarantee-wrap">
       <span class="section-label">Zero risk</span>
-      <h2>30 days. Full refund.<br>No questions asked.</h2>
+      <h2>Try it for 30 days.<br>Love it or it's free.</h2>
       <p style="margin-top:1rem;">We're confident it works. We just want you to be sure. Try it for a month — if it doesn't do what we say, you get every penny back.</p>
     </div>
     <div class="timeline">
@@ -1286,6 +1316,14 @@
         <div class="faq-q">Can I cancel auto-ship?</div>
         <div class="faq-a">Yes. Anytime. No penalties, no tricky cancellation flows, no guilt trips. That's the deal.</div>
       </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this the same as other mushroom supplements?</div>
+        <div class="faq-a">No. Most mushroom supplements use mycelium grown on grain — which means you're mostly getting grain starch, not actual Lion's Mane. We use fruiting body extract, water-extracted, full-spectrum. It's a completely different product.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I take it?</div>
+        <div class="faq-a">One dropper (1mL) under the tongue in the morning. Hold for 30 seconds, then swallow. That's it. No blending, no ritual. Just a habit that stacks.</div>
+      </div>
     </div>
   </section>
 
@@ -1296,6 +1334,11 @@
       <p class="footer-tagline">For people who refuse to go through the motions. Stay sharp. Stay present. The dance doesn't last forever.</p>
     </div>
     <div class="footer-right">
+      <div class="footer-social">
+        <a href="https://www.tiktok.com/@awfullygoodcompany" target="_blank" class="social-link">TikTok</a>
+        <span style="color:var(--subtle)">·</span>
+        <a href="https://www.instagram.com/awfullygoodcompany" target="_blank" class="social-link">Instagram</a>
+      </div>
       <p class="footer-copy">© 2026 Awfully Good · Alcohol-Free · Lab Tested · 30-Day Guarantee</p>
     </div>
   </footer>
@@ -1392,5 +1435,9 @@
       });
     });
   </script>
+
+  <div class="sticky-cta">
+    <a href="#pricing">Start Showing Up — $29.99</a>
+  </div>
 </body>
 </html>
