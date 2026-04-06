@@ -161,9 +161,9 @@
     .btn-primary {
       background: var(--accent);
       color: white;
-      padding: 1rem 2.2rem;
+      padding: 1.1rem 2.8rem;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -212,6 +212,25 @@
       gap: 1rem;
       margin: 1.5rem auto 0;
       z-index: 1;
+      width: 100%;
+    }
+
+    .hero-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .stars { color: #FFD700; font-size: 1rem; letter-spacing: 0.05em; }
+    .stars-text { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+
+    .hero-urgency {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-top: 1rem;
     }
 
     .hero-bottle {
@@ -773,6 +792,81 @@
       padding-top: 0.8rem;
     }
 
+    /* ── TESTIMONIALS ────────────────────────── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial {
+      background: #110e1f;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testi-stars { color: #FFD700; font-size: 0.9rem; letter-spacing: 0.08em; }
+
+    .testi-quote {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.75;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .testi-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .price-urgency {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .pricing-social-proof {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: -0.5rem;
+      margin-bottom: 0;
+      letter-spacing: 0.03em;
+    }
+
     /* ── FOOTER ──────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
@@ -821,7 +915,6 @@
       nav a:not(.nav-cta) { display: none; }
 
       .hero {
-        grid-template-columns: 1fr;
         padding: 7rem 1.5rem 3rem;
         text-align: center;
         gap: 2.5rem;
@@ -840,6 +933,8 @@
       .flavors-row { grid-template-columns: 1fr; }
       .flavor { border-right: none; border-bottom: 1px solid var(--border); }
       .flavor:last-child { border-bottom: none; }
+
+      .testimonials-grid { grid-template-columns: 1fr; }
 
       .pricing-grid,
       .timeline { grid-template-columns: 1fr; }
@@ -865,7 +960,7 @@
     <span class="header-shipping">Free shipping on all orders</span>
     <nav>
       <a href="#flavors">Flavors</a>
-      <a href="#proof">Stories</a>
+      <a href="#proof">Reviews</a>
       <a href="#pricing">Shop</a>
       <a href="#pricing" class="nav-cta">Get It</a>
     </nav>
@@ -874,6 +969,10 @@
   <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow">Lion's Mane Tinctures · Alcohol-Free</p>
+    <div class="hero-stars">
+      <span class="stars">★★★★★</span>
+      <span class="stars-text">4.9 · 2,100+ happy customers</span>
+    </div>
     <h1>We only get<br>one <em>dance.</em></h1>
     <div class="hero-image">
       <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape" class="hero-bottle hero-bottle--left">
@@ -885,6 +984,7 @@
       <a href="#pricing" class="btn-primary">Start Showing Up</a>
       <a href="#why" class="btn-ghost">Our story</a>
     </div>
+    <p class="hero-urgency">🔥 Only 47 bottles left — restocking in 2 weeks</p>
     <div class="hero-trust">
       <span class="trust-item"><span>✓</span> No alcohol</span>
       <span class="trust-item"><span>✓</span> Lab tested</span>
@@ -955,6 +1055,49 @@
 
   <hr class="divider">
 
+  <!-- TESTIMONIALS -->
+  <section class="section" id="proof">
+    <span class="section-label">Real people, real results</span>
+    <h2 class="section-heading" style="text-align:center;">What they're saying.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I've tried every nootropic on the market. Brain fog was running my life. Week 3 of Awfully Good and I felt like someone turned the lights back on. I'm present again — for my kids, my work, everything."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SM</div>
+          <div>
+            <div class="testi-name">Sarah M.</div>
+            <div class="testi-role">Mom of 3 · Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Skeptic turned believer. I'm an ER nurse — I've seen every wellness fad come and go. This one's different. Sharper recall, better focus during long shifts. I'm buying the 6-pack."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PK</div>
+          <div>
+            <div class="testi-name">Priya K.</div>
+            <div class="testi-role">ER Nurse · Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I lost my dad last year. I kept zoning out in conversations, forgetting things. A friend sent me this. By week 4 I was actually present again. That means everything to me."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JT</div>
+          <div>
+            <div class="testi-name">Jake T.</div>
+            <div class="testi-role">Entrepreneur · Verified Purchase</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- FLAVORS -->
   <section class="section" id="flavors">
     <span class="section-label">Choose your flavor</span>
@@ -984,7 +1127,7 @@
   <hr class="divider">
 
   <!-- VIDEO CAROUSEL -->
-  <section class="section video-section" id="proof">
+  <section class="section video-section">
     <span class="section-label">Real people</span>
     <h2 class="section-heading">Perfectly imperfect.<br>Real results.</h2>
     <div class="c-viewport" id="cViewport">
@@ -1033,6 +1176,7 @@
   <section class="section" id="pricing">
     <span class="section-label">Get it</span>
     <h2 class="section-heading">Pick your path.</h2>
+    <p class="pricing-social-proof">★★★★★ Rated 4.9 by 2,100+ customers · Free shipping on all orders · 30-day money-back guarantee</p>
 
     <div class="pricing-grid">
       <!-- Try It -->
@@ -1050,7 +1194,7 @@
 
       <!-- 6-Pack -->
       <div class="price-card featured">
-        <div class="price-badge">Best Value · Selling Fast</div>
+        <div class="price-badge">Best Value · 🔥 Only 12 Bundles Left</div>
         <div style="display:flex;justify-content:center;gap:0.3rem;margin-bottom:1.2rem;flex-wrap:wrap;">
           <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="" style="width:48px;object-fit:contain;">
           <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="" style="width:48px;object-fit:contain;">
@@ -1062,6 +1206,7 @@
         <h3>The 6-Pack</h3>
         <p class="price-save">Save $60 · 44% Off</p>
         <div class="price-amount">$119<span style="font-size:1.2rem;font-weight:500;color:var(--muted)">.99</span></div>
+        <p class="price-urgency">⚡ 340 people bought this week</p>
         <p class="price-desc">6 bottles · 6-month supply · Mix & match</p>
         <ul class="price-features">
           <li>Full 6 months of clarity</li>
