@@ -195,6 +195,7 @@
       width: 100%;
       max-width: 420px;
       object-fit: contain;
+      mix-blend-mode: multiply;
       filter: drop-shadow(0 40px 80px rgba(255,0,110,0.3));
       animation: float 6s ease-in-out infinite;
     }
@@ -285,6 +286,7 @@
       width: 100%;
       max-width: 380px;
       object-fit: contain;
+      mix-blend-mode: multiply;
       filter: drop-shadow(0 30px 60px rgba(255,0,110,0.15));
     }
 
@@ -353,6 +355,7 @@
       margin: 0 auto 1.5rem;
       display: block;
       object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     .flavor h3 {
@@ -367,7 +370,24 @@
     .flavor p {
       font-size: 0.82rem;
       color: var(--muted);
+      margin-bottom: 1.2rem;
     }
+
+    .flavor-btn {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .flavor-btn:hover { opacity: 0.7; }
 
     /* ── VIDEO CAROUSEL ──────────────────────── */
     .video-section {
@@ -864,16 +884,19 @@
         <img src="https://www.awfullygoodcompany.com/cdn/shop/files/strawberrylionsmaneproductphoto.jpg?v=1753379241" alt="Strawberry">
         <h3>🍓 Strawberry</h3>
         <p>The crowd pleaser. Sweet chaos in a bottle.</p>
+        <a href="https://awfullygoodcompany.myshopify.com/products/strawberry-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Strawberry →</a>
       </div>
       <div class="flavor">
         <img src="https://www.awfullygoodcompany.com/cdn/shop/files/blueberrylionsmaneproductphoto.png?v=1753380147" alt="Blueberry">
         <h3>🫐 Blueberry</h3>
         <p>The bold one. Doesn't apologize.</p>
+        <a href="https://awfullygoodcompany.myshopify.com/products/blueberry-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Blueberry →</a>
       </div>
       <div class="flavor">
         <img src="https://www.awfullygoodcompany.com/cdn/shop/files/GrapeLionsManeProductPhoto.png?v=1753380623" alt="Grape">
         <h3>🍇 Grape</h3>
         <p>Clean finish. Quietly your favorite.</p>
+        <a href="https://awfullygoodcompany.myshopify.com/products/grape-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Grape →</a>
       </div>
     </div>
   </section>
