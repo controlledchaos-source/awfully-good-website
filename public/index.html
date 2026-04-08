@@ -1520,13 +1520,26 @@
       document.getElementById('emailPopup').style.display = 'none';
       localStorage.setItem('ag_popup_closed', '1');
     }
-    function submitEmail(e) {
+    async function submitEmail(e) {
       e.preventDefault();
       const email = document.getElementById('popupEmail').value;
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+      } catch(err) {}
+
       // Track in GA4
       if (typeof gtag !== 'undefined') {
         gtag('event', 'email_capture', { email_address: email });
       }
+
       document.getElementById('emailPopup').innerHTML = `<div style="background:#0d0a18;border:1px solid #2d2245;max-width:480px;width:100%;padding:3rem 2.5rem;text-align:center;">
         <div style="font-size:2rem;margin-bottom:1rem;">✓</div>
         <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;">You're in.</h2>

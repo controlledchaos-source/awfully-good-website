@@ -1,6 +1,11 @@
 {
   "framework": null,
   "outputDirectory": "public",
-  "installCommand": "",
-  "buildCommand": ""
+  "installCommand": "npm install",
+  "buildCommand": "",
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
