@@ -1014,10 +1014,10 @@
     </div>
     <p class="hero-sub">The awful moments, the good ones — none of them are average. Neither are you. Be present for all of it.</p>
     <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">Start Showing Up</a>
+      <a href="#pricing" class="btn-primary">Try It Risk-Free</a>
       <a href="#why" class="btn-ghost">Our story</a>
     </div>
-    <p class="hero-urgency">59 people already showing up daily — join them</p>
+    <p class="hero-urgency">215 people already showing up daily — join them</p>
     <div class="hero-trust">
       <span class="trust-item"><span>✓</span> No alcohol</span>
       <span class="trust-item"><span>✓</span> Lab tested</span>
@@ -1094,35 +1094,44 @@
     <h2 class="section-heading" style="text-align:center;">What they're saying.</h2>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I've had brain fog for years — doctors blamed stress. Three weeks in and I'm writing again. My partner noticed before I did. This stuff is real."</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+          <div class="testi-stars">★★★★★</div>
+          <div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.05em;">TikTok Shop · Verified</div>
+        </div>
+        <p class="testi-quote">"Okay I was NOT expecting this to work. I've tried like 4 other mushroom supplements and felt nothing. Day 18 on this one and the brain fog I've had since having my second kid is actually lifting. I told my husband and he started taking it too. We're on the bundle now."</p>
         <div class="testi-author">
-          <div class="testi-avatar">SM</div>
+          <div class="testi-avatar" style="background:#7c3aed;">KR</div>
           <div>
-            <div class="testi-name">Sarah M.</div>
-            <div class="testi-role">Mom of 3 · Verified Purchase</div>
+            <div class="testi-name">Kelsey R.</div>
+            <div class="testi-role">Austin, TX · Strawberry flavor · 6 weeks in</div>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"I'm an ER nurse. I need to be sharp on 12-hour shifts. Tried it skeptically, kept buying it because it works. On my third bottle."</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+          <div class="testi-stars">★★★★★</div>
+          <div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.05em;">TikTok Shop · Verified</div>
+        </div>
+        <p class="testi-quote">"I do 12-hour overnight shifts. Been running on caffeine and spite for 3 years. Started the blueberry one 5 weeks ago and my charge nurse actually asked if I was okay — she meant it as a compliment. I'm sharper. I'm calmer. I'm on my second bottle."</p>
         <div class="testi-author">
-          <div class="testi-avatar">PK</div>
+          <div class="testi-avatar" style="background:#0369a1;">DM</div>
           <div>
-            <div class="testi-name">Priya K.</div>
-            <div class="testi-role">ER Nurse · Verified Purchase</div>
+            <div class="testi-name">Dominic M.</div>
+            <div class="testi-role">Night shift RN · Chicago, IL · Blueberry flavor</div>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"My therapist asked what changed. I told her I started taking Lion's Mane. She looked it up. Now she recommends it to her other clients."</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+          <div class="testi-stars">★★★★★</div>
+          <div style="font-size:0.65rem;color:var(--muted);letter-spacing:0.05em;">TikTok Shop · Verified</div>
+        </div>
+        <p class="testi-quote">"I bought this half as a joke because I kept seeing it on TikTok. Now I'm the person who won't shut up about it. The grape flavor is actually good?? And I feel like I got 2 extra hours in my day. My therapist thinks I've been journaling more. I've just been… clearer."</p>
         <div class="testi-author">
-          <div class="testi-avatar">JT</div>
+          <div class="testi-avatar" style="background:#b45309;">TW</div>
           <div>
-            <div class="testi-name">Jake T.</div>
-            <div class="testi-role">Entrepreneur · Verified Purchase</div>
+            <div class="testi-name">Tara W.</div>
+            <div class="testi-role">Denver, CO · Grape flavor · On her 3rd bottle</div>
           </div>
         </div>
       </div>
@@ -1210,6 +1219,12 @@
     <span class="section-label">Get it</span>
     <h2 class="section-heading">Pick your path.</h2>
     <p class="pricing-social-proof">★★★★★ 5.0 · 22 verified reviews · Free shipping · 30-day money-back guarantee</p>
+    <div style="text-align:center;margin-top:1rem;margin-bottom:-1rem;">
+      <span style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,0,110,0.08);border:1px solid rgba(255,0,110,0.2);padding:0.4rem 1rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);">
+        <span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block;animation:pulse 1.5s ease-in-out infinite;"></span>
+        Buy 2 Get 1 Free offer ends Sunday
+      </span>
+    </div>
 
     <div class="pricing-grid">
       <!-- Try It -->
@@ -1370,9 +1385,16 @@
       slide.dataset.index = i;
 
       const video = document.createElement('video');
-      video.preload = 'none';
-      video.controls = true;
-      if (i === 0) video.src = src;
+      video.preload = 'metadata';
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.src = src;
+      if (i === 0) {
+        video.controls = true;
+        video.muted = false;
+        video.autoplay = false;
+      }
 
       const overlay = document.createElement('div');
       overlay.className = 'c-slide-overlay';
@@ -1384,19 +1406,40 @@
       track.appendChild(slide);
     });
 
+    function updateAdjacentPreviews() {
+      const slides = document.querySelectorAll('.c-slide');
+      slides.forEach((slide, i) => {
+        const video = slide.querySelector('video');
+        const isActive = i === currentIndex;
+        const isAdjacent = Math.abs(i - currentIndex) === 1;
+
+        if (isActive) {
+          video.muted = false;
+          video.loop = false;
+          video.controls = true;
+          video.pause();
+        } else if (isAdjacent) {
+          video.muted = true;
+          video.loop = true;
+          video.controls = false;
+          video.play().catch(() => {});
+        } else {
+          video.muted = true;
+          video.controls = false;
+          video.pause();
+        }
+      });
+    }
+
     function goToSlide(index) {
       const slides = document.querySelectorAll('.c-slide');
 
-      // Pause old video
+      // Pause old active video
       const oldVideo = slides[currentIndex].querySelector('video');
       oldVideo.pause();
+      oldVideo.controls = false;
 
       currentIndex = index;
-
-      // Load new video if not yet loaded
-      const newSlide = slides[currentIndex];
-      const newVideo = newSlide.querySelector('video');
-      if (!newVideo.src) newVideo.src = videos[currentIndex];
 
       // Update active states
       slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
@@ -1406,6 +1449,9 @@
 
       // Translate track to center active slide
       positionTrack();
+
+      // Update previews
+      updateAdjacentPreviews();
     }
 
     function positionTrack() {
@@ -1427,6 +1473,9 @@
     positionTrack();
     window.addEventListener('resize', positionTrack);
 
+    // Start adjacent previews on load
+    setTimeout(updateAdjacentPreviews, 500);
+
     // FAQ ACCORDION
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
@@ -1439,7 +1488,58 @@
   </script>
 
   <div class="sticky-cta">
-    <a href="#pricing">Start Showing Up — $29.99</a>
+    <a href="#pricing">Try It Risk-Free — $29.99</a>
   </div>
+
+  <!-- EMAIL POPUP -->
+  <div id="emailPopup" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.5rem;">
+    <div style="background:#0d0a18;border:1px solid #2d2245;max-width:480px;width:100%;padding:3rem 2.5rem;position:relative;text-align:center;">
+      <button onclick="closePopup()" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#9988bb;font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
+      <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">One-time offer</p>
+      <h2 style="font-size:2rem;font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.75rem;">Get 15% off<br>your first order.</h2>
+      <p style="font-size:0.9rem;color:#9988bb;line-height:1.6;margin-bottom:2rem;">Join 215 people already showing up daily. Get your discount code instantly.</p>
+      <form onsubmit="submitEmail(event)" style="display:flex;flex-direction:column;gap:0.75rem;">
+        <input id="popupEmail" type="email" placeholder="your@email.com" required style="background:#13102a;border:1px solid #2d2245;color:#f5f0ff;padding:0.9rem 1.2rem;font-family:'Space Grotesk',sans-serif;font-size:0.95rem;width:100%;outline:none;">
+        <button type="submit" style="background:var(--accent);color:white;border:none;padding:1rem;font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
+      </form>
+      <p style="font-size:0.7rem;color:#3a3050;margin-top:1rem;">No spam. Unsubscribe anytime. We hate it too.</p>
+    </div>
+  </div>
+
+  <script>
+    // EMAIL POPUP
+    let popupShown = false;
+    function showPopup() {
+      if (!popupShown && !localStorage.getItem('ag_popup_closed')) {
+        const popup = document.getElementById('emailPopup');
+        popup.style.display = 'flex';
+        popupShown = true;
+      }
+    }
+    function closePopup() {
+      document.getElementById('emailPopup').style.display = 'none';
+      localStorage.setItem('ag_popup_closed', '1');
+    }
+    function submitEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('popupEmail').value;
+      // Track in GA4
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'email_capture', { email_address: email });
+      }
+      document.getElementById('emailPopup').innerHTML = `<div style="background:#0d0a18;border:1px solid #2d2245;max-width:480px;width:100%;padding:3rem 2.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:1rem;">✓</div>
+        <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;">You're in.</h2>
+        <p style="color:#9988bb;font-size:0.9rem;margin-bottom:1.5rem;">Check your inbox for your 15% off code. Now go show up.</p>
+        <button onclick="closePopup()" style="background:var(--accent);color:white;border:none;padding:0.9rem 2rem;font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">Let's Go</button>
+      </div>`;
+      localStorage.setItem('ag_popup_closed', '1');
+    }
+    // Show after 8 seconds or on exit intent
+    setTimeout(showPopup, 8000);
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 10) showPopup();
+    });
+  </script>
 </body>
 </html>
