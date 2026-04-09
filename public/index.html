@@ -117,8 +117,10 @@
     }
     .hero-content {
       position: relative; z-index: 2;
-      max-width: 560px;
+      max-width: 550px;
+      min-width: 350px;
       text-align: center;
+      flex-shrink: 0;
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -481,6 +483,17 @@
     .c-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 0.55rem 1.2rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
     .c-btn:hover { border-color: var(--accent); color: var(--accent); }
     .c-count { font-size: 0.78rem; color: var(--subtle); }
+    .carousel-indicators { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.5rem; }
+    .indicator { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; border: none; padding: 0; }
+    .indicator:hover { background: rgba(255,255,255,0.6); }
+    .indicator.active { background: var(--accent); width: 24px; border-radius: 4px; }
+
+    @media (max-width: 900px) {
+      .c-slide { flex: 0 0 250px; height: 450px; }
+      .c-viewport { padding: 0 calc((100vw - 250px) / 2); }
+      .c-track { gap: 12px; }
+      .c-btn { padding: 0.7rem 1rem; font-size: 0.68rem; }
+    }
 
     /* ── FLAVORS ── */
     .flavors-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
@@ -582,6 +595,13 @@
 
     /* ── STICKY MOBILE ── */
     .sticky-cta { display: none; }
+
+    /* ── TABLET ── */
+    @media (min-width: 901px) and (max-width: 1199px) {
+      .hero { padding: 6rem 3rem 4rem; }
+      .hero-product { width: 45%; max-width: 600px; right: -20px; }
+      .section { padding: 5rem 2.5rem; }
+    }
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
@@ -1160,6 +1180,16 @@
       <span class="c-count"><span id="currentIndex">1</span> / 8</span>
       <button class="c-btn" onclick="nextVideo()">Next →</button>
     </div>
+    <div class="carousel-indicators" id="carouselIndicators">
+      <span class="indicator active" onclick="goToSlide(0)"></span>
+      <span class="indicator" onclick="goToSlide(1)"></span>
+      <span class="indicator" onclick="goToSlide(2)"></span>
+      <span class="indicator" onclick="goToSlide(3)"></span>
+      <span class="indicator" onclick="goToSlide(4)"></span>
+      <span class="indicator" onclick="goToSlide(5)"></span>
+      <span class="indicator" onclick="goToSlide(6)"></span>
+      <span class="indicator" onclick="goToSlide(7)"></span>
+    </div>
   </section>
 
   <!-- GUARANTEE + TIMELINE -->
@@ -1339,7 +1369,20 @@
       '/videos/temu%20jennifer%20coolidge.mp4',
       '/videos/yard%20work.mp4'
     ];
-    const SLIDE_W = 300, SLIDE_GAP = 16;
+    function getSlideWidth() {
+      if (window.innerWidth > 1200) return 300;
+      if (window.innerWidth > 900) return 280;
+      return 250;
+    }
+    function getGap() {
+      return window.innerWidth > 900 ? 16 : 12;
+    }
+    let SLIDE_W = getSlideWidth(), SLIDE_GAP = getGap();
+    window.addEventListener('resize', () => {
+      SLIDE_W = getSlideWidth();
+      SLIDE_GAP = getGap();
+      positionTrack();
+    });
     let currentIndex = 0;
     const track = document.getElementById('cTrack');
     videos.forEach((src, i) => {
@@ -1372,6 +1415,7 @@
       currentIndex = index;
       slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
       document.getElementById('currentIndex').textContent = currentIndex + 1;
+      document.querySelectorAll('.indicator').forEach((ind, i) => ind.classList.toggle('active', i === currentIndex));
       positionTrack(); updateAdjacentPreviews();
     }
     function positionTrack() {
