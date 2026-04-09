@@ -5,7 +5,7 @@
   "buildCommand": "",
   "functions": {
     "api/*.js": {
-      "runtime": "nodejs20.x"
+      "runtime": "node20.x"
     }
   }
 }
