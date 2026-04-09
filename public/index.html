@@ -24,6 +24,10 @@
       --accent: #FF006E;
       --border: #2a1f45;
       --gold: #FFD700;
+      --cyan: #00E5FF;
+      --purple: #A855F7;
+      --lime: #C8FF00;
+      --orange: #FF6B35;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -93,8 +97,10 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 90% at 80% 50%, rgba(255,0,110,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(100,0,200,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 90% at 80% 50%, rgba(255,0,110,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(168,85,247,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 30% 40% at 5% 10%, rgba(0,229,255,0.08) 0%, transparent 45%),
+        radial-gradient(ellipse 20% 30% at 90% 10%, rgba(200,255,0,0.06) 0%, transparent 40%),
         var(--bg);
     }
     .hero-content {
@@ -160,11 +166,14 @@
       border-bottom: 1px solid var(--border);
       padding: 0.85rem 0;
       overflow: hidden; white-space: nowrap;
-      background: rgba(255,0,110,0.03);
+      background: linear-gradient(90deg, rgba(255,0,110,0.05) 0%, rgba(168,85,247,0.05) 25%, rgba(0,229,255,0.05) 50%, rgba(200,255,0,0.04) 75%, rgba(255,0,110,0.05) 100%);
     }
     .marquee-track { display: inline-block; animation: marquee 28s linear infinite; }
     .marquee-track span { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding: 0 2.5rem; }
     .marquee-track span.dot { color: var(--accent); padding: 0; }
+    .marquee-track span.dot-c { color: var(--cyan); padding: 0; }
+    .marquee-track span.dot-p { color: var(--purple); padding: 0; }
+    .marquee-track span.dot-l { color: var(--lime); padding: 0; }
     @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
     /* ── STATS BAR ── */
@@ -177,6 +186,11 @@
     .stat { display: flex; flex-direction: column; align-items: center; padding: 0 3rem; border-right: 1px solid var(--border); }
     .stat:last-child { border-right: none; }
     .stat-n { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text); line-height: 1; }
+    .stat:nth-child(1) .stat-n { color: var(--accent); }
+    .stat:nth-child(2) .stat-n { color: var(--cyan); }
+    .stat:nth-child(3) .stat-n { color: var(--purple); }
+    .stat:nth-child(4) .stat-n { color: var(--gold); }
+    .stat:nth-child(5) .stat-n { color: var(--lime); }
     .stat-l { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.1rem; }
 
     /* ── SECTION BASE ── */
@@ -199,7 +213,11 @@
     }
     .ftab:last-child { border-right: none; }
     .ftab:hover { background: rgba(255,0,110,0.05); color: var(--text); }
-    .ftab.active { background: var(--accent); color: white; }
+    .ftab.active { color: white; }
+    .ftab[data-flavor="strawberry"].active { background: var(--accent); }
+    .ftab[data-flavor="blueberry"].active { background: var(--cyan); color: #0a0812; }
+    .ftab[data-flavor="grape"].active { background: var(--purple); }
+    .ftab[data-flavor="bundle"].active { background: var(--gold); color: #0a0812; }
     .flavor-panels { position: relative; }
     .fpanel { display: none; }
     .fpanel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -256,23 +274,32 @@
     .cert:last-child { border-right: none; }
     .cert-icon { font-size: 1.5rem; }
     .cert-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .cert:nth-child(1) .cert-label { color: var(--accent); }
+    .cert:nth-child(2) .cert-label { color: var(--cyan); }
+    .cert:nth-child(3) .cert-label { color: var(--purple); }
+    .cert:nth-child(4) .cert-label { color: var(--gold); }
+    .cert:nth-child(5) .cert-label { color: var(--lime); }
+    .cert:nth-child(6) .cert-label { color: var(--orange); }
 
     /* ── HOW IT WORKS ── */
     .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3.5rem; }
     .step { background: var(--bg); padding: 3rem 2.5rem; transition: background 0.2s; }
     .step:hover { background: var(--bg2); }
-    .step-n { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.05em; color: rgba(255,0,110,0.15); line-height: 1; margin-bottom: 0.8rem; }
+    .step-n { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.05em; color: rgba(255,0,110,0.2); line-height: 1; margin-bottom: 0.8rem; }
+    .step:nth-child(1) .step-n { color: rgba(255,0,110,0.35); }
+    .step:nth-child(2) .step-n { color: rgba(0,229,255,0.35); }
+    .step:nth-child(3) .step-n { color: rgba(168,85,247,0.35); }
     .step h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
     .step p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
 
     /* ── QUIZ CTA ── */
     .quiz-wrap {
-      background: var(--accent); position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #FF006E 0%, #A855F7 60%, #6B21D4 100%); position: relative; overflow: hidden;
     }
     .quiz-wrap::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,0.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,229,255,0.15) 0%, transparent 60%);
     }
     .quiz-inner {
       max-width: 1160px; margin: 0 auto; padding: 6rem 3rem;
@@ -317,8 +344,11 @@
     }
     .founder-wrap::after {
       content: ''; position: absolute;
-      right: 0; top: 0; bottom: 0; width: 50%;
-      background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(255,0,110,0.07) 0%, transparent 60%);
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 80% 50%, rgba(168,85,247,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 40% at 20% 80%, rgba(0,229,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse 25% 35% at 5% 10%, rgba(255,0,110,0.07) 0%, transparent 45%);
       pointer-events: none;
     }
     .founder-inner { max-width: 1160px; margin: 0 auto; padding: 8rem 3rem; position: relative; z-index: 1; }
@@ -328,6 +358,8 @@
       line-height: 1.05; text-align: center; max-width: 900px; margin: 1rem auto 4rem;
     }
     .founder-headline em { font-style: normal; color: var(--accent); }
+    .founder-headline .cyan { color: var(--cyan); }
+    .founder-headline .purple { color: var(--purple); }
     .founder-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
     .founder-card { background: var(--bg2); padding: 2.8rem 2.2rem; transition: background 0.2s; }
     .founder-card:hover { background: #110d20; }
@@ -564,22 +596,22 @@
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span>1000mg Full-Spectrum</span><span class="dot"> · </span>
-      <span>Alcohol-Free Formula</span><span class="dot"> · </span>
-      <span>Third-Party Lab Tested</span><span class="dot"> · </span>
-      <span>Triggers NGF Production</span><span class="dot"> · </span>
-      <span>Clarity Without Compromise</span><span class="dot"> · </span>
-      <span>30-Day Money Back</span><span class="dot"> · </span>
-      <span>Three Flavors</span><span class="dot"> · </span>
-      <span>Free Shipping Always</span><span class="dot"> · </span>
-      <span>1000mg Full-Spectrum</span><span class="dot"> · </span>
-      <span>Alcohol-Free Formula</span><span class="dot"> · </span>
-      <span>Third-Party Lab Tested</span><span class="dot"> · </span>
-      <span>Triggers NGF Production</span><span class="dot"> · </span>
-      <span>Clarity Without Compromise</span><span class="dot"> · </span>
-      <span>30-Day Money Back</span><span class="dot"> · </span>
-      <span>Three Flavors</span><span class="dot"> · </span>
-      <span>Free Shipping Always</span><span class="dot"> · </span>
+      <span>1000mg Full-Spectrum</span><span class="dot"> ✦ </span>
+      <span>Alcohol-Free Formula</span><span class="dot-c"> ✦ </span>
+      <span>Third-Party Lab Tested</span><span class="dot-p"> ✦ </span>
+      <span>Triggers NGF Production</span><span class="dot-l"> ✦ </span>
+      <span>Clarity Without Compromise</span><span class="dot"> ✦ </span>
+      <span>30-Day Money Back</span><span class="dot-c"> ✦ </span>
+      <span>Three Flavors</span><span class="dot-p"> ✦ </span>
+      <span>Free Shipping Always</span><span class="dot-l"> ✦ </span>
+      <span>1000mg Full-Spectrum</span><span class="dot"> ✦ </span>
+      <span>Alcohol-Free Formula</span><span class="dot-c"> ✦ </span>
+      <span>Third-Party Lab Tested</span><span class="dot-p"> ✦ </span>
+      <span>Triggers NGF Production</span><span class="dot-l"> ✦ </span>
+      <span>Clarity Without Compromise</span><span class="dot"> ✦ </span>
+      <span>30-Day Money Back</span><span class="dot-c"> ✦ </span>
+      <span>Three Flavors</span><span class="dot-p"> ✦ </span>
+      <span>Free Shipping Always</span><span class="dot-l"> ✦ </span>
     </div>
   </div>
 
@@ -601,10 +633,10 @@
         <p class="section-sub" style="margin:.8rem auto 0;max-width:480px;text-align:center;">Same 1000mg formula. Same results. Different vibe.<br>All three are correct. The bundle is the most correct.</p>
       </div>
       <div class="flavor-tabs">
-        <button class="ftab active" onclick="switchFlavor('strawberry',this)">🍓 Strawberry</button>
-        <button class="ftab" onclick="switchFlavor('blueberry',this)">🫐 Blueberry</button>
-        <button class="ftab" onclick="switchFlavor('grape',this)">🍇 Grape</button>
-        <button class="ftab" onclick="switchFlavor('bundle',this)">⚡ Bundle</button>
+        <button class="ftab active" data-flavor="strawberry" onclick="switchFlavor('strawberry',this)">🍓 Strawberry</button>
+        <button class="ftab" data-flavor="blueberry" onclick="switchFlavor('blueberry',this)">🫐 Blueberry</button>
+        <button class="ftab" data-flavor="grape" onclick="switchFlavor('grape',this)">🍇 Grape</button>
+        <button class="ftab" data-flavor="bundle" onclick="switchFlavor('bundle',this)">⚡ Bundle</button>
       </div>
       <div class="flavor-panels">
 
@@ -886,7 +918,7 @@
         <span class="section-label">Why this exists</span>
       </div>
       <h2 class="founder-headline">
-        She almost died at 13.<br>Lost both parents to cancer.<br>
+        <span class="cyan">He almost died at 13.</span><br><span class="purple">Lost both parents to cancer.</span><br>
         <em>Made a mushroom tincture. Classic.</em>
       </h2>
       <div class="founder-cards">
