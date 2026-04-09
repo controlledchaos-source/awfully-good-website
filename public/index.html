@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awfully Good — Lion's Mane Tincture</title>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F4ZP9TB710"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,1484 +17,526 @@
   <style>
     :root {
       --bg: #0a0812;
-      --bg2: #0f0c1a;
-      --bg3: #13102000;
+      --bg2: #0f0b1c;
       --text: #f5f0ff;
       --muted: #9988bb;
       --subtle: #3a3050;
       --accent: #FF006E;
-      --accent2: #ff4d9e;
-      --border: #2d2245;
+      --border: #2a1f45;
       --gold: #FFD700;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; font-size: 16px; line-height: 1.6; }
 
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      font-size: 17px;
-    }
-
-    /* ── ANNOUNCEMENT BAR ───────────────────── */
+    /* ── ANN BAR ── */
     .ann-bar {
       background: var(--accent);
-      padding: 0.6rem 1rem;
       text-align: center;
+      padding: 0.55rem 1rem;
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: white;
-      position: relative;
-      z-index: 101;
-      min-height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-height: 34px;
+      display: flex; align-items: center; justify-content: center;
     }
+    .ann-text { transition: opacity 0.4s; }
 
-    .ann-bar span { transition: opacity 0.4s; }
-
-    /* ── HEADER ─────────────────────────────── */
+    /* ── HEADER ── */
     header {
-      position: sticky;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 3rem;
-      background: rgba(10, 8, 18, 0.96);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,8,18,0.97);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1rem 2.5rem;
     }
-
+    .header-nav { display: flex; gap: 2rem; align-items: center; }
+    .header-nav a {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--text); }
     .logo {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
+      font-size: 1.05rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text); text-decoration: none; text-align: center;
     }
-
-    .logo span { color: var(--accent); }
-
-    nav { display: flex; gap: 2.5rem; align-items: center; }
-
-    nav a {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+    .logo em { color: var(--accent); font-style: normal; }
+    .header-actions { display: flex; gap: 1rem; align-items: center; justify-content: flex-end; }
+    .btn-quiz {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text); text-decoration: none;
+      border: 1px solid var(--border); padding: 0.5rem 1.1rem;
+      transition: all 0.2s;
     }
-
-    nav a:hover { color: var(--text); }
-
-    .nav-cta {
-      background: var(--accent);
-      color: white !important;
-      padding: 0.6rem 1.4rem;
-      font-size: 0.72rem !important;
-      letter-spacing: 0.1em;
-      transition: opacity 0.2s !important;
+    .btn-quiz:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-shop {
+      background: var(--accent); color: white; text-decoration: none;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.55rem 1.3rem; transition: opacity 0.2s;
     }
+    .btn-shop:hover { opacity: 0.85; }
 
-    .nav-cta:hover { opacity: 0.85; }
-
-    /* ── HERO ────────────────────────────────── */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 5rem 5rem 3rem;
-      gap: 3rem;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 6rem 5rem 4rem;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+    .hero-bg {
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(255,0,110,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(120,0,255,0.06) 0%, transparent 50%);
-      pointer-events: none;
+        radial-gradient(ellipse 70% 90% at 80% 50%, rgba(255,0,110,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(100,0,200,0.08) 0%, transparent 50%),
+        var(--bg);
     }
-
     .hero-content {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 2;
+      max-width: 560px;
     }
-
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid rgba(255,0,110,0.3); padding: 0.35rem 0.85rem;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(255,0,110,0.3);
-      padding: 0.4rem 0.9rem;
     }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
-
+    .hero-eyebrow::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
     .hero h1 {
-      font-size: clamp(3.2rem, 6vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      margin-bottom: 1.5rem;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 700; line-height: 0.95; letter-spacing: -0.04em;
+      color: var(--text); margin-bottom: 1.5rem;
     }
-
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-      display: block;
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 440px;
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-
-    .hero-stars {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-    }
-
-    .stars { color: var(--gold); font-size: 1rem; letter-spacing: 0.04em; }
+    .hero h1 em { font-style: normal; color: var(--accent); display: block; }
+    .hero-stars { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.4rem; }
+    .stars { color: var(--gold); font-size: 0.95rem; }
     .stars-text { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
+    .hero-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 440px; }
+    .hero-ctas { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 2rem; }
     .btn-primary {
-      background: var(--accent);
-      color: white;
-      padding: 1.1rem 2.8rem;
+      background: var(--accent); color: white;
+      padding: 1rem 2.5rem;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      display: inline-block;
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; display: inline-block;
+      border: none; cursor: pointer;
       transition: all 0.2s;
-      border: none;
-      cursor: pointer;
     }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 30px rgba(255,0,110,0.3);
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 8px 25px rgba(255,0,110,0.3); }
+    .btn-outline {
+      color: var(--text); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+      text-decoration: none; border-bottom: 1px solid var(--subtle); padding-bottom: 2px;
+      transition: all 0.2s;
     }
-
-    .btn-ghost {
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      border-bottom: 1px solid var(--subtle);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
+    .btn-outline:hover { color: var(--accent); border-color: var(--accent); }
+    .hero-trust { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .trust-pill {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); display: flex; align-items: center; gap: 0.35rem;
     }
-
-    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
-
-    .hero-trust {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .trust-item::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .hero-visual {
-      position: relative;
+    .trust-pill::before { content: '✓'; color: var(--accent); font-weight: 700; }
+    .hero-product {
+      position: absolute; right: -40px; bottom: 0;
+      width: 52%; max-width: 720px;
       z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
-
-    .hero-glow {
-      position: absolute;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(255,0,110,0.15) 0%, transparent 65%);
-      border-radius: 50%;
-    }
-
-    .hero-trio {
-      width: 100%;
-      max-width: 520px;
-      max-height: 75vh;
-      object-fit: contain;
-      display: block;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 40px 100px rgba(255,0,110,0.35));
+    .hero-product img {
+      width: 100%; height: auto; display: block;
+      filter: drop-shadow(0 0 100px rgba(255,0,110,0.5));
       animation: floatY 6s ease-in-out infinite;
     }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
 
-    @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    /* ── STATS BAR ───────────────────────────── */
-    .stats-bar {
-      background: var(--bg2);
+    /* ── MARQUEE ── */
+    .marquee-wrap {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 1.4rem 3rem;
-      display: flex;
-      justify-content: center;
-      gap: 0;
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-      padding: 0 3.5rem;
-      border-right: 1px solid var(--border);
-    }
-
-    .stat-item:last-child { border-right: none; }
-
-    .stat-num {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── MARQUEE ─────────────────────────────── */
-    .marquee-wrap {
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 0;
-      overflow: hidden;
-      white-space: nowrap;
+      padding: 0.85rem 0;
+      overflow: hidden; white-space: nowrap;
       background: rgba(255,0,110,0.03);
     }
-
-    .marquee-track {
-      display: inline-block;
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee-track span {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0 2.5rem;
-    }
-
+    .marquee-track { display: inline-block; animation: marquee 28s linear infinite; }
+    .marquee-track span { font-size: 0.67rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); padding: 0 2.5rem; }
     .marquee-track span.dot { color: var(--accent); padding: 0; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: center;
+      padding: 1.3rem 2rem;
     }
+    .stat { display: flex; flex-direction: column; align-items: center; padding: 0 3rem; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text); line-height: 1; }
+    .stat-l { font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.1rem; }
 
-    /* ── SECTION BASE ────────────────────────── */
-    .section {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
+    /* ── SECTION BASE ── */
+    .section { max-width: 1160px; margin: 0 auto; padding: 7rem 3rem; }
+    .section-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.8rem; }
+    .section-h { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--text); }
+    .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+    .section-sub em { color: var(--text); font-style: italic; }
+    hr.div { border: none; border-top: 1px solid var(--border); margin: 0 3rem; }
+
+    /* ── SHOP BY FLAVOR ── */
+    .shop-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .shop-inner { max-width: 1160px; margin: 0 auto; padding: 6rem 3rem; }
+    .shop-header { text-align: center; margin-bottom: 3rem; }
+    .flavor-tabs { display: flex; justify-content: center; gap: 0; border: 1px solid var(--border); max-width: 520px; margin: 0 auto 3.5rem; }
+    .ftab {
+      flex: 1; padding: 0.7rem 1rem; background: transparent; border: none; border-right: 1px solid var(--border);
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: all 0.2s;
     }
-
-    .section-label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      display: block;
+    .ftab:last-child { border-right: none; }
+    .ftab:hover { background: rgba(255,0,110,0.05); color: var(--text); }
+    .ftab.active { background: var(--accent); color: white; }
+    .flavor-panels { position: relative; }
+    .fpanel { display: none; }
+    .fpanel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .fpanel-image { text-align: center; }
+    .fpanel-image img { max-width: 300px; width: 100%; filter: drop-shadow(0 20px 60px rgba(255,0,110,0.25)); }
+    .fpanel-details h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.7rem; }
+    .fpanel-details .flavor-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+    .price-toggle { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.8rem; }
+    .price-opt {
+      display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem;
+      background: var(--bg); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
     }
+    .price-opt:hover, .price-opt.selected { border-color: var(--accent); background: rgba(255,0,110,0.04); }
+    .price-opt input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+    .price-opt-label { flex: 1; }
+    .price-opt-name { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .price-opt-desc { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+    .price-opt-price { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .price-opt-badge { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent); color: white; padding: 0.2rem 0.5rem; }
+    .panel-cta { width: 100%; text-align: center; font-size: 0.85rem; }
+    .panel-guarantee { font-size: 0.72rem; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+    .fpanel-facts { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.8rem; }
+    .fpanel-facts li { font-size: 0.83rem; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
+    .fpanel-facts li::before { content: '✓'; color: var(--accent); font-weight: 700; }
 
-    .section-heading {
-      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      color: var(--text);
-      margin-bottom: 1.5rem;
+    /* ── DIFFERENTIATOR ── */
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .diff-image img { width: 100%; max-width: 420px; filter: drop-shadow(0 20px 60px rgba(255,0,110,0.15)); }
+    .diff-text h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.2rem; }
+    .diff-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+    .diff-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.5rem; }
+    .diff-list li {
+      font-size: 0.87rem; color: var(--text); display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.8rem 1rem; background: rgba(255,0,110,0.04); border: 1px solid rgba(255,0,110,0.1);
     }
+    .diff-list li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.8;
-    }
-
-    hr.divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 3rem;
-    }
-
-    /* ── PROBLEM SECTION ─────────────────────── */
-    .problem-wrap {
+    /* ── CERTS ROW ── */
+    .certs-wrap {
       background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-
-    .problem-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
+    .certs-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 3rem 3rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0;
     }
-
-    .problem-left {}
-
-    .problem-left h2 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
+    .cert {
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      padding: 0 3rem; border-right: 1px solid var(--border); text-align: center;
     }
+    .cert:last-child { border-right: none; }
+    .cert-icon { font-size: 1.5rem; }
+    .cert-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
 
-    .problem-left h2 em {
-      font-style: normal;
-      color: var(--accent);
+    /* ── HOW IT WORKS ── */
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3.5rem; }
+    .step { background: var(--bg); padding: 3rem 2.5rem; transition: background 0.2s; }
+    .step:hover { background: var(--bg2); }
+    .step-n { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.05em; color: rgba(255,0,110,0.15); line-height: 1; margin-bottom: 0.8rem; }
+    .step h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.6rem; }
+    .step p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── QUIZ CTA ── */
+    .quiz-wrap {
+      background: var(--accent); position: relative; overflow: hidden;
     }
-
-    .problem-left p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 1rem;
-    }
-
-    .problem-right {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .problem-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 1.8rem 2rem;
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      transition: border-color 0.2s;
-    }
-
-    .problem-card:hover { border-color: rgba(255,0,110,0.3); }
-
-    .problem-icon {
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      line-height: 1;
-      margin-top: 0.1rem;
-    }
-
-    .problem-card h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.01em;
-    }
-
-    .problem-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ── PRODUCT SHOWCASE ───────────────────── */
-    .product-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .product-img {
-      position: relative;
-    }
-
-    .product-img::after {
+    .quiz-wrap::before {
       content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      height: 80px;
-      background: radial-gradient(ellipse, rgba(255,0,110,0.25) 0%, transparent 70%);
-      filter: blur(20px);
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,0.12) 0%, transparent 60%);
     }
-
-    .product-img img {
-      width: 100%;
-      max-width: 380px;
-      object-fit: contain;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 20px 60px rgba(255,0,110,0.2));
+    .quiz-inner {
+      max-width: 1160px; margin: 0 auto; padding: 6rem 3rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 4rem;
+      position: relative; z-index: 1;
     }
-
-    .product-facts h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.2rem;
-      line-height: 1.1;
+    .quiz-text h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: white; margin-bottom: 0.8rem; }
+    .quiz-text p { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.7; max-width: 480px; }
+    .btn-quiz-cta {
+      background: white; color: var(--accent);
+      padding: 1.2rem 3rem; font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; display: inline-block; white-space: nowrap;
+      transition: all 0.2s;
     }
+    .btn-quiz-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-    .product-facts p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.85;
-      margin-bottom: 1.5rem;
+    /* ── TESTIMONIALS ── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .testi {
+      background: var(--bg2); border: 1px solid var(--border); padding: 2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: all 0.2s;
     }
+    .testi:hover { border-color: rgba(255,0,110,0.25); transform: translateY(-3px); }
+    .testi-top { display: flex; justify-content: space-between; align-items: center; }
+    .testi-stars { color: var(--gold); font-size: 0.88rem; }
+    .testi-source { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .testi-body { font-size: 0.9rem; color: var(--text); line-height: 1.8; font-style: italic; flex: 1; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .testi-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: white; flex-shrink: 0; }
+    .testi-name { font-size: 0.83rem; font-weight: 700; }
+    .testi-role { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
 
-    .fact-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
-
-    .fact-list li {
-      font-size: 0.87rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.8rem 1rem;
-      background: rgba(255,0,110,0.04);
-      border: 1px solid rgba(255,0,110,0.1);
-    }
-
-    .fact-list li::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    /* ── HOW IT WORKS ────────────────────────── */
-    .how-wrap {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .how-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
-      text-align: center;
-    }
-
-    .how-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 4rem;
-    }
-
-    .step {
-      background: var(--bg2);
-      padding: 3.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-      transition: background 0.2s;
-    }
-
-    .step:hover { background: #110d20; }
-
-    .step-num {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      color: rgba(255,0,110,0.15);
-      line-height: 1;
-      margin-bottom: 1rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .step h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.8rem;
-      color: var(--text);
-    }
-
-    .step p {
-      font-size: 0.87rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── TESTIMONIALS ────────────────────────── */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .testimonial {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      padding: 2.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .testimonial:hover {
-      border-color: rgba(255,0,110,0.25);
-      transform: translateY(-3px);
-    }
-
-    .testi-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .testi-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.05em; }
-
-    .testi-verified {
-      font-size: 0.62rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .testi-quote {
-      font-size: 0.92rem;
-      color: var(--text);
-      line-height: 1.8;
-      flex: 1;
-      font-style: italic;
-    }
-
-    .testi-author {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .testi-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: white;
-      flex-shrink: 0;
-    }
-
-    .testi-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .testi-role {
-      font-size: 0.73rem;
-      color: var(--muted);
-      margin-top: 0.1rem;
-    }
-
-    /* ── FOUNDER STORY ───────────────────────── */
+    /* ── FOUNDER ── */
     .founder-wrap {
       background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
-    .founder-wrap::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 600px; height: 100%;
-      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(255,0,110,0.06) 0%, transparent 60%);
+    .founder-wrap::after {
+      content: ''; position: absolute;
+      right: 0; top: 0; bottom: 0; width: 50%;
+      background: radial-gradient(ellipse 80% 80% at 80% 50%, rgba(255,0,110,0.07) 0%, transparent 60%);
       pointer-events: none;
     }
-
-    .founder-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 8rem 3rem;
-      position: relative;
-      z-index: 1;
+    .founder-inner { max-width: 1160px; margin: 0 auto; padding: 8rem 3rem; position: relative; z-index: 1; }
+    .founder-eyebrow { text-align: center; }
+    .founder-headline {
+      font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 700; letter-spacing: -0.04em;
+      line-height: 1.05; text-align: center; max-width: 900px; margin: 1rem auto 4rem;
     }
-
-    .founder-top {
-      text-align: center;
-      margin-bottom: 5rem;
-    }
-
-    .founder-top h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      max-width: 800px;
-      margin: 1rem auto 0;
-    }
-
-    .founder-top h2 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .founder-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .founder-card {
-      background: var(--bg2);
-      padding: 3rem 2.5rem;
-      position: relative;
-      transition: background 0.2s;
-    }
-
+    .founder-headline em { font-style: normal; color: var(--accent); }
+    .founder-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .founder-card { background: var(--bg2); padding: 2.8rem 2.2rem; transition: background 0.2s; }
     .founder-card:hover { background: #110d20; }
-
-    .founder-card-num {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      display: block;
+    .founder-card-n { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1.2rem; }
+    .founder-card h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.8rem; }
+    .founder-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
+    .founder-quote {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem); font-weight: 600; letter-spacing: -0.02em;
+      line-height: 1.5; font-style: italic; color: var(--text);
+      max-width: 780px; margin: 4rem auto 3rem;
+      padding: 2.5rem 3rem; border-left: 3px solid var(--accent);
     }
+    .founder-cta { text-align: center; }
 
-    .founder-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: var(--text);
-    }
+    /* ── SUBSCRIBE & SAVE ── */
+    .sub-wrap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sub-inner { max-width: 1160px; margin: 0 auto; padding: 7rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .sub-image { text-align: center; }
+    .sub-image img { max-width: 320px; width: 100%; filter: drop-shadow(0 20px 60px rgba(255,0,110,0.2)); }
+    .sub-text h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.8rem; }
+    .sub-text > p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .sub-benefits { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .sub-benefits li { display: flex; align-items: flex-start; gap: 1rem; }
+    .sub-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .sub-benefit-text h4 { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+    .sub-benefit-text p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
-    .founder-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .founder-cta {
-      text-align: center;
-      margin-top: 4rem;
-    }
-
-    .founder-pullquote {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.4;
-      color: var(--text);
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 4rem;
-      padding: 3rem;
-      border-left: 3px solid var(--accent);
-      text-align: left;
-      font-style: italic;
-    }
-
-    /* ── FLAVORS ─────────────────────────────── */
-    .flavors-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .flavor {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .flavor::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.25s;
-    }
-
-    .flavor:hover {
-      border-color: rgba(255,0,110,0.35);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(255,0,110,0.1);
-    }
-
-    .flavor:hover::before { transform: scaleX(1); }
-
-    .flavor img {
-      width: 100%;
-      max-width: 120px;
-      margin: 0 auto 1.8rem;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(255,0,110,0.15));
-    }
-
-    .flavor h3 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .flavor p {
-      font-size: 0.84rem;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
-
-    .flavor-btn {
-      display: inline-block;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 0.6rem 1.4rem;
-      border: 1px solid var(--accent);
-      transition: all 0.2s;
-    }
-
-    .flavor-btn:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    /* ── VIDEO CAROUSEL ──────────────────────── */
-    .video-section {
-      text-align: center;
-    }
-
-    .video-section .section-heading { margin-bottom: 3rem; }
-
-    .c-viewport {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-      padding: 0 1rem;
-    }
-
-    .c-track {
-      display: flex;
-      gap: 16px;
-      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .c-slide {
-      flex: 0 0 300px;
-      height: 533px;
-      position: relative;
-      transition: opacity 0.35s ease;
-      cursor: pointer;
-    }
-
+    /* ── VIDEO ── */
+    .video-section { text-align: center; }
+    .video-section .section-h { margin-bottom: 0.8rem; }
+    .video-section .section-sub { margin: 0 auto 3rem; max-width: 520px; }
+    .c-viewport { overflow: hidden; width: 100%; position: relative; padding: 0 1rem; }
+    .c-track { display: flex; gap: 16px; transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .c-slide { flex: 0 0 300px; height: 533px; position: relative; transition: opacity 0.35s; cursor: pointer; }
     .c-slide:not(.active) { opacity: 0.35; }
-
-    .c-slide video {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      background: #08060f;
-    }
-
-    .c-slide-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.1);
-    }
-
+    .c-slide video { width: 100%; height: 100%; object-fit: cover; display: block; background: #08060f; }
+    .c-slide-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1); }
     .c-slide.active .c-slide-overlay { display: none; }
-
-    .c-play-icon {
-      width: 52px; height: 52px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(4px);
-    }
-
+    .c-play-icon { width: 52px; height: 52px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
     .c-play-icon svg { width: 20px; fill: white; margin-left: 3px; }
-
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .c-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.6rem 1.3rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
+    .carousel-controls { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-top: 2rem; }
+    .c-btn { background: none; border: 1px solid var(--border); color: var(--muted); padding: 0.55rem 1.2rem; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
     .c-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .c-count { font-size: 0.78rem; color: var(--subtle); }
 
-    .c-count { font-size: 0.8rem; color: var(--subtle); }
-
-    /* ── PRICING ─────────────────────────────── */
-    .pricing-wrap {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* ── FLAVORS ── */
+    .flavors-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .flavor {
+      background: var(--bg2); border: 1px solid var(--border); padding: 2.8rem 2rem; text-align: center;
+      transition: all 0.25s; position: relative; overflow: hidden;
     }
+    .flavor::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.25s; }
+    .flavor:hover { border-color: rgba(255,0,110,0.3); transform: translateY(-3px); box-shadow: 0 10px 35px rgba(255,0,110,0.1); }
+    .flavor:hover::after { transform: scaleX(1); }
+    .flavor img { max-width: 120px; width: 100%; margin: 0 auto 1.5rem; display: block; filter: drop-shadow(0 8px 20px rgba(255,0,110,0.15)); }
+    .flavor h3 { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .flavor p { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
+    .flavor-btn { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; padding: 0.6rem 1.4rem; border: 1px solid var(--accent); transition: all 0.2s; }
+    .flavor-btn:hover { background: var(--accent); color: white; }
 
-    .pricing-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
-    }
-
-    .pricing-header {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-proof {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .pricing-urgency-bar {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .urgency-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,0,110,0.08);
-      border: 1px solid rgba(255,0,110,0.25);
-      padding: 0.5rem 1.2rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .urgency-dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 1.5s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .price-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2.8rem 2.2rem;
-      text-align: center;
-      transition: all 0.2s;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .price-card.featured {
-      background: #0e0b1d;
-      border-color: var(--accent);
-      transform: scale(1.03);
-      box-shadow: 0 0 60px rgba(255,0,110,0.12);
-    }
-
-    .price-card:not(.featured):hover {
-      border-color: rgba(255,0,110,0.35);
-      transform: translateY(-3px);
-    }
-
-    .price-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: white;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      white-space: nowrap;
-    }
-
-    .price-img {
-      width: 100%;
-      max-width: 130px;
-      margin: 0 auto 1.5rem;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 30px rgba(255,0,110,0.15));
-    }
-
-    .price-card h3 {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .price-amount {
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      line-height: 1;
-      margin: 1rem 0;
-    }
-
-    .price-amount small {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--muted);
-    }
-
-    .price-save {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .price-desc {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 1.8rem;
-    }
-
-    .price-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
-    }
-
-    .price-features li {
-      font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      text-align: left;
-    }
-
-    .price-features li::before {
-      content: '✓';
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-
-    /* ── GUARANTEE ───────────────────────────── */
-    .guarantee-section {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
-    }
-
-    .guarantee-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .guarantee-badge {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1rem;
-      flex-shrink: 0;
-      background: rgba(255,0,110,0.04);
-      box-shadow: 0 0 40px rgba(255,0,110,0.12), inset 0 0 40px rgba(255,0,110,0.04);
-    }
-
-    .guarantee-badge .badge-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .guarantee-badge .badge-text {
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.3rem;
-    }
-
-    .guarantee-content h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-
-    .guarantee-content p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 1rem;
-      max-width: 560px;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      margin-top: 5rem;
-    }
-
-    .tl-item {
-      background: var(--bg);
-      padding: 2.5rem 2rem;
-      transition: background 0.2s;
-    }
-
+    /* ── GUARANTEE ── */
+    .guarantee-section { max-width: 1160px; margin: 0 auto; padding: 7rem 3rem; }
+    .guarantee-grid { display: grid; grid-template-columns: auto 1fr; gap: 5rem; align-items: center; }
+    .guarantee-badge { width: 170px; height: 170px; border-radius: 50%; border: 2px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; flex-shrink: 0; background: rgba(255,0,110,0.04); box-shadow: 0 0 40px rgba(255,0,110,0.1); }
+    .guarantee-badge .b-num { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.05em; color: var(--accent); line-height: 1; }
+    .guarantee-badge .b-txt { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+    .guarantee-content h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1rem; }
+    .guarantee-content p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 0.8rem; max-width: 540px; }
+    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 5rem; }
+    .tl-item { background: var(--bg); padding: 2.5rem 2rem; transition: background 0.2s; }
     .tl-item:hover { background: var(--bg2); }
+    .tl-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .tl-item h4 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .tl-item p { font-size: 0.86rem; color: var(--muted); line-height: 1.75; }
 
-    .tl-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .tl-item h4 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
-      color: var(--text);
-    }
-
-    .tl-item p {
-      font-size: 0.87rem;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    /* ── FAQ ─────────────────────────────────── */
-    .faq-wrap {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-    }
-
-    .faq-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 7rem 3rem;
-    }
-
-    .faq {
-      margin-top: 3rem;
-      border: 1px solid var(--border);
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* ── FAQ ── */
+    .faq-wrap { background: var(--bg2); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 1160px; margin: 0 auto; padding: 7rem 3rem; }
+    .faq { margin-top: 3rem; border: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
     .faq-item:last-child { border-bottom: none; }
-
-    .faq-q {
-      padding: 1.5rem 2rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      letter-spacing: -0.01em;
-      transition: background 0.2s;
-    }
-
+    .faq-q { padding: 1.5rem 2rem; font-size: 0.95rem; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.01em; transition: background 0.2s; }
     .faq-q:hover { background: rgba(255,255,255,0.02); }
-
-    .faq-q::after {
-      content: '+';
-      color: var(--accent);
-      font-size: 1.3rem;
-      font-weight: 300;
-      line-height: 1;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-      margin-left: 1rem;
-    }
-
-    .faq-item.open .faq-q::after {
-      transform: rotate(45deg);
-    }
-
-    .faq-a {
-      display: none;
-      padding: 0 2rem 1.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
+    .faq-q::after { content: '+'; color: var(--accent); font-size: 1.3rem; font-weight: 300; line-height: 1; transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 2rem 1.5rem; font-size: 0.9rem; color: var(--muted); line-height: 1.85; }
     .faq-item.open .faq-a { display: block; }
 
-    /* ── FOOTER ──────────────────────────────── */
-    footer {
+    /* ── FOOTER ── */
+    .footer-signup {
+      background: #110d22;
       border-top: 1px solid var(--border);
       padding: 4rem 3rem;
-      max-width: 1140px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
     }
-
-    .footer-logo {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 0.8rem;
+    .footer-signup-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
     }
-
-    .footer-logo span { color: var(--accent); }
-
-    .footer-tagline {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 280px;
-      margin-bottom: 1.5rem;
+    .footer-signup h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+    .footer-signup p { font-size: 0.9rem; color: var(--muted); }
+    .signup-form { display: flex; gap: 0; }
+    .signup-input {
+      flex: 1; background: var(--bg); border: 1px solid var(--border); border-right: none;
+      color: var(--text); padding: 0.9rem 1.2rem;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; outline: none;
     }
-
-    .footer-social {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+    .signup-input::placeholder { color: var(--muted); }
+    .signup-input:focus { border-color: var(--accent); }
+    .signup-btn {
+      background: var(--accent); color: white; border: none; padding: 0.9rem 1.5rem;
+      font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s;
+      white-space: nowrap;
     }
-
-    .social-link {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .social-link:hover { color: var(--accent); }
-
-    .footer-col h4 {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .footer-col a {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-decoration: none;
-      margin-bottom: 0.6rem;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover { color: var(--text); }
-
-    .footer-bottom {
+    .signup-btn:hover { opacity: 0.85; }
+    footer {
       border-top: 1px solid var(--border);
-      padding: 1.5rem 3rem;
-      text-align: center;
+      padding: 4rem 3rem 2rem;
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
     }
+    .footer-logo { font-size: 1rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .footer-logo em { color: var(--accent); font-style: normal; }
+    .footer-tagline { font-size: 0.83rem; color: var(--muted); line-height: 1.7; max-width: 260px; margin-bottom: 1.3rem; }
+    .footer-social { display: flex; gap: 0.8rem; }
+    .footer-social a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--accent); }
+    .footer-col h4 { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.84rem; color: var(--muted); text-decoration: none; margin-bottom: 0.55rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 1.5rem 3rem; text-align: center; }
+    .footer-copy { font-size: 0.7rem; color: var(--subtle); letter-spacing: 0.05em; }
 
-    .footer-copy {
-      font-size: 0.73rem;
-      color: var(--subtle);
-      letter-spacing: 0.05em;
-    }
-
-    /* ── STICKY MOBILE CTA ───────────────────── */
+    /* ── STICKY MOBILE ── */
     .sticky-cta { display: none; }
 
-    @media (max-width: 768px) {
-      .sticky-cta {
-        display: block;
-        position: fixed;
-        bottom: 0; left: 0; right: 0;
-        z-index: 200;
-        background: var(--accent);
-        padding: 1rem 1.5rem;
-        text-align: center;
-      }
-      .sticky-cta a {
-        color: white;
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-decoration: none;
-      }
-    }
-
-    /* ── MOBILE ──────────────────────────────── */
+    /* ── MOBILE ── */
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 4rem 2rem 3rem;
-        text-align: center;
-        min-height: auto;
-        gap: 3rem;
-        padding-top: 6rem;
-      }
+      header { grid-template-columns: auto 1fr; }
+      .header-nav a:not(.btn-quiz-link) { display: none; }
+      .header-nav { gap: 0; }
+      .btn-quiz { display: none; }
 
-      .hero-trust { justify-content: center; }
-      .hero-actions { justify-content: center; }
+      .hero { padding: 5rem 1.5rem 0; min-height: auto; flex-direction: column; }
+      .hero-content { max-width: 100%; text-align: center; padding-bottom: 2rem; }
       .hero-stars { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-product { position: relative; right: auto; top: auto; transform: none; width: 90%; max-width: 380px; margin: 0 auto; }
 
-      .hero-visual { order: -1; }
+      .stats-bar { overflow-x: auto; gap: 0; }
+      .stat { padding: 0 1.5rem; }
 
-      .hero-trio { max-width: 320px; }
+      .shop-inner, .sub-inner, .diff-grid, .quiz-inner { grid-template-columns: 1fr; }
+      .fpanel.active { grid-template-columns: 1fr; }
+      .quiz-inner { text-align: center; }
+      .quiz-text p { margin: 0 auto; }
 
-      .stats-bar {
-        padding: 1.2rem 1rem;
-        gap: 0;
-        overflow-x: auto;
-      }
+      .certs-inner { flex-wrap: wrap; gap: 1.5rem; }
+      .cert { padding: 0 1.5rem; }
 
-      .stat-item { padding: 0 1.5rem; }
-
-      .problem-inner,
-      .product-grid { grid-template-columns: 1fr; gap: 3rem; }
-
-      .how-steps,
-      .testimonials-grid,
-      .founder-cards,
-      .pricing-grid,
-      .timeline { grid-template-columns: 1fr; }
-
+      .testi-grid { grid-template-columns: 1fr; }
+      .how-steps, .founder-cards, .timeline { grid-template-columns: 1fr; }
       .flavors-row { grid-template-columns: 1fr; gap: 1rem; }
-
-      .price-card.featured { transform: scale(1); }
-
       .guarantee-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
       .guarantee-badge { margin: 0 auto; }
 
-      .section,
-      .pricing-inner,
-      .how-inner,
-      .founder-inner,
-      .faq-inner,
-      .guarantee-section { padding: 4rem 1.5rem; }
-
-      footer {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 3rem 1.5rem;
-      }
-
+      footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; }
+      .footer-signup-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-signup { padding: 3rem 1.5rem; }
       .footer-bottom { padding: 1.5rem; }
 
-      header { padding: 1rem 1.5rem; }
-      nav a:not(.nav-cta) { display: none; }
+      .section { padding: 4rem 1.5rem; }
+      .diff-grid, .shop-inner { padding: 4rem 1.5rem; }
 
-      .problem-inner { padding: 4rem 1.5rem; }
-
-      .founder-pullquote { padding: 2rem; font-size: 1.2rem; }
+      .sticky-cta {
+        display: block; position: fixed; bottom: 0; left: 0; right: 0;
+        z-index: 200; background: var(--accent); padding: 1rem 1.5rem; text-align: center;
+      }
+      .sticky-cta a { color: white; font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BAR -->
+  <!-- ANN BAR -->
   <div class="ann-bar">
-    <span id="ann-text">🚚 Free shipping on all orders · No minimum</span>
+    <span class="ann-text" id="ann-text">🚚 Free shipping on every order · No minimum</span>
   </div>
 
   <!-- HEADER -->
   <header>
-    <a class="logo" href="#"><span>Awfully</span> Good</a>
-    <nav>
+    <nav class="header-nav">
       <a href="#flavors">Flavors</a>
       <a href="#proof">Reviews</a>
       <a href="#why">Our Story</a>
-      <a href="#pricing" class="nav-cta">Shop Now</a>
     </nav>
+    <a class="logo" href="#"><em>Awfully</em> Good</a>
+    <div class="header-actions">
+      <a href="#flavor-quiz" class="btn-quiz">Find My Flavor</a>
+      <a href="#pricing" class="btn-shop">Shop Now</a>
+    </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="hero-content">
       <div class="hero-eyebrow">Lion's Mane Tincture · Alcohol-Free</div>
       <h1>Your Brain<br>Called.<br><em>Pick Up.</em></h1>
@@ -1503,47 +544,22 @@
         <span class="stars">★★★★★</span>
         <span class="stars-text">5.0 · 22 verified five-star reviews</span>
       </div>
-      <p class="hero-sub">215 people stopped drifting through their days. One dropper every morning. Clarity in 2–4 weeks. 30-day money-back if it doesn't work. (It will work.)</p>
-      <div class="hero-actions">
-        <a href="#pricing" class="btn-primary">Try It Risk-Free</a>
-        <a href="#why" class="btn-ghost">Our story →</a>
+      <p class="hero-sub">215 people stopped drifting through their days. One dropper every morning. Clarity in 2–4 weeks. 30-day money-back if it doesn't. (It will.)</p>
+      <div class="hero-ctas">
+        <a href="#pricing" class="btn-primary">Claim My Free Bottle</a>
+        <a href="#flavor-quiz" class="btn-outline">Find my flavor →</a>
       </div>
       <div class="hero-trust">
-        <span class="trust-item">No alcohol</span>
-        <span class="trust-item">Lab tested</span>
-        <span class="trust-item">30-day guarantee</span>
-        <span class="trust-item">Free shipping</span>
+        <span class="trust-pill">No alcohol</span>
+        <span class="trust-pill">Lab tested</span>
+        <span class="trust-pill">30-day guarantee</span>
+        <span class="trust-pill">Free shipping</span>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-glow"></div>
-      <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Awfully Good — All 3 Flavors" class="hero-trio">
+    <div class="hero-product">
+      <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Awfully Good — All 3 Flavors">
     </div>
   </section>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num">215+</div>
-      <div class="stat-label">Customers</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">5.0</div>
-      <div class="stat-label">Star Rating</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">22</div>
-      <div class="stat-label">Verified Reviews</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">30</div>
-      <div class="stat-label">Day Guarantee</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Alcohol. Zero.</div>
-    </div>
-  </div>
 
   <!-- MARQUEE -->
   <div class="marquee-wrap">
@@ -1567,133 +583,293 @@
     </div>
   </div>
 
-  <!-- PROBLEM SECTION -->
-  <div class="problem-wrap">
-    <div class="problem-inner">
-      <div class="problem-left">
-        <span class="section-label">The real problem</span>
-        <h2>You're not tired.<br>You're <em>foggy.</em><br>Big difference.</h2>
-        <p>You're in the room but not in the room. Present by body, somewhere else entirely by mind. You're watching your own life happen from one step behind it.</p>
-        <p>That's not burnout. That's a brain running on fumes. And it's fixable — not with more coffee, not with a better morning routine, but with giving your neurons what they actually need to function.</p>
-        <p style="margin-top:1.5rem;font-style:italic;color:var(--text);">"The awful moments teach you the most. The good ones are worth celebrating. But you can't feel either through brain fog."</p>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">215+</div><div class="stat-l">Customers</div></div>
+    <div class="stat"><div class="stat-n">5.0★</div><div class="stat-l">Star Rating</div></div>
+    <div class="stat"><div class="stat-n">22</div><div class="stat-l">Verified Reviews</div></div>
+    <div class="stat"><div class="stat-n">30</div><div class="stat-l">Day Guarantee</div></div>
+    <div class="stat"><div class="stat-n">0</div><div class="stat-l">Alcohol. Zero.</div></div>
+  </div>
+
+  <!-- SHOP BY FLAVOR -->
+  <div class="shop-wrap" id="pricing">
+    <div class="shop-inner">
+      <div class="shop-header">
+        <span class="section-label">Shop</span>
+        <h2 class="section-h">Pick your flavor.<br>Start showing up.</h2>
+        <p class="section-sub" style="margin:.8rem auto 0;max-width:480px;text-align:center;">Same 1000mg formula. Same results. Different vibe.<br>All three are correct. The bundle is the most correct.</p>
       </div>
-      <div class="problem-right">
-        <div class="problem-card">
-          <div class="problem-icon">🧠</div>
-          <div>
-            <h4>The fog is real — and measurable</h4>
-            <p>Brain fog isn't a mood. It's a neurological state. Lion's Mane triggers NGF — the protein your brain uses to grow and repair neurons. No NGF? No clarity.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">⚗️</div>
-          <div>
-            <h4>Most supplements are doing it wrong</h4>
-            <p>Alcohol extraction is cheaper. It's also worse. It strips out the beta-glucans and hericenones you actually want. We use water extraction. It costs more. We don't care.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">⏱️</div>
-          <div>
-            <h4>This is a 30-day investment, not a quick fix</h4>
-            <p>You'll notice something in weeks 1–2. Full clarity hits around day 30. Neuroplasticity doesn't happen overnight. Neither did the fog. Give it the time it needs.</p>
-          </div>
-        </div>
+      <div class="flavor-tabs">
+        <button class="ftab active" onclick="switchFlavor('strawberry',this)">🍓 Strawberry</button>
+        <button class="ftab" onclick="switchFlavor('blueberry',this)">🫐 Blueberry</button>
+        <button class="ftab" onclick="switchFlavor('grape',this)">🍇 Grape</button>
+        <button class="ftab" onclick="switchFlavor('bundle',this)">⚡ Bundle</button>
       </div>
+      <div class="flavor-panels">
+
+        <!-- Strawberry -->
+        <div class="fpanel active" id="fpanel-strawberry">
+          <div class="fpanel-image">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry">
+          </div>
+          <div class="fpanel-details">
+            <span class="section-label">🍓 Strawberry</span>
+            <h2>The crowd pleaser.<br>Sweet chaos in a bottle.</h2>
+            <p class="flavor-desc">The one everyone tries first and then immediately reorders. Sweet, bright, surprisingly not weird about being a mushroom supplement. The most popular flavor by a wide margin. No shade to the other two.</p>
+            <ul class="fpanel-facts">
+              <li>1000mg full-spectrum Lion's Mane per serving</li>
+              <li>Alcohol-free water extraction</li>
+              <li>30-day supply per bottle</li>
+              <li>Certified lab tested</li>
+            </ul>
+            <div class="price-toggle">
+              <label class="price-opt selected">
+                <input type="radio" name="s-type" value="one-time" checked>
+                <div class="price-opt-label">
+                  <div class="price-opt-name">One-time Purchase</div>
+                  <div class="price-opt-desc">Try it, love it, come back</div>
+                </div>
+                <div class="price-opt-price">$29.99</div>
+              </label>
+              <label class="price-opt">
+                <input type="radio" name="s-type" value="sub">
+                <div class="price-opt-label">
+                  <div class="price-opt-name">Subscribe & Save</div>
+                  <div class="price-opt-desc">Monthly delivery · Cancel anytime</div>
+                </div>
+                <div>
+                  <div class="price-opt-price">$24.99</div>
+                  <div class="price-opt-badge">Save 17%</div>
+                </div>
+              </label>
+            </div>
+            <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support" class="btn-primary panel-cta">Add to Cart — Strawberry</a>
+            <p class="panel-guarantee">✓ 30-day money-back guarantee · Free shipping</p>
+          </div>
+        </div>
+
+        <!-- Blueberry -->
+        <div class="fpanel" id="fpanel-blueberry">
+          <div class="fpanel-image">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry">
+          </div>
+          <div class="fpanel-details">
+            <span class="section-label">🫐 Blueberry</span>
+            <h2>The bold one.<br>Doesn't apologize.</h2>
+            <p class="flavor-desc">The night-shift RN's choice. The "I run on spite and blueberries" flavor. Darker, bolder, still disgustingly effective at making your brain work. Recommended by a Chicago ER nurse who is sharper than you on 12-hour shifts.</p>
+            <ul class="fpanel-facts">
+              <li>1000mg full-spectrum Lion's Mane per serving</li>
+              <li>Alcohol-free water extraction</li>
+              <li>30-day supply per bottle</li>
+              <li>Certified lab tested</li>
+            </ul>
+            <div class="price-toggle">
+              <label class="price-opt selected">
+                <input type="radio" name="b-type" value="one-time" checked>
+                <div class="price-opt-label">
+                  <div class="price-opt-name">One-time Purchase</div>
+                  <div class="price-opt-desc">Try it, love it, come back</div>
+                </div>
+                <div class="price-opt-price">$29.99</div>
+              </label>
+              <label class="price-opt">
+                <input type="radio" name="b-type" value="sub">
+                <div class="price-opt-label">
+                  <div class="price-opt-name">Subscribe & Save</div>
+                  <div class="price-opt-desc">Monthly delivery · Cancel anytime</div>
+                </div>
+                <div>
+                  <div class="price-opt-price">$24.99</div>
+                  <div class="price-opt-badge">Save 17%</div>
+                </div>
+              </label>
+            </div>
+            <a href="https://shop.awfullygoodcompany.com/products/blueberry-lion-s-mane-tincture-brain-boost-clarity-2oz" class="btn-primary panel-cta">Add to Cart — Blueberry</a>
+            <p class="panel-guarantee">✓ 30-day money-back guarantee · Free shipping</p>
+          </div>
+        </div>
+
+        <!-- Grape -->
+        <div class="fpanel" id="fpanel-grape">
+          <div class="fpanel-image">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape">
+          </div>
+          <div class="fpanel-details">
+            <span class="section-label">🍇 Grape</span>
+            <h2>Clean finish.<br>Quietly your favorite.</h2>
+            <p class="flavor-desc">The sleeper pick. The "I'll try it last" flavor that ends up being the one you reorder. Clean, smooth, not trying too hard. Denver's favorite flavor, apparently. Works exactly like the others. Just vibes differently.</p>
+            <ul class="fpanel-facts">
+              <li>1000mg full-spectrum Lion's Mane per serving</li>
+              <li>Alcohol-free water extraction</li>
+              <li>30-day supply per bottle</li>
+              <li>Certified lab tested</li>
+            </ul>
+            <div class="price-toggle">
+              <label class="price-opt selected">
+                <input type="radio" name="g-type" value="one-time" checked>
+                <div class="price-opt-label">
+                  <div class="price-opt-name">One-time Purchase</div>
+                  <div class="price-opt-desc">Try it, love it, come back</div>
+                </div>
+                <div class="price-opt-price">$29.99</div>
+              </label>
+              <label class="price-opt">
+                <input type="radio" name="g-type" value="sub">
+                <div class="price-opt-label">
+                  <div class="price-opt-name">Subscribe & Save</div>
+                  <div class="price-opt-desc">Monthly delivery · Cancel anytime</div>
+                </div>
+                <div>
+                  <div class="price-opt-price">$24.99</div>
+                  <div class="price-opt-badge">Save 17%</div>
+                </div>
+              </label>
+            </div>
+            <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%87-grape-lion-s-mane-tincture-cognitive-support-mood-lift-2oz" class="btn-primary panel-cta">Add to Cart — Grape</a>
+            <p class="panel-guarantee">✓ 30-day money-back guarantee · Free shipping</p>
+          </div>
+        </div>
+
+        <!-- Bundle -->
+        <div class="fpanel" id="fpanel-bundle">
+          <div class="fpanel-image">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Bundle — All 3 Flavors" style="max-width:360px;">
+          </div>
+          <div class="fpanel-details">
+            <span class="section-label">⚡ Best Value — Buy 2 Get 1 Free</span>
+            <h2>All three.<br>One free.<br>No guilt.</h2>
+            <p class="flavor-desc">Get all three flavors, try them, figure out your favorite, and have two more bottles ready to go. Save $29.99. Get a free month of clarity. Best decision you'll make this week, probably.</p>
+            <ul class="fpanel-facts">
+              <li>3 bottles — all 3 flavors</li>
+              <li>90-day supply (one free month)</li>
+              <li>Save $29.99 vs buying individually</li>
+              <li>Free shipping · 30-day guarantee</li>
+            </ul>
+            <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;padding:1rem 1.2rem;background:rgba(255,0,110,0.04);border:1px solid rgba(255,0,110,0.2);">
+              <div style="font-size:2.2rem;font-weight:700;letter-spacing:-0.04em;color:var(--text);">$59<span style="font-size:1.1rem;color:var(--muted)">.99</span></div>
+              <div style="font-size:0.85rem;color:var(--muted);text-decoration:line-through;">$89.97</div>
+              <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--accent);color:white;padding:0.25rem 0.6rem;">Save $29.99</div>
+            </div>
+            <a href="https://shop.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement" class="btn-primary panel-cta">Claim My Free Bottle</a>
+            <p class="panel-guarantee">✓ 30-day money-back guarantee · Free shipping · Offer ends Sunday</p>
+          </div>
+        </div>
+
+      </div><!-- /flavor-panels -->
     </div>
   </div>
 
-  <!-- PRODUCT SHOWCASE -->
+  <!-- WHAT MAKES US DIFFERENT -->
   <section class="section">
-    <div class="product-grid">
-      <div class="product-img">
+    <div class="diff-grid">
+      <div class="diff-image">
         <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Awfully Good Lion's Mane Tincture">
       </div>
-      <div class="product-facts">
+      <div class="diff-text">
         <span class="section-label">What's in it</span>
         <h2>1000mg. Alcohol-free.<br>Delusionally effective.</h2>
-        <p>We spent way too long thinking about extraction methods so you don't have to. Water extraction. Full spectrum. Every compound that actually does something — intact.</p>
-        <p>Your brain supports neuroplasticity. Lion's Mane fuels it. Fog lifts. You get your attention span back. You remember things. You're here again. That's the whole pitch.</p>
-        <ul class="fact-list">
+        <p>Most Lion's Mane tinctures use alcohol as a carrier — which is cheaper and also destroys the compounds you actually want. We use water extraction. It costs more. The results are not subtle.</p>
+        <p>Your brain supports neuroplasticity. Lion's Mane fuels it by triggering NGF — the protein your brain uses to grow and repair neurons. Fog lifts. Clarity lands. You get your attention span back.</p>
+        <ul class="diff-list">
           <li>1000mg full-spectrum Lion's Mane per serving</li>
           <li>Water extraction preserves full compound profile</li>
           <li>Fruiting body only — no mycelium grain filler</li>
-          <li>Zero alcohol · Zero side effects · Zero regrets</li>
-          <li>Third-party lab tested, every single batch</li>
+          <li>Zero alcohol · Zero fillers · Zero side effects</li>
+          <li>Third-party lab tested, every batch</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
+  <!-- CERTS ROW -->
+  <div class="certs-wrap">
+    <div class="certs-inner">
+      <div class="cert"><div class="cert-icon">💪</div><div class="cert-label">1000mg<br>Full-Spectrum</div></div>
+      <div class="cert"><div class="cert-icon">🚫</div><div class="cert-label">Alcohol-Free<br>Formula</div></div>
+      <div class="cert"><div class="cert-icon">🍄</div><div class="cert-label">Fruiting Body<br>Only</div></div>
+      <div class="cert"><div class="cert-icon">🔬</div><div class="cert-label">Third-Party<br>Lab Tested</div></div>
+      <div class="cert"><div class="cert-icon">♻️</div><div class="cert-label">No Fillers<br>Ever</div></div>
+      <div class="cert"><div class="cert-icon">🔄</div><div class="cert-label">Cancel<br>Anytime</div></div>
+    </div>
+  </div>
 
   <!-- HOW IT WORKS -->
-  <div class="how-wrap">
-    <div class="how-inner">
-      <span class="section-label">How it works</span>
-      <h2 class="section-heading">Embarrassingly simple.</h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center;">We almost felt bad charging money for this. Then we remembered how well it works.</p>
-      <div class="how-steps">
-        <div class="step">
-          <div class="step-num">01</div>
-          <h3>Open the bottle.</h3>
-          <p>Pick your flavor. Strawberry, blueberry, or grape. They all work the same — the flavor is just for fun. (We're fun people.)</p>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <h3>One dropper. Under the tongue.</h3>
-          <p>Hold for 30 seconds. Swallow. That's it. No blending. No ritual. No 17-step morning routine. Just a habit that actually stacks.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <h3>Wait. Try to be chill about it.</h3>
-          <p>Results build over 2–4 weeks. Around day 30, something clicks. Most people can't believe how foggy they used to be. This is that moment.</p>
-        </div>
+  <section class="section">
+    <span class="section-label">How it works</span>
+    <h2 class="section-h">Embarrassingly simple.<br>We almost feel bad charging for it.</h2>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h3>Open the bottle.</h3>
+        <p>Pick your flavor. They all work identically. The flavor is just so you don't hate the experience. We're thoughtful like that.</p>
       </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h3>One dropper under the tongue.</h3>
+        <p>Hold for 30 seconds. Swallow. Done. No blending, no ritual, no 17-step morning routine. Just a habit that actually stacks.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h3>Wait. Try to be chill about it.</h3>
+        <p>Results build over 2–4 weeks. Around day 30, something clicks. Most people can't believe how foggy they used to be. That's the moment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ CTA -->
+  <div class="quiz-wrap" id="flavor-quiz">
+    <div class="quiz-inner">
+      <div class="quiz-text">
+        <span class="section-label" style="color:rgba(255,255,255,0.7);">Not sure which flavor?</span>
+        <h2>We have strong opinions<br>about which one is yours.</h2>
+        <p>Answer 3 questions. We'll match you with the right flavor based on your vibe, your lifestyle, and approximately how dramatic you are about supplements. (Extremely valid.)</p>
+      </div>
+      <a href="#flavors" class="btn-quiz-cta">Find My Flavor →</a>
     </div>
   </div>
 
   <!-- TESTIMONIALS -->
   <section class="section" id="proof">
     <span class="section-label">Real people, real results</span>
-    <h2 class="section-heading">They're annoyingly happy about it.</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
+    <h2 class="section-h">They're annoyingly enthusiastic about this.</h2>
+    <div class="testi-grid">
+      <div class="testi">
         <div class="testi-top">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-verified">TikTok Shop · Verified</div>
+          <div class="testi-source">TikTok Shop · Verified</div>
         </div>
-        <p class="testi-quote">"Okay I was NOT expecting this to work. I've tried like 4 other mushroom supplements and felt nothing. Day 18 on this one and the brain fog I've had since having my second kid is actually lifting. I told my husband and he started taking it too. We're on the bundle now."</p>
+        <p class="testi-body">"Okay I was NOT expecting this to work. I've tried like 4 other mushroom supplements and felt nothing. Day 18 on this one and the brain fog I've had since having my second kid is actually lifting. My husband started taking it too. We're on the bundle now."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:#7c3aed;">KR</div>
+          <div class="testi-av" style="background:#7c3aed;">KR</div>
           <div>
             <div class="testi-name">Kelsey R.</div>
             <div class="testi-role">Austin, TX · Strawberry · 6 weeks in</div>
           </div>
         </div>
       </div>
-      <div class="testimonial">
+      <div class="testi">
         <div class="testi-top">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-verified">TikTok Shop · Verified</div>
+          <div class="testi-source">TikTok Shop · Verified</div>
         </div>
-        <p class="testi-quote">"I do 12-hour overnight shifts. Been running on caffeine and spite for 3 years. Started the blueberry one 5 weeks ago and my charge nurse actually asked if I was okay — she meant it as a compliment. I'm sharper. I'm calmer. I'm on my second bottle."</p>
+        <p class="testi-body">"I do 12-hour overnight shifts. Been running on caffeine and spite for 3 years. Started the blueberry one 5 weeks ago and my charge nurse asked if I was okay — she meant it as a compliment. I'm sharper. I'm calmer. I'm on my second bottle."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:#0369a1;">DM</div>
+          <div class="testi-av" style="background:#0369a1;">DM</div>
           <div>
             <div class="testi-name">Dominic M.</div>
             <div class="testi-role">Night shift RN · Chicago, IL · Blueberry</div>
           </div>
         </div>
       </div>
-      <div class="testimonial">
+      <div class="testi">
         <div class="testi-top">
           <div class="testi-stars">★★★★★</div>
-          <div class="testi-verified">TikTok Shop · Verified</div>
+          <div class="testi-source">TikTok Shop · Verified</div>
         </div>
-        <p class="testi-quote">"I bought this half as a joke because I kept seeing it on TikTok. Now I'm the person who won't shut up about it. The grape flavor is actually good?? And I feel like I got 2 extra hours in my day. My therapist thinks I've been journaling more. I've just been… clearer."</p>
+        <p class="testi-body">"I bought this half as a joke because I kept seeing it on TikTok. Now I'm the person who won't shut up about it. The grape flavor is actually good?? I feel like I got 2 extra hours in my day. My therapist thinks I've been journaling more. I've just been… clearer."</p>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:#b45309;">TW</div>
+          <div class="testi-av" style="background:#b45309;">TW</div>
           <div>
             <div class="testi-name">Tara W.</div>
             <div class="testi-role">Denver, CO · Grape · On her 3rd bottle</div>
@@ -1703,38 +879,36 @@
     </div>
   </section>
 
-  <hr class="divider">
-
   <!-- FOUNDER STORY -->
   <div class="founder-wrap" id="why">
     <div class="founder-inner">
-      <div class="founder-top">
+      <div class="founder-eyebrow">
         <span class="section-label">Why this exists</span>
-        <h2>The founder almost died at 13.<br>Then lost both parents to cancer.<br><em>She made a mushroom tincture. Classic.</em></h2>
       </div>
-
-      <blockquote class="founder-pullquote">
-        "The most awful moments in life teach you the most. The good ones are worth celebrating. Both of them — the whole messy, beautiful thing — deserve to be fully felt. You don't get a replay. You get one dance."
-      </blockquote>
-
+      <h2 class="founder-headline">
+        She almost died at 13.<br>Lost both parents to cancer.<br>
+        <em>Made a mushroom tincture. Classic.</em>
+      </h2>
       <div class="founder-cards">
         <div class="founder-card">
-          <span class="founder-card-num">Chapter 01</span>
+          <span class="founder-card-n">Chapter 01</span>
           <h3>I Almost Didn't Make It to 14</h3>
-          <p>Anorexia at 13. Hospital. The kind of close call that changes your relationship with time permanently. I survived and I got one singular obsession out of it: not wasting a single moment I've been given. Never foggy. Never absent. Never again.</p>
+          <p>Anorexia at 13. Hospital. The kind of close call that permanently rewires your relationship with time. I survived and got one obsession out of it: not wasting a single moment I've been given. Never foggy. Never absent. Never again.</p>
         </div>
         <div class="founder-card">
-          <span class="founder-card-num">Chapter 02</span>
-          <h3>Then I Lost Both Parents. To Cancer. Twice.</h3>
-          <p>There are conversations I was in that I wasn't fully present for. Moments I can't rewind. Time I spent foggy when I should have been all-in. Clarity stopped being a wellness goal and became non-negotiable. A principle. A reason to build.</p>
+          <span class="founder-card-n">Chapter 02</span>
+          <h3>Then I Lost Both Parents to Cancer. Twice.</h3>
+          <p>There are conversations I was in that I wasn't fully present for. Moments I can't rewind. Time I spent foggy when I should have been all-in. Clarity stopped being a wellness goal and became non-negotiable. A principle. A reason to build something.</p>
         </div>
         <div class="founder-card">
-          <span class="founder-card-num">Chapter 03</span>
+          <span class="founder-card-n">Chapter 03</span>
           <h3>This Isn't a Supplement. It's a Stance.</h3>
-          <p>Awfully Good is for people who refuse to sleepwalk through their own lives. Who understand that "awful" and "good" aren't opposites — they're the whole thing. You deserve to feel all of it, clearly. That's the whole company.</p>
+          <p>Awfully Good is for people who refuse to sleepwalk through their own lives. The awful moments and the good ones — the whole messy, beautiful thing — deserve to be fully felt. Clearly. Without the fog between you and your own life.</p>
         </div>
       </div>
-
+      <blockquote class="founder-quote">
+        "The awful moments teach you the most. The good ones are worth celebrating. Both deserve to be fully felt. You don't get a replay. You get one dance. Be here for it."
+      </blockquote>
       <div class="founder-cta">
         <a href="#pricing" class="btn-primary">I'm Ready to Show Up</a>
       </div>
@@ -1744,40 +918,76 @@
   <!-- FLAVORS -->
   <section class="section" id="flavors">
     <span class="section-label">Choose your flavor</span>
-    <h2 class="section-heading">Three flavors.<br>One mission.</h2>
-    <p class="section-sub">Same 1000mg full-spectrum Lion's Mane. Same results. Pick the one that sounds like you — or get all three with our Buy 2 Get 1 Free bundle.</p>
+    <h2 class="section-h">Three flavors. Same mission.<br>All of them correct.</h2>
     <div class="flavors-row">
       <div class="flavor">
-        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry Lion's Mane">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry">
         <h3>🍓 Strawberry</h3>
-        <p>The crowd pleaser. Sweet chaos in a bottle. The one people try first and then immediately buy again.</p>
+        <p>The crowd pleaser. Sweet chaos in a bottle. The most reordered flavor. No coincidence.</p>
         <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Strawberry →</a>
       </div>
       <div class="flavor">
-        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry Lion's Mane">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry">
         <h3>🫐 Blueberry</h3>
-        <p>The bold one. Doesn't apologize. The night-shift nurse's choice. Make of that what you will.</p>
+        <p>The bold one. Doesn't apologize. Preferred by night-shift nurses and people who do hard things.</p>
         <a href="https://shop.awfullygoodcompany.com/products/blueberry-lion-s-mane-tincture-brain-boost-clarity-2oz" class="flavor-btn">Shop Blueberry →</a>
       </div>
       <div class="flavor">
-        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape Lion's Mane">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape">
         <h3>🍇 Grape</h3>
-        <p>Clean finish. Quietly your favorite. The "I'll try it last" flavor that ends up being the one you reorder.</p>
+        <p>Clean finish. Quietly your favorite. The "I'll try it last" flavor that becomes the one you reorder.</p>
         <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%87-grape-lion-s-mane-tincture-cognitive-support-mood-lift-2oz" class="flavor-btn">Shop Grape →</a>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
+  <hr class="div">
 
-  <!-- VIDEO CAROUSEL -->
-  <section class="section video-section">
-    <span class="section-label">Real people</span>
-    <h2 class="section-heading">Perfectly imperfect.<br>Real results.</h2>
-    <div class="c-viewport" id="cViewport">
-      <div class="c-track" id="cTrack">
-        <!-- slides injected by JS -->
+  <!-- SUBSCRIBE & SAVE -->
+  <div class="sub-wrap">
+    <div class="sub-inner">
+      <div class="sub-image">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Subscribe & Save">
       </div>
+      <div class="sub-text">
+        <span class="section-label">Subscribe & Save</span>
+        <h2>Running out is the only<br>side effect we couldn't fix.</h2>
+        <p>Subscribe, save 17% forever, never have to remember to reorder. Cancel anytime — we're not that codependent. This is the option for people who've decided they're not going back to foggy.</p>
+        <ul class="sub-benefits">
+          <li>
+            <div class="sub-icon">💰</div>
+            <div class="sub-benefit-text">
+              <h4>Save 17% on every order</h4>
+              <p>$24.99/mo instead of $29.99. That's the price of being unreasonably sharp all year.</p>
+            </div>
+          </li>
+          <li>
+            <div class="sub-icon">🚚</div>
+            <div class="sub-benefit-text">
+              <h4>Free shipping, always</h4>
+              <p>Delivered to your door before you even realize you're running low. Convenient.</p>
+            </div>
+          </li>
+          <li>
+            <div class="sub-icon">🔓</div>
+            <div class="sub-benefit-text">
+              <h4>Cancel anytime, no drama</h4>
+              <p>No cancellation hoops. No guilt emails. No passive-aggressive "are you sure?" Just cancel.</p>
+            </div>
+          </li>
+        </ul>
+        <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support?selling_plan=6545506546" class="btn-primary">Subscribe & Save 17%</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SECTION -->
+  <section class="section video-section">
+    <span class="section-label">TikTok made me do it</span>
+    <h2 class="section-h">See It In Action.</h2>
+    <p class="section-sub">Real people. Real results. Perfectly imperfect. If you saw us on TikTok and ended up here — welcome. You made the right choice.</p>
+    <div class="c-viewport" id="cViewport">
+      <div class="c-track" id="cTrack"></div>
     </div>
     <div class="carousel-controls">
       <button class="c-btn" onclick="previousVideo()">← Prev</button>
@@ -1786,102 +996,36 @@
     </div>
   </section>
 
-  <!-- PRICING -->
-  <div class="pricing-wrap" id="pricing">
-    <div class="pricing-inner">
-      <div class="pricing-header">
-        <span class="section-label">Get it</span>
-        <h2 class="section-heading">Pick your path.<br>Show up for your life.</h2>
-      </div>
-      <p class="pricing-proof">★★★★★ 5.0 · 22 verified reviews · Free shipping · 30-day money-back guarantee</p>
-      <div class="pricing-urgency-bar">
-        <div class="urgency-pill">
-          <span class="urgency-dot"></span>
-          Buy 2 Get 1 Free offer ends Sunday
-        </div>
-      </div>
-      <div class="pricing-grid">
-
-        <!-- Try It -->
-        <div class="price-card">
-          <img class="price-img" src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="1 Bottle">
-          <h3>Try It</h3>
-          <div class="price-amount">$29<small>.99</small></div>
-          <p class="price-desc">1 bottle · 30-day supply<br>Pick any flavor you want</p>
-          <ul class="price-features">
-            <li>Full 30-day supply</li>
-            <li>30-day money back guarantee</li>
-            <li>Free shipping</li>
-          </ul>
-          <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support" class="btn-primary">Get My Bottle</a>
-        </div>
-
-        <!-- Buy 2 Get 1 Free -->
-        <div class="price-card featured">
-          <div class="price-badge">Most Popular · Best Value</div>
-          <img class="price-img" src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Buy 2 Get 1 Free" style="max-width:180px;">
-          <h3>Buy 2, Get 1 Free</h3>
-          <p class="price-save">Save $29.99 · One Month Free</p>
-          <div class="price-amount">$59<small>.99</small></div>
-          <p class="price-desc">3 bottles · 90-day supply<br>Mix & match all 3 flavors</p>
-          <ul class="price-features">
-            <li>One full bottle free</li>
-            <li>Try all 3 flavors</li>
-            <li>90-day supply</li>
-            <li>30-day money back guarantee</li>
-            <li>Free shipping</li>
-          </ul>
-          <a href="https://shop.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement" class="btn-primary">Claim My Free Bottle</a>
-        </div>
-
-        <!-- Auto-Ship -->
-        <div class="price-card">
-          <img class="price-img" src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Auto-Ship">
-          <h3>Auto-Ship</h3>
-          <div class="price-amount">$24<small>.99</small></div>
-          <p class="price-desc">Monthly delivery · Never run out<br>Save 17% every month</p>
-          <ul class="price-features">
-            <li>Save 17% every month</li>
-            <li>Cancel anytime, no tricks</li>
-            <li>No penalties, no guilt</li>
-            <li>Free shipping</li>
-          </ul>
-          <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support?selling_plan=6545506546" class="btn-primary">Subscribe & Save</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <!-- GUARANTEE + TIMELINE -->
   <section class="guarantee-section">
     <div class="guarantee-grid">
       <div class="guarantee-badge">
-        <div class="badge-num">30</div>
-        <div class="badge-text">Day Money<br>Back Guarantee</div>
+        <div class="b-num">30</div>
+        <div class="b-txt">Day Money<br>Back<br>Guarantee</div>
       </div>
       <div class="guarantee-content">
         <span class="section-label">Zero risk</span>
-        <h2>Love it or we're<br>heartbroken. (And you<br>get your money back.)</h2>
-        <p>We're that confident it works. Try it for 30 days. If your brain doesn't feel better, email us. We'll refund you the full amount, no questions, no hoops, no drama. </p>
+        <h2>Love it or we're heartbroken.<br>(And you get your money back.)</h2>
+        <p>We're that confident. Try it for 30 days. If your brain doesn't feel better — clearer, sharper, more present — email us. Full refund, no questions, no hoops, no "have you tried using it differently?" energy.</p>
         <p>We're not in the business of keeping money from people who aren't happy. That's just not the vibe here.</p>
+        <a href="#pricing" class="btn-primary" style="margin-top:0.5rem;display:inline-block;">Start Risk-Free</a>
       </div>
     </div>
     <div class="timeline">
       <div class="tl-item">
         <p class="tl-label">Week 1–2</p>
         <h4>Something shifts</h4>
-        <p>Better sleep, sharper mornings. Brain fog starts to lift. You notice you're more present in conversations. Your friend asks if you're okay. You are.</p>
+        <p>Better sleep, sharper mornings. Brain fog starts lifting. You notice you're actually present in conversations. Someone asks if you're okay — in a good way.</p>
       </div>
       <div class="tl-item">
         <p class="tl-label">Week 3–4</p>
         <h4>Full clarity kicks in</h4>
-        <p>Neuroplasticity in full effect. Focus sharpens. Memory improves. This is when the real "wait, is this actually working?" moment hits. It is.</p>
+        <p>Neuroplasticity in full effect. Focus sharpens. Memory improves. This is the "wait, is this actually working?" moment. It is.</p>
       </div>
       <div class="tl-item">
         <p class="tl-label">Ongoing</p>
         <h4>You show up differently</h4>
-        <p>You remember things. You're present for the moments that matter. You're harder to rattle. You're awfully good at living. That was the whole point.</p>
+        <p>You remember things. You're present for what matters. You're harder to rattle. You're awfully good at living. That was the whole point.</p>
       </div>
     </div>
   </section>
@@ -1890,53 +1034,71 @@
   <div class="faq-wrap">
     <div class="faq-inner">
       <span class="section-label">FAQ</span>
-      <h2 class="section-heading">Real questions.<br>Honest answers.</h2>
+      <h2 class="section-h">Real questions.<br>Honest answers.</h2>
       <div class="faq">
         <div class="faq-item">
           <div class="faq-q">How much Lion's Mane per serving?</div>
-          <div class="faq-a">1000mg full-spectrum extract per serving. That's 2–3x stronger than most alcohol-based tinctures on the market, which lose significant potency during extraction. We're not cutting corners — this is the real dose.</div>
+          <div class="faq-a">1000mg full-spectrum extract. That's 2–3x stronger than most alcohol-based tinctures, which lose potency during extraction. This is the real dose, not a marketing dose.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">When will I feel it?</div>
-          <div class="faq-a">Most people notice something in weeks 1–2 — better sleep, sharper mornings, more presence in conversations. Full clarity typically hits around day 30. Lion's Mane works by supporting neuroplasticity, which takes time. Consistency is the key. Don't skip days.</div>
+          <div class="faq-a">Most people notice something in weeks 1–2. Full clarity hits around day 30, when neuroplasticity has had time to compound. Consistency is everything. Don't skip days and expect week 4 results at week 1.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Why alcohol-free?</div>
-          <div class="faq-a">Alcohol extraction is cheaper and more common, but it damages the beta-glucans and hericenones you actually want — the compounds responsible for Lion's Mane's effects. Water extraction preserves the full compound profile. It costs more to make this way. We do it anyway.</div>
+          <div class="faq-a">Alcohol extraction is cheaper but damages the beta-glucans and hericenones you actually want — the compounds responsible for the effects. Water extraction is more expensive and more effective. We chose the latter. You're welcome.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Any side effects?</div>
-          <div class="faq-a">None. Lion's Mane has a strong safety profile across 50+ peer-reviewed studies. The only thing you might experience is your brain working the way it was supposed to all along. Some people find that mildly alarming at first.</div>
+          <div class="faq-a">None. Lion's Mane has a strong safety profile across 50+ peer-reviewed studies. The only thing you might experience is your brain working the way it was supposed to. Some people find that mildly alarming at first.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">What if it doesn't work for me?</div>
-          <div class="faq-a">30-day money-back guarantee. Full refund. No questions. Email us at contact@awfullygoodcompany.com and it's done. We believe in this product completely — and we're willing to put our money where our mouth is on that.</div>
+          <div class="faq-a">30-day money-back guarantee. Full refund. No questions. Email contact@awfullygoodcompany.com and it's done. We're not in the business of keeping money from people who aren't happy.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Can I cancel auto-ship?</div>
-          <div class="faq-a">Yes. Anytime. No penalties. No tricky cancellation flows. No emails trying to guilt you into staying. Just cancel and you're out. That's the deal and we mean it.</div>
+          <div class="faq-a">Yes. Anytime. No penalties. No tricky cancellation flows. No guilt-trip emails. Just cancel and you're out. That's the deal.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">Is this the same as other mushroom supplements?</div>
-          <div class="faq-a">Not even close. Most mushroom supplements use mycelium grown on grain — which means you're mostly getting grain starch, not Lion's Mane. We use fruiting body extract only, water-extracted, full-spectrum. It's a completely different product. Check your labels.</div>
+          <div class="faq-a">No. Most supplements use mycelium grown on grain — meaning you're mostly paying for grain starch. We use fruiting body extract only, water-extracted, full-spectrum. It's a categorically different product. Check the label on whatever you're taking now.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">How do I take it?</div>
-          <div class="faq-a">One dropper (1mL) under the tongue in the morning. Hold for 30 seconds, then swallow. Do it at the same time every day. Stack it with your morning coffee if you want — it plays well with caffeine. That's legitimately it.</div>
+          <div class="faq-a">One dropper (1mL) under the tongue every morning. Hold 30 seconds. Swallow. Same time every day. Stack it with your coffee if you want — plays great with caffeine. That's genuinely it.</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- FOOTER SIGNUP -->
+  <div class="footer-signup">
+    <div class="footer-signup-inner">
+      <div>
+        <h3>Get 15% off your first order.</h3>
+        <p>Real discount. Real code. No 9-email welcome sequence. Just your 15% off and the occasional email when something's worth sharing.</p>
+      </div>
+      <form onsubmit="submitFooterEmail(event)">
+        <div class="signup-form">
+          <input id="footerEmail" type="email" class="signup-input" placeholder="your@email.com" required>
+          <button type="submit" class="signup-btn" id="footerBtn">Get 15% Off</button>
+        </div>
+        <p id="footerSuccess" style="display:none;font-size:0.82rem;color:var(--accent);margin-top:0.5rem;">✓ Check your email for your code.</p>
+        <p style="font-size:0.65rem;color:var(--subtle);margin-top:0.5rem;">Unsubscribe anytime. We're not clingy.</p>
+      </form>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-logo"><span>Awfully</span> Good</div>
-      <p class="footer-tagline">For people who refuse to go through the motions. Stay sharp. Stay present. The dance doesn't last forever — be here for it.</p>
+      <div class="footer-logo"><em>Awfully</em> Good</div>
+      <p class="footer-tagline">For people who refuse to go through the motions. The dance doesn't last forever — be here for it.</p>
       <div class="footer-social">
-        <a href="https://www.tiktok.com/@awfullygoodcompany" target="_blank" class="social-link">TikTok</a>
+        <a href="https://www.tiktok.com/@awfullygoodcompany" target="_blank">TikTok</a>
         <span style="color:var(--subtle)">·</span>
-        <a href="https://www.instagram.com/awfullygoodcompany" target="_blank" class="social-link">Instagram</a>
+        <a href="https://www.instagram.com/awfullygoodcompany" target="_blank">Instagram</a>
       </div>
     </div>
     <div class="footer-col">
@@ -1947,39 +1109,60 @@
       <a href="https://shop.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement">Bundle (B2G1)</a>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Learn</h4>
       <a href="#why">Our Story</a>
       <a href="#proof">Reviews</a>
+      <a href="#flavor-quiz">Flavor Quiz</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
       <a href="mailto:contact@awfullygoodcompany.com">Contact Us</a>
+      <a href="#faq">FAQ</a>
     </div>
   </footer>
-
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Awfully Good · Alcohol-Free · Lab Tested · 30-Day Guarantee · Made for people who actually want to live</p>
+    <p class="footer-copy">© 2026 Awfully Good · Alcohol-Free · Lab Tested · 30-Day Guarantee · Made for people who actually want to be present</p>
   </div>
 
   <!-- SCRIPTS -->
   <script>
-    // ── ANNOUNCEMENT BAR ROTATION
-    const announcements = [
-      '🚚 Free shipping on all orders · No minimum',
+    // ── ANNOUNCEMENT BAR
+    const anns = [
+      '🚚 Free shipping on every order · No minimum',
       '⭐ 5.0 stars · 22 verified five-star reviews',
       '💸 15% off your first order — use WELCOME15',
       '🔬 Third-party lab tested, every single batch',
       '🔄 Cancel auto-ship anytime — no questions asked',
     ];
-    let annIdx = 0;
+    let ai = 0;
     const annEl = document.getElementById('ann-text');
     setInterval(() => {
       annEl.style.opacity = '0';
       setTimeout(() => {
-        annIdx = (annIdx + 1) % announcements.length;
-        annEl.textContent = announcements[annIdx];
+        ai = (ai + 1) % anns.length;
+        annEl.textContent = anns[ai];
         annEl.style.opacity = '1';
       }, 400);
     }, 3500);
 
-    // ── PEEK CAROUSEL
+    // ── FLAVOR TABS
+    function switchFlavor(id, btn) {
+      document.querySelectorAll('.ftab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.fpanel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('fpanel-' + id).classList.add('active');
+    }
+
+    // Price toggle interaction
+    document.addEventListener('change', function(e) {
+      if (e.target.type === 'radio') {
+        const opts = e.target.closest('.price-toggle').querySelectorAll('.price-opt');
+        opts.forEach(o => o.classList.remove('selected'));
+        e.target.closest('.price-opt').classList.add('selected');
+      }
+    });
+
+    // ── VIDEO CAROUSEL
     const videos = [
       '/videos/bearded%20man.mp4',
       '/videos/better%20alternative.mp4',
@@ -1990,55 +1173,32 @@
       '/videos/temu%20jennifer%20coolidge.mp4',
       '/videos/yard%20work.mp4'
     ];
-
-    const SLIDE_W = 300;
-    const SLIDE_GAP = 16;
+    const SLIDE_W = 300, SLIDE_GAP = 16;
     let currentIndex = 0;
-
     const track = document.getElementById('cTrack');
     videos.forEach((src, i) => {
       const slide = document.createElement('div');
       slide.className = 'c-slide' + (i === 0 ? ' active' : '');
       slide.dataset.index = i;
-
       const video = document.createElement('video');
-      video.preload = 'metadata';
-      video.muted = true;
-      video.loop = true;
-      video.playsInline = true;
-      video.src = src;
-      if (i === 0) {
-        video.controls = true;
-        video.muted = false;
-        video.autoplay = false;
-      }
-
+      video.preload = 'metadata'; video.muted = true; video.loop = true; video.playsInline = true; video.src = src;
+      if (i === 0) { video.controls = true; video.muted = false; }
       const overlay = document.createElement('div');
       overlay.className = 'c-slide-overlay';
       overlay.innerHTML = '<div class="c-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
       overlay.addEventListener('click', () => goToSlide(i));
-
-      slide.appendChild(video);
-      slide.appendChild(overlay);
-      track.appendChild(slide);
+      slide.appendChild(video); slide.appendChild(overlay); track.appendChild(slide);
     });
-
     function updateAdjacentPreviews() {
       const slides = document.querySelectorAll('.c-slide');
       slides.forEach((slide, i) => {
         const video = slide.querySelector('video');
-        const isActive = i === currentIndex;
-        const isAdjacent = Math.abs(i - currentIndex) === 1;
-        if (isActive) {
-          video.muted = false; video.loop = false; video.controls = true; video.pause();
-        } else if (isAdjacent) {
-          video.muted = true; video.loop = true; video.controls = false; video.play().catch(() => {});
-        } else {
-          video.muted = true; video.controls = false; video.pause();
-        }
+        const isActive = i === currentIndex, isAdjacent = Math.abs(i - currentIndex) === 1;
+        if (isActive) { video.muted = false; video.loop = false; video.controls = true; video.pause(); }
+        else if (isAdjacent) { video.muted = true; video.loop = true; video.controls = false; video.play().catch(()=>{}); }
+        else { video.muted = true; video.controls = false; video.pause(); }
       });
     }
-
     function goToSlide(index) {
       const slides = document.querySelectorAll('.c-slide');
       const oldVideo = slides[currentIndex].querySelector('video');
@@ -2046,25 +1206,20 @@
       currentIndex = index;
       slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
       document.getElementById('currentIndex').textContent = currentIndex + 1;
-      positionTrack();
-      updateAdjacentPreviews();
+      positionTrack(); updateAdjacentPreviews();
     }
-
     function positionTrack() {
-      const viewport = document.getElementById('cViewport');
-      const vw = viewport.offsetWidth;
-      const offset = (vw / 2) - (SLIDE_W / 2) - currentIndex * (SLIDE_W + SLIDE_GAP);
+      const vp = document.getElementById('cViewport');
+      const offset = (vp.offsetWidth / 2) - (SLIDE_W / 2) - currentIndex * (SLIDE_W + SLIDE_GAP);
       track.style.transform = `translateX(${offset}px)`;
     }
-
     function nextVideo() { goToSlide((currentIndex + 1) % videos.length); }
     function previousVideo() { goToSlide((currentIndex - 1 + videos.length) % videos.length); }
-
     positionTrack();
     window.addEventListener('resize', positionTrack);
     setTimeout(updateAdjacentPreviews, 500);
 
-    // ── FAQ ACCORDION
+    // ── FAQ
     document.querySelectorAll('.faq-q').forEach(q => {
       q.addEventListener('click', () => {
         const item = q.parentElement;
@@ -2074,28 +1229,23 @@
       });
     });
 
-    // ── EMAIL POPUP
+    // ── POPUP
     function showPopup() {
       if (localStorage.getItem('ag_popup_shown')) return;
-      const popup = document.getElementById('emailPopup');
-      popup.style.display = 'flex';
+      document.getElementById('emailPopup').style.display = 'flex';
     }
-
     function closePopup() {
       document.getElementById('emailPopup').style.display = 'none';
       localStorage.setItem('ag_popup_shown', '1');
     }
-
     async function submitEmail(e) {
       e.preventDefault();
       const email = document.getElementById('popupEmail').value;
       const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
+      btn.textContent = 'Sending...'; btn.disabled = true;
       try {
         const resp = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email }),
         });
         const data = await resp.json();
@@ -2103,47 +1253,51 @@
           document.getElementById('popupForm').style.display = 'none';
           document.getElementById('popupSuccess').style.display = 'block';
           localStorage.setItem('ag_popup_shown', '1');
-        } else {
-          btn.textContent = 'Try Again';
-          btn.disabled = false;
-        }
-      } catch {
-        btn.textContent = 'Try Again';
-        btn.disabled = false;
-      }
+        } else { btn.textContent = 'Try Again'; btn.disabled = false; }
+      } catch { btn.textContent = 'Try Again'; btn.disabled = false; }
     }
-
-    // Fire at 8s
-    setTimeout(showPopup, 8000);
-
-    // Fire on exit intent
-    document.addEventListener('mouseleave', (e) => {
-      if (e.clientY <= 0) showPopup();
-    });
+    async function submitFooterEmail(e) {
+      e.preventDefault();
+      const email = document.getElementById('footerEmail').value;
+      const btn = document.getElementById('footerBtn');
+      btn.textContent = 'Sending...'; btn.disabled = true;
+      try {
+        const resp = await fetch('/api/subscribe', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const data = await resp.json();
+        document.getElementById('footerSuccess').style.display = 'block';
+        btn.textContent = 'Sent!';
+        localStorage.setItem('ag_popup_shown', '1');
+      } catch { btn.textContent = 'Try Again'; btn.disabled = false; }
+    }
+    setTimeout(showPopup, 9000);
+    document.addEventListener('mouseleave', e => { if (e.clientY <= 0) showPopup(); });
   </script>
 
-  <!-- STICKY CTA (mobile) -->
+  <!-- STICKY MOBILE CTA -->
   <div class="sticky-cta">
     <a href="#pricing">Try It Risk-Free — $29.99</a>
   </div>
 
   <!-- EMAIL POPUP -->
   <div id="emailPopup" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1.5rem;">
-    <div style="background:#0d0a18;border:1px solid #2d2245;max-width:480px;width:100%;padding:3.5rem 3rem;position:relative;text-align:center;">
+    <div style="background:#0d0a18;border:1px solid #2d2245;max-width:460px;width:100%;padding:3rem 2.5rem;position:relative;text-align:center;">
       <button onclick="closePopup()" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:#9988bb;font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
-      <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;">One-time offer</p>
-      <h2 style="font-size:2.2rem;font-weight:700;letter-spacing:-0.04em;line-height:1.05;margin-bottom:0.75rem;">Get 15% off<br>your first order.</h2>
-      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:2rem;line-height:1.7;">Real discount. Real code. Drop your email and we'll send it over. No spam, no 9-email welcome sequence, no drama.</p>
+      <p style="font-size:0.6rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">One-time offer</p>
+      <h2 style="font-size:2rem;font-weight:700;letter-spacing:-0.04em;line-height:1.05;margin-bottom:0.6rem;">Get 15% off<br>your first order.</h2>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1.8rem;line-height:1.7;">Real discount. Real code. No 9-email welcome sequence. No drama.</p>
       <div id="popupForm">
-        <form onsubmit="submitEmail(event)" style="display:flex;flex-direction:column;gap:0.8rem;">
-          <input id="popupEmail" type="email" placeholder="your@email.com" required style="background:#1a1530;border:1px solid #2d2245;color:#f5f0ff;padding:1rem 1.2rem;font-family:'Space Grotesk',sans-serif;font-size:0.95rem;outline:none;width:100%;">
-          <button type="submit" style="background:var(--accent);color:white;border:none;padding:1rem;font-family:'Space Grotesk',sans-serif;font-size:0.88rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;">Claim My 15% Off</button>
+        <form onsubmit="submitEmail(event)" style="display:flex;flex-direction:column;gap:0.7rem;">
+          <input id="popupEmail" type="email" placeholder="your@email.com" required style="background:#1a1530;border:1px solid #2d2245;color:#f5f0ff;padding:0.9rem 1.1rem;font-family:'Space Grotesk',sans-serif;font-size:0.9rem;outline:none;width:100%;">
+          <button type="submit" style="background:var(--accent);color:white;border:none;padding:0.95rem;font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;">Claim My 15% Off</button>
         </form>
-        <p style="font-size:0.68rem;color:var(--muted);margin-top:1rem;">Unsubscribe anytime. We're not that clingy.</p>
+        <p style="font-size:0.65rem;color:var(--muted);margin-top:0.8rem;">Unsubscribe anytime. We're not that clingy.</p>
       </div>
       <div id="popupSuccess" style="display:none;">
-        <p style="font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:0.5rem;">You're in. 🎉</p>
-        <p style="font-size:0.9rem;color:var(--muted);">Check your email for your 15% off code. Go use it.</p>
+        <p style="font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">You're in. 🎉</p>
+        <p style="font-size:0.88rem;color:var(--muted);">Check your email for the code. Go use it.</p>
       </div>
     </div>
   </div>
