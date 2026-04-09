@@ -480,7 +480,12 @@
     .c-count { font-size: 0.78rem; color: var(--subtle); }
 
     /* ── FLAVORS ── */
-    .flavors-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .flavors-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    @media (max-width: 1200px) { .flavors-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .flavors-row { grid-template-columns: 1fr; } }
+    .flavor.bundle { background: linear-gradient(135deg, #FFF5E6 0%, #FFF0DD 100%); border-color: #FFD700; position: relative; }
+    .flavor.bundle::before { content: 'BEST VALUE'; position: absolute; top: 1rem; right: -2rem; background: #FFD700; color: #2a2a2a; padding: 0.4rem 3rem; transform: rotate(45deg); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; }
+    .flavor.bundle .flavor-price { color: #FF1493; }
     .flavor {
       background: white; border: 2px solid #D8B4FE; padding: 3.5rem 2.5rem; text-align: center;
       transition: all 0.25s; position: relative; overflow: hidden; border-radius: 12px;
@@ -1078,6 +1083,14 @@
         <div class="flavor-price">$29.99</div>
         <div class="flavor-price-sub">One-time purchase · 30-day supply</div>
         <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%87-grape-lion-s-mane-tincture-cognitive-support-mood-lift-2oz" class="flavor-btn">Shop Now</a>
+      </div>
+      <div class="flavor bundle">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Bundle">
+        <h3>⚡ Try All 3</h3>
+        <p>Can't decide? Get one of each and figure it out. Three flavors. Three months of clarity. One confusing choice prevented.</p>
+        <div class="flavor-price">$59.99</div>
+        <div class="flavor-price-sub">Buy 2, Get 1 Free · 90-day supply</div>
+        <a href="https://shop.awfullygoodcompany.com/products/awfully-good-lion-s-mane-tincture-3-pack-choose-any-flavors-grape-blueberry-or-strawberry-supplement" class="flavor-btn">Claim Bundle</a>
       </div>
     </div>
   </section>
