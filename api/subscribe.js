@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -34,11 +34,3 @@ export default async function handler(req, res) {
 
     // Already subscribed is fine
     if (response.ok || data.title === 'Member Exists') {
-      return res.status(200).json({ success: true });
-    }
-
-    return res.status(400).json({ error: data.detail || 'Subscription failed' });
-  } catch (err) {
-    return res.status(500).json({ error: 'Server error' });
-  }
-}
