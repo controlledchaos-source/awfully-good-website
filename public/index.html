@@ -482,17 +482,20 @@
     /* ── FLAVORS ── */
     .flavors-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
     .flavor {
-      background: var(--bg2); border: 1px solid var(--border); padding: 2.8rem 2rem; text-align: center;
-      transition: all 0.25s; position: relative; overflow: hidden;
+      background: white; border: 2px solid #D8B4FE; padding: 3.5rem 2.5rem; text-align: center;
+      transition: all 0.25s; position: relative; overflow: hidden; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-    .flavor::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.25s; }
-    .flavor:hover { border-color: rgba(255,0,110,0.3); transform: translateY(-3px); box-shadow: 0 10px 35px rgba(255,0,110,0.1); }
+    .flavor::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #FF00FF, #00D9FF); transform: scaleX(0); transition: transform 0.25s; }
+    .flavor:hover { border-color: #A78BFA; transform: translateY(-6px); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2); }
     .flavor:hover::after { transform: scaleX(1); }
-    .flavor img { max-width: 120px; width: 100%; margin: 0 auto 1.5rem; display: block; filter: drop-shadow(0 8px 20px rgba(255,0,110,0.15)); }
-    .flavor h3 { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .flavor p { font-size: 0.83rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.6; }
-    .flavor-btn { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); text-decoration: none; padding: 0.6rem 1.4rem; border: 1px solid var(--accent); transition: all 0.2s; }
-    .flavor-btn:hover { background: var(--accent); color: white; }
+    .flavor img { max-width: 160px; width: 100%; margin: 0 auto 2rem; display: block; filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1)); }
+    .flavor h3 { font-size: 1.1rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; color: var(--text); }
+    .flavor p { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.8rem; line-height: 1.7; font-weight: 500; }
+    .flavor-price { font-size: 1.8rem; font-weight: 800; color: #7C3AED; margin-bottom: 0.3rem; }
+    .flavor-price-sub { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 2rem; }
+    .flavor-btn { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: white; text-decoration: none; padding: 1rem 2rem; background: linear-gradient(135deg, #A78BFA 0%, #8B5CF6 100%); border: none; border-radius: 6px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); }
+    .flavor-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4); }
 
     /* ── GUARANTEE ── */
     .guarantee-section { max-width: 1160px; margin: 0 auto; padding: 7rem 3rem; }
@@ -1056,19 +1059,25 @@
         <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry">
         <h3>🍓 Strawberry</h3>
         <p>The crowd pleaser. Sweet chaos in a bottle. The most reordered flavor. No coincidence.</p>
-        <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Strawberry →</a>
+        <div class="flavor-price">$29.99</div>
+        <div class="flavor-price-sub">One-time purchase · 30-day supply</div>
+        <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%93-strawberry-lion-s-mane-tincture-focus-memory-support" class="flavor-btn">Shop Now</a>
       </div>
       <div class="flavor">
         <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry">
         <h3>🫐 Blueberry</h3>
         <p>The bold one. Doesn't apologize. Preferred by night-shift nurses and people who do hard things.</p>
-        <a href="https://shop.awfullygoodcompany.com/products/blueberry-lion-s-mane-tincture-brain-boost-clarity-2oz" class="flavor-btn">Shop Blueberry →</a>
+        <div class="flavor-price">$29.99</div>
+        <div class="flavor-price-sub">One-time purchase · 30-day supply</div>
+        <a href="https://shop.awfullygoodcompany.com/products/blueberry-lion-s-mane-tincture-brain-boost-clarity-2oz" class="flavor-btn">Shop Now</a>
       </div>
       <div class="flavor">
         <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape">
         <h3>🍇 Grape</h3>
         <p>Clean finish. Quietly your favorite. The "I'll try it last" flavor that becomes the one you reorder.</p>
-        <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%87-grape-lion-s-mane-tincture-cognitive-support-mood-lift-2oz" class="flavor-btn">Shop Grape →</a>
+        <div class="flavor-price">$29.99</div>
+        <div class="flavor-price-sub">One-time purchase · 30-day supply</div>
+        <a href="https://shop.awfullygoodcompany.com/products/%F0%9F%8D%87-grape-lion-s-mane-tincture-cognitive-support-mood-lift-2oz" class="flavor-btn">Shop Now</a>
       </div>
     </div>
   </section>
