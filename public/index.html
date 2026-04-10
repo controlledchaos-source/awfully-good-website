@@ -22,6 +22,8 @@
   <link rel="canonical" href="https://awfullygoodcompany.com">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#8B5CF6">
+  <!-- Performance Preload -->
+  <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F4ZP9TB710"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -955,7 +957,7 @@
         <!-- Strawberry -->
         <div class="fpanel active" id="fpanel-strawberry">
           <div class="fpanel-image">
-            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/strawberry_lions_mane.png?v=1775438634" alt="Strawberry" loading="lazy">
           </div>
           <div class="fpanel-details">
             <span class="section-label">🍓 Strawberry</span>
@@ -996,7 +998,7 @@
         <!-- Blueberry -->
         <div class="fpanel" id="fpanel-blueberry">
           <div class="fpanel-image">
-            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Blueberry" loading="lazy">
           </div>
           <div class="fpanel-details">
             <span class="section-label">🫐 Blueberry</span>
@@ -1037,7 +1039,7 @@
         <!-- Grape -->
         <div class="fpanel" id="fpanel-grape">
           <div class="fpanel-image">
-            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/grape_lions_mane.png?v=1775438634" alt="Grape" loading="lazy">
           </div>
           <div class="fpanel-details">
             <span class="section-label">🍇 Grape</span>
@@ -1078,7 +1080,7 @@
         <!-- Bundle -->
         <div class="fpanel" id="fpanel-bundle">
           <div class="fpanel-image">
-            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Bundle — All 3 Flavors" style="max-width:360px;">
+            <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Bundle — All 3 Flavors" style="max-width:360px;" loading="lazy">
           </div>
           <div class="fpanel-details">
             <span class="section-label">⚡ Best Value — Buy 2 Get 1 Free</span>
@@ -1108,7 +1110,7 @@
   <section class="section">
     <div class="diff-grid">
       <div class="diff-image">
-        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Awfully Good Lion's Mane Tincture">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/blueberry_lions_mane.png?v=1775438634" alt="Awfully Good Lion's Mane Tincture" loading="lazy">
       </div>
       <div class="diff-text">
         <span class="section-label">What's in it</span>
@@ -1235,7 +1237,10 @@
       </h2>
       <div class="founder-cards">
         <div class="founder-card">
-          <img src="anorexia.png" alt="Anorexia Story" class="founder-card-image">
+          <picture>
+            <source srcset="anorexia.webp" type="image/webp">
+            <img src="anorexia.png" alt="Anorexia Story" class="founder-card-image" loading="lazy">
+          </picture>
           <div class="founder-card-content">
             <span class="founder-card-n">Chapter 01</span>
             <h3>He Almost Didn't Make It to 14</h3>
@@ -1243,7 +1248,10 @@
           </div>
         </div>
         <div class="founder-card">
-          <img src="family.png" alt="Family" class="founder-card-image">
+          <picture>
+            <source srcset="family.webp" type="image/webp">
+            <img src="family.png" alt="Family" class="founder-card-image" loading="lazy">
+          </picture>
           <div class="founder-card-content">
             <span class="founder-card-n">Chapter 02</span>
             <h3>Then He Lost Both Parents to Cancer.</h3>
@@ -1251,7 +1259,10 @@
           </div>
         </div>
         <div class="founder-card">
-          <img src="b_m.png" alt="Holding Mushrooms" class="founder-card-image">
+          <picture>
+            <source srcset="b_m.webp" type="image/webp">
+            <img src="b_m.png" alt="Holding Mushrooms" class="founder-card-image" loading="lazy">
+          </picture>
           <div class="founder-card-content">
             <span class="founder-card-n">Chapter 03</span>
             <h3>This Isn't a Supplement. It's a Stance.</h3>
