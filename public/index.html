@@ -489,15 +489,27 @@
     .indicator:hover { background: rgba(255,255,255,0.6); }
     .indicator.active { background: var(--accent); width: 24px; border-radius: 4px; }
 
-    @media (max-width: 900px) {
-      .c-slide { flex: 0 0 200px; height: 380px; }
+    @media (min-width: 901px) and (max-width: 1199px) {
+      .c-slide { flex: 0 0 220px; height: 420px; }
       .c-track { gap: 12px; }
       .c-btn { padding: 0.7rem 1rem; font-size: 0.68rem; }
     }
-    @media (max-width: 600px) {
-      .c-slide { flex: 0 0 150px; height: 280px; }
+    @media (max-width: 900px) {
+      .c-slide { flex: 0 0 160px; height: 300px; }
       .c-track { gap: 8px; }
-      .c-btn { padding: 0.6rem 1rem; font-size: 0.65rem; }
+      .c-btn { padding: 0.65rem 0.9rem; font-size: 0.65rem; }
+    }
+    @media (max-width: 600px) {
+      .c-slide { flex: 0 0 130px; height: 240px; }
+      .c-track { gap: 6px; }
+      .c-btn { padding: 0.6rem 0.8rem; font-size: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .c-slide { flex: 0 0 100px; height: 180px; }
+      .c-track { gap: 6px; }
+      .c-btn { padding: 0.55rem 0.75rem; font-size: 0.58rem; }
+      .carousel-controls { gap: 1rem; }
+      .c-count { font-size: 0.7rem; }
     }
 
     /* ── FLAVORS ── */
