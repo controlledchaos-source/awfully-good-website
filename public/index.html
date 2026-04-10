@@ -461,6 +461,11 @@
     .ftab[data-flavor="blueberry"].active { background: #7DD3FC; color: #082f49; }
     .ftab[data-flavor="grape"].active { background: #A78BFA; }
     .ftab[data-flavor="bundle"].active { background: #FDE047; color: #292524; }
+
+    @media (max-width: 600px) {
+      .flavor-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .ftab { flex: 0 0 auto; padding: 0.7rem 0.8rem; font-size: 0.65rem; white-space: nowrap; }
+    }
     .flavor-panels { position: relative; }
     .fpanel { display: none; }
     .fpanel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
