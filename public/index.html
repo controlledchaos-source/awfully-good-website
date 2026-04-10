@@ -680,6 +680,23 @@
 
     /* ── FLAVORS ── */
     .flavors-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    /* ── HERO RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { padding: 4rem 2rem 2rem; }
+      .hero-content { max-width: 90vw; min-width: auto; }
+      .hero h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.5rem 2rem; }
+      .hero-content { max-width: 95vw; }
+      .hero h1 { font-size: clamp(1.5rem, 3.5vw, 2.8rem); }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 2.5rem 1rem 1.5rem; }
+      .hero-content { max-width: 100%; }
+      .hero h1 { font-size: clamp(1.3rem, 3vw, 2.4rem); margin-bottom: 1rem; }
+    }
+
     @media (max-width: 1200px) { .flavors-row { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) { .flavors-row { grid-template-columns: 1fr; } }
     .flavor.bundle { background: linear-gradient(135deg, #FFF5E6 0%, #FFF0DD 100%); border-color: #FFD700; position: relative; }
