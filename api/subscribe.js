@@ -34,3 +34,12 @@ module.exports = async function handler(req, res) {
 
     // Already subscribed is fine
     if (response.ok || data.title === 'Member Exists') {
+      return res.status(200).json({ success: true });
+    }
+
+    return res.status(response.status).json({ error: data.detail || 'Failed to subscribe' });
+  } catch (error) {
+    console.error('Mailchimp error:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
