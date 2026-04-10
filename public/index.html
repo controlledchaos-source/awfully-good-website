@@ -473,7 +473,8 @@
     .c-viewport { overflow: visible; width: 100vw; position: relative; margin-left: calc(-50vw + 50%); display: flex; align-items: center; }
     .c-track { display: flex; gap: 16px; transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .c-slide { flex: 0 0 300px; height: 533px; position: relative; transition: opacity 0.35s; cursor: pointer; }
-    .c-slide:not(.active) { opacity: 0.35; }
+    .c-slide:not(.active) { opacity: 0.6; }
+    .c-slide.active { opacity: 1; }
     .c-slide video { width: 100%; height: 100%; object-fit: cover; display: block; background: #08060f; }
     .c-slide-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1); }
     .c-slide.active .c-slide-overlay { display: none; }
@@ -489,10 +490,14 @@
     .indicator.active { background: var(--accent); width: 24px; border-radius: 4px; }
 
     @media (max-width: 900px) {
-      .c-slide { flex: 0 0 250px; height: 450px; }
-      .c-viewport { padding: 0 calc((100vw - 250px) / 2); }
+      .c-slide { flex: 0 0 200px; height: 380px; }
       .c-track { gap: 12px; }
       .c-btn { padding: 0.7rem 1rem; font-size: 0.68rem; }
+    }
+    @media (max-width: 600px) {
+      .c-slide { flex: 0 0 150px; height: 280px; }
+      .c-track { gap: 8px; }
+      .c-btn { padding: 0.6rem 1rem; font-size: 0.65rem; }
     }
 
     /* ── FLAVORS ── */
@@ -1420,14 +1425,16 @@
     }
     function positionTrack() {
       const vp = document.getElementById('cViewport');
-      const offset = (vp.offsetWidth / 2) - (SLIDE_W / 2) - currentIndex * (SLIDE_W + SLIDE_GAP);
+      const centerOffsetX = (vp.offsetWidth / 2) - (SLIDE_W / 2);
+      const offset = centerOffsetX - currentIndex * (SLIDE_W + SLIDE_GAP);
       track.style.transform = `translateX(${offset}px)`;
     }
     function nextVideo() { goToSlide((currentIndex + 1) % videos.length); }
     function previousVideo() { goToSlide((currentIndex - 1 + videos.length) % videos.length); }
     function updateCarouselPadding() {
       const vp = document.getElementById('cViewport');
-      vp.style.padding = `0 calc((100vw - ${SLIDE_W}px) / 2)`;
+      const threeSlideWidth = (SLIDE_W * 3) + (SLIDE_GAP * 2);
+      vp.style.padding = `0 calc((100vw - ${threeSlideWidth}px) / 2)`;
       const slides = document.querySelectorAll('.c-slide');
       slides.forEach(slide => {
         slide.style.flexBasis = `${SLIDE_W}px`;
