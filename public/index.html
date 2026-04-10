@@ -1617,9 +1617,6 @@
     function nextVideo() { goToSlide((currentIndex + 1) % videos.length); }
     function previousVideo() { goToSlide((currentIndex - 1 + videos.length) % videos.length); }
     function updateCarouselPadding() {
-      const vp = document.getElementById('cViewport');
-      const threeSlideWidth = (SLIDE_W * 3) + (SLIDE_GAP * 2);
-      vp.style.padding = `0 calc((100vw - ${threeSlideWidth}px) / 2)`;
       const slides = document.querySelectorAll('.c-slide');
       slides.forEach(slide => {
         slide.style.flexBasis = `${SLIDE_W}px`;
