@@ -341,6 +341,7 @@
       filter: drop-shadow(0 0 100px rgba(255,0,110,0.5));
       animation: floatY 6s ease-in-out infinite;
     }
+    .hero-product-mobile { display: none; }
     @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
 
     /* ── MARQUEE ── */
@@ -841,7 +842,9 @@
       .hero-stars { justify-content: center; }
       .hero-ctas { justify-content: center; }
       .hero-trust { justify-content: center; }
-      .hero-product { position: relative; right: auto; top: auto; transform: none; width: 90%; max-width: 380px; margin: 0 auto; }
+      .hero-product { display: none; }
+      .hero-product-mobile { display: block !important; }
+    }
 
       .stats-bar { overflow-x: auto; gap: 0; }
       .stat { padding: 0 1.5rem; }
@@ -903,6 +906,9 @@
     <div class="hero-content">
       <div class="hero-eyebrow">Lion's Mane Tincture · Alcohol-Free</div>
       <h1>We Are Gathered<br>Here Today<br>To Get Through<br>This Thing Called<br>Life</h1>
+      <div class="hero-product-mobile" style="display: none; margin: 2rem auto; width: 200px; max-width: 90%;">
+        <img src="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367" alt="Awfully Good — All 3 Flavors" style="width: 100%; height: auto;">
+      </div>
       <div class="hero-stars">
         <span class="stars">★★★★★</span>
         <span class="stars-text">5.0 · 72 verified five-star reviews</span>
