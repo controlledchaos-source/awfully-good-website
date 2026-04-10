@@ -1552,11 +1552,17 @@
     ];
     function getSlideWidth() {
       if (window.innerWidth > 1200) return 300;
-      if (window.innerWidth > 900) return 280;
-      return 250;
+      if (window.innerWidth > 900 && window.innerWidth <= 1200) return 220;
+      if (window.innerWidth > 600 && window.innerWidth <= 900) return 160;
+      if (window.innerWidth > 480 && window.innerWidth <= 600) return 130;
+      return 100;
     }
     function getGap() {
-      return window.innerWidth > 900 ? 16 : 12;
+      if (window.innerWidth > 1200) return 16;
+      if (window.innerWidth > 900) return 12;
+      if (window.innerWidth > 600) return 8;
+      if (window.innerWidth > 480) return 6;
+      return 6;
     }
     let SLIDE_W = getSlideWidth(), SLIDE_GAP = getGap();
     window.addEventListener('resize', () => {
@@ -1583,9 +1589,12 @@
       const slides = document.querySelectorAll('.c-slide');
       slides.forEach((slide, i) => {
         const video = slide.querySelector('video');
-        const isActive = i === currentIndex, isAdjacent = Math.abs(i - currentIndex) === 1;
+        const isActive = i === currentIndex;
+        const isLeftPreview = i === (currentIndex - 1 + videos.length) % videos.length;
+        const isRightPreview = i === (currentIndex + 1) % videos.length;
+
         if (isActive) { video.muted = false; video.loop = false; video.controls = true; video.pause(); }
-        else if (isAdjacent) { video.muted = true; video.loop = true; video.controls = false; video.play().catch(()=>{}); }
+        else if (isLeftPreview || isRightPreview) { video.muted = true; video.loop = true; video.controls = false; video.play().catch(()=>{}); }
         else { video.muted = true; video.controls = false; video.pause(); }
       });
     }
