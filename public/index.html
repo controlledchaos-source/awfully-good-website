@@ -1610,8 +1610,11 @@
     }
     function positionTrack() {
       const vp = document.getElementById('cViewport');
-      const centerOffsetX = (vp.offsetWidth / 2) - (SLIDE_W / 2);
-      const offset = centerOffsetX - currentIndex * (SLIDE_W + SLIDE_GAP);
+      // Center the middle slide of the 3-visible slides
+      // To show (currentIndex-1), currentIndex, (currentIndex+1) with currentIndex in the center
+      const threeSlideWidth = (SLIDE_W * 3) + (SLIDE_GAP * 2);
+      const centerOffsetX = (vp.offsetWidth / 2) - (threeSlideWidth / 2);
+      const offset = centerOffsetX - (currentIndex - 1) * (SLIDE_W + SLIDE_GAP);
       track.style.transform = `translateX(${offset}px)`;
     }
     function nextVideo() { goToSlide((currentIndex + 1) % videos.length); }
