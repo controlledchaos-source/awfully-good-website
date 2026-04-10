@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.vercel/
+Disallow: /.next/
+
+Sitemap: https://awfullygoodcompany.com/sitemap.xml
+
+# Crawl rate limiting for aggressive crawlers
+Request-rate: 1/1
