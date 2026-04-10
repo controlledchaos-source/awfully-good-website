@@ -1550,6 +1550,7 @@
       '/videos/temu%20jennifer%20coolidge.mp4',
       '/videos/yard%20work.mp4'
     ];
+    const videoCount = videos.length;
     function getSlideWidth() {
       if (window.innerWidth > 1200) return 300;
       if (window.innerWidth > 900 && window.innerWidth <= 1200) return 220;
@@ -1572,53 +1573,91 @@
     });
     let currentIndex = 0;
     const track = document.getElementById('cTrack');
-    videos.forEach((src, i) => {
+
+    // Helper to create a slide
+    function createSlide(src, originalIndex, isClone) {
       const slide = document.createElement('div');
-      slide.className = 'c-slide' + (i === 0 ? ' active' : '');
-      slide.dataset.index = i;
+      slide.className = 'c-slide' + (originalIndex === 0 && !isClone ? ' active' : '');
+      slide.dataset.index = originalIndex;
+      slide.dataset.clone = isClone ? 'true' : 'false';
       const video = document.createElement('video');
       video.preload = 'metadata'; video.muted = true; video.loop = true; video.playsInline = true; video.src = src;
-      if (i === 0) { video.controls = true; video.muted = false; }
+      if (originalIndex === 0 && !isClone) { video.controls = true; video.muted = false; }
       const overlay = document.createElement('div');
       overlay.className = 'c-slide-overlay';
       overlay.innerHTML = '<div class="c-play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
-      overlay.addEventListener('click', () => goToSlide(i));
-      slide.appendChild(video); slide.appendChild(overlay); track.appendChild(slide);
+      overlay.addEventListener('click', () => goToSlide(originalIndex));
+      slide.appendChild(video); slide.appendChild(overlay);
+      return slide;
+    }
+
+    // Add clones of last 2 videos at the beginning
+    for (let i = videoCount - 2; i < videoCount; i++) {
+      track.appendChild(createSlide(videos[i], i, true));
+    }
+
+    // Add original videos
+    videos.forEach((src, i) => {
+      track.appendChild(createSlide(src, i, false));
     });
+
+    // Add clones of first 2 videos at the end
+    for (let i = 0; i < 2; i++) {
+      track.appendChild(createSlide(videos[i], i, true));
+    }
+
+    function getDOMIndex(videoIndex) {
+      // videoIndex 0-7 maps to DOM index 2-9 (after 2 clones at start)
+      return videoIndex + 2;
+    }
+
     function updateAdjacentPreviews() {
       const slides = document.querySelectorAll('.c-slide');
-      slides.forEach((slide, i) => {
+      const prevIdx = (currentIndex - 1 + videoCount) % videoCount;
+      const nextIdx = (currentIndex + 1) % videoCount;
+
+      slides.forEach((slide) => {
         const video = slide.querySelector('video');
-        const isActive = i === currentIndex;
-        const isLeftPreview = i === (currentIndex - 1 + videos.length) % videos.length;
-        const isRightPreview = i === (currentIndex + 1) % videos.length;
+        const slideIdx = parseInt(slide.dataset.index);
+        const isClone = slide.dataset.clone === 'true';
+
+        const isActive = slideIdx === currentIndex && !isClone;
+        const isLeftPreview = slideIdx === prevIdx && (isClone || !isClone);
+        const isRightPreview = slideIdx === nextIdx && (isClone || !isClone);
 
         if (isActive) { video.muted = false; video.loop = false; video.controls = true; video.pause(); }
         else if (isLeftPreview || isRightPreview) { video.muted = true; video.loop = true; video.controls = false; video.play().catch(()=>{}); }
         else { video.muted = true; video.controls = false; video.pause(); }
       });
     }
+
     function goToSlide(index) {
-      const slides = document.querySelectorAll('.c-slide');
-      const oldVideo = slides[currentIndex].querySelector('video');
-      oldVideo.pause(); oldVideo.controls = false;
       currentIndex = index;
-      slides.forEach((s, i) => s.classList.toggle('active', i === currentIndex));
+      const slides = document.querySelectorAll('.c-slide');
+      slides.forEach((s) => {
+        const isCurrentReal = parseInt(s.dataset.index) === currentIndex && s.dataset.clone !== 'true';
+        s.classList.toggle('active', isCurrentReal);
+      });
       document.getElementById('currentIndex').textContent = currentIndex + 1;
       document.querySelectorAll('.indicator').forEach((ind, i) => ind.classList.toggle('active', i === currentIndex));
-      positionTrack(); updateAdjacentPreviews();
+      positionTrack();
+      updateAdjacentPreviews();
     }
+
     function positionTrack() {
       const vp = document.getElementById('cViewport');
-      // Center the middle slide of the 3-visible slides
-      // To show (currentIndex-1), currentIndex, (currentIndex+1) with currentIndex in the center
-      const threeSlideWidth = (SLIDE_W * 3) + (SLIDE_GAP * 2);
-      const centerOffsetX = (vp.offsetWidth / 2) - (threeSlideWidth / 2);
-      const offset = centerOffsetX - (currentIndex - 1) * (SLIDE_W + SLIDE_GAP);
+      const centerOfViewport = vp.offsetWidth / 2;
+      // DOM slides are: [clone 6, clone 7, 0, 1, 2, 3, 4, 5, 6, 7, clone 0, clone 1]
+      // So slide 0 is at DOM index 2
+      const domIndex = getDOMIndex(currentIndex);
+      const slideCenter = domIndex * (SLIDE_W + SLIDE_GAP) + (SLIDE_W / 2);
+      const offset = centerOfViewport - slideCenter;
       track.style.transform = `translateX(${offset}px)`;
     }
-    function nextVideo() { goToSlide((currentIndex + 1) % videos.length); }
-    function previousVideo() { goToSlide((currentIndex - 1 + videos.length) % videos.length); }
+
+    function nextVideo() { goToSlide((currentIndex + 1) % videoCount); }
+    function previousVideo() { goToSlide((currentIndex - 1 + videoCount) % videoCount); }
+
     function updateCarouselPadding() {
       const slides = document.querySelectorAll('.c-slide');
       slides.forEach(slide => {
