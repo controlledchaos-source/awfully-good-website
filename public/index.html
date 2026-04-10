@@ -1686,7 +1686,7 @@
         localStorage.setItem('ag_popup_shown', '1');
       } catch { btn.textContent = 'Try Again'; btn.disabled = false; }
     }
-    setTimeout(showPopup, 9000);
+    setTimeout(showPopup, 5000);
     document.addEventListener('mouseleave', e => { if (e.clientY <= 0) showPopup(); });
   </script>
 
