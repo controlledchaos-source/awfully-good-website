@@ -22,6 +22,8 @@
   <link rel="canonical" href="https://awfullygoodcompany.com">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#8B5CF6">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍄</text></svg>">
   <!-- Performance Preload -->
   <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0771/7752/0370/files/3_bottle_bundle_4c5164ed-fe98-4f48-861b-90794c608045.png?v=1775439367">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F4ZP9TB710"></script>
@@ -49,73 +51,6 @@
   src="https://www.facebook.com/tr?id=1238738957889974&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-  <!-- Shopify Pixel for Conversion Tracking -->
-  <script>
-    (function() {
-      const shopifyPixel = {
-        shop: 'awfullygoodmushrooms.myshopify.com',
-        init: function() {
-          this.trackPageView();
-          this.trackAddToCart();
-          this.trackCheckout();
-        },
-        trackPageView: function() {
-          window.addEventListener('DOMContentLoaded', function() {
-            fetch('https://awfullygoodmushrooms.myshopify.com/cdn/shop/pixels.js', {
-              method: 'GET',
-              headers: { 'Content-Type': 'application/json' }
-            }).catch(function() {});
-          });
-        },
-        trackAddToCart: function() {
-          const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-              if (mutation.target.className && mutation.target.className.includes('btn')) {
-                const text = mutation.target.textContent;
-                if (text.includes('Add to Cart') || text.includes('Shop Now') || text.includes('Buy')) {
-                  mutation.target.addEventListener('click', function() {
-                    try {
-                      fetch('https://awfullygoodmushrooms.myshopify.com/api/pixels', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                          event: 'add_to_cart',
-                          timestamp: new Date().toISOString()
-                        })
-                      }).catch(function() {});
-                    } catch(e) {}
-                  });
-                }
-              }
-            });
-          });
-          observer.observe(document.body, { childList: true, subtree: true });
-        },
-        trackCheckout: function() {
-          const shopLinks = document.querySelectorAll('a[href*="shop.awfullygoodcompany.com"]');
-          shopLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-              try {
-                fetch('https://awfullygoodmushrooms.myshopify.com/api/pixels', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    event: 'begin_checkout',
-                    timestamp: new Date().toISOString()
-                  })
-                }).catch(function() {});
-              } catch(e) {}
-            });
-          });
-        }
-      };
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { shopifyPixel.init(); });
-      } else {
-        shopifyPixel.init();
-      }
-    })();
-  </script>
   <!-- Schema Markup for SEO -->
   <script type="application/ld+json">
   {
@@ -911,7 +846,7 @@
       <a href="#proof">Reviews</a>
       <a href="#why">My Story</a>
     </nav>
-    <a class="logo" href="#"><em>Awfully</em> Good</a>
+    <a class="logo" href="/"><em>Awfully</em> Good</a>
     <div class="header-actions">
       <a href="#flavor-quiz" class="btn-quiz" onclick="event.preventDefault(); openFlavorQuiz();">Find My Flavor</a>
       <a href="#pricing" class="btn-shop">Shop Now</a>
@@ -1518,7 +1453,7 @@
   </section>
 
   <!-- FAQ -->
-  <div class="faq-wrap">
+  <div id="faq" class="faq-wrap">
     <div class="faq-inner">
       <span class="section-label">FAQ</span>
       <h2 class="section-h">Real questions.<br>Honest answers.</h2>
