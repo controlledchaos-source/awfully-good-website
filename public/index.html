@@ -1766,6 +1766,23 @@
       } catch { btn.textContent = 'Try Again'; btn.disabled = false; }
     }
     document.addEventListener('mouseleave', e => { if (e.clientY <= 0) showPopup(); });
+
+    // Engagement trigger: scroll past 60% AND 20s+ on page (mobile-friendly)
+    (function() {
+      var loadedAt = Date.now();
+      var triggered = false;
+      function checkEngagement() {
+        if (triggered || localStorage.getItem('ag_popup_shown')) return;
+        var scrolled = window.scrollY + window.innerHeight;
+        var pageHeight = document.documentElement.scrollHeight;
+        if (scrolled / pageHeight > 0.6 && Date.now() - loadedAt > 20000) {
+          triggered = true;
+          showPopup();
+        }
+      }
+      window.addEventListener('scroll', checkEngagement, { passive: true });
+      setInterval(checkEngagement, 2000);
+    })();
   </script>
 
   <!-- STICKY MOBILE CTA -->
